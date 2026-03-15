@@ -1,0 +1,23 @@
+# Node
+node_modules/
+npm-debug.log*
+bun.lockb
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Éditeurs
+.vscode/
+.idea/
+*.swp
+
+# Fichiers Windows
+*Zone.Identifier
+
+# Dist (généré par build.js)
+dist/
+
+# Fichiers temporaires
+*.tmp
+*.log

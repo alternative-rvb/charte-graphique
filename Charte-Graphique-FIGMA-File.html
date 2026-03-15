@@ -1,0 +1,4090 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Charte Graphique — Bloom Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+    :root {
+      --figma-page-width:    842px;
+      --figma-page-height:   595px;
+      --palette-principale: #5C4EFA;
+      --palette-secondaire: #FF6B6B;
+      --palette-accent:     #FFD93D;
+      --palette-texte:      #111118;
+      --palette-fond:       #F9F9FB;
+      --ui-gris:            #6B7280;
+      --ui-ligne:           #E5E7EB;
+      --ui-blanc:           #FFFFFF;
+      --police-titres:      'DM Serif Display', serif;
+      --police-corps:       'DM Sans', sans-serif;
+    }
+
+    /* =====================
+       BASE — RESET ET VARIABLES
+    ===================== */
+
+    html { scroll-behavior: smooth; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--police-corps);
+      background: var(--palette-fond);
+      color: var(--palette-texte);
+      padding: 16px 0 24px;
+      min-width: var(--figma-page-width);
+    }
+
+    /* PAGE */
+    .page {
+      width: var(--figma-page-width);
+      max-width: var(--figma-page-width);
+      margin: 0 auto;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* Base web + plugin HTML to Design : 1 bloc = 1 page Figma 842x595 */
+    .figma-page {
+      width: var(--figma-page-width);
+      height: var(--figma-page-height);
+      overflow: hidden;
+      position: relative;
+      margin: 0 auto;
+      flex: 0 0 auto;
+    }
+
+    .page-num {
+      position: absolute;
+      right: 12px;
+      bottom: 10px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: #9CA3AF;
+      background: rgba(255,255,255,0.85);
+      border: 1px solid #E5E7EB;
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .page > .figma-page {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .figma-page:not(.cover):not(.cta-block) {
+      padding: 24px 28px;
+      background: var(--ui-blanc);
+      border: 1px solid var(--ui-ligne);
+      border-radius: 16px;
+    }
+
+    /* LABELS */
+    .label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--palette-principale);
+      margin-bottom: 8px;
+    }
+
+    .title {
+      font-family: var(--police-titres);
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--palette-texte);
+      margin-bottom: 8px;
+    }
+
+    .desc {
+      font-size: 0.9rem;
+      color: var(--ui-gris);
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    hr { border: none; border-top: 1px solid var(--ui-ligne); margin-bottom: 32px; }
+
+    /* PLACEHOLDER */
+    .placeholder {
+      border: 1.5px dashed #C4B5FD;
+      border-radius: 8px;
+      background: #F5F3FF;
+      color: #8B5CF6;
+      font-size: 0.75rem;
+      font-style: italic;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    /* =====================
+       SECTION 1 — COUVERTURE
+    ===================== */
+    .cover {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: center;
+      background: var(--ui-blanc);
+      border-radius: 20px;
+      padding: 48px;
+      border: 1px solid var(--ui-ligne);
+    }
+
+    .cover-title {
+      font-family: var(--police-titres);
+      font-size: 3rem;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .cover-sub {
+      font-size: 1rem;
+      color: var(--ui-gris);
+      margin-bottom: 24px;
+    }
+
+    .cover-meta {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    .meta-item { display: flex; flex-direction: column; gap: 2px; }
+    .meta-label { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ui-gris); }
+    .meta-valeur { font-size: 0.875rem; font-weight: 500; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--palette-principale);
+      color: #fff;
+      font-family: var(--police-corps);
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+
+    .btn:hover { opacity: 0.85; }
+
+    /* Logo placeholder */
+    .logo-box {
+      width: 140px;
+      height: 140px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, var(--palette-principale) 0%, var(--palette-secondaire) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 6px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .logo-box-letter {
+      font-family: var(--police-titres);
+      font-size: 2.5rem;
+    }
+
+    .logo-box-name {
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.8;
+    }
+
+    /* =====================
+       SECTION 2 — COULEURS
+    ===================== */
+    .colors-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .swatch {
+      flex: 1;
+      min-width: 120px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--ui-ligne);
+      background: var(--ui-blanc);
+    }
+
+    .swatch-fill { height: 80px; }
+
+    .swatch-info {
+      padding: 12px 14px;
+    }
+
+    .swatch-name { font-size: 0.8rem; font-weight: 600; margin-bottom: 4px; }
+    .swatch-hex  { font-size: 0.7rem; color: var(--ui-gris); font-family: monospace; }
+    .swatch-use  { font-size: 0.65rem; color: var(--ui-gris); margin-top: 4px; font-style: italic; }
+    .swatch-alt {
+      margin-top: 6px;
+      font-size: 0.62rem;
+      line-height: 1.35;
+      color: var(--ui-gris);
+      font-family: monospace;
+    }
+
+    /* =====================
+       SECTION 3 — TYPO
+    ===================== */
+    .typo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .typo-card {
+      background: var(--ui-blanc);
+      border: 1px solid var(--ui-ligne);
+      border-radius: 14px;
+      padding: 28px;
+    }
+
+    .typo-sample-serif { font-family: var(--police-titres); font-size: 2.2rem; line-height: 1.15; margin: 12px 0; }
+    .typo-sample-sans  { font-family: var(--police-corps);  font-size: 2rem;   line-height: 1.2;  margin: 12px 0; font-weight: 300; }
+
+    .typo-sizes { display: flex; flex-direction: column; gap: 6px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--ui-ligne); }
+
+    .typo-row { display: flex; align-items: baseline; gap: 12px; }
+    .typo-taille  { font-size: 0.6rem; color: var(--ui-gris); width: 50px; flex-shrink: 0; font-family: monospace; }
+
+    /* =====================
+       SECTION 4 — MOCKUPS INSTAGRAM
+    ===================== */
+
+    /* Rangée de mockups */
+    .mockups-row {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+
+    /* Conteneur téléphone */
+    .phone {
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .phone-label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: var(--ui-gris);
+      text-align: center;
+    }
+
+    /* Coque téléphone */
+    .phone-shell {
+      --viewport-w: 360;
+      --viewport-h: 800;
+      --screen-w: 150px;
+      --shell-pad: 10px;
+      --screen-h: calc(var(--screen-w) * var(--viewport-h) / var(--viewport-w));
+      width: calc(var(--screen-w) + var(--shell-pad) * 2);
+      background: #1C1C1E;
+      border-radius: 28px;
+      padding: var(--shell-pad);
+      padding-bottom: calc(var(--shell-pad) + 6px);
+      box-shadow:
+        0 0 0 1px #3A3A3C,
+        0 20px 60px rgba(0,0,0,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.08);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Encoche — positionnée en absolu sur l'écran */
+    .phone-notch {
+      width: 60px;
+      height: 10px;
+      background: #1C1C1E;
+      border-radius: 0 0 10px 10px;
+      position: absolute;
+      top: var(--shell-pad);
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    /* Ecran */
+    .phone-screen {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      width: 100%;
+      height: var(--screen-h);
+      flex: 0 0 auto;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      position: relative;
+    }
+
+    /* Barre status */
+    .ig-status {
+      background: #fff;
+      padding: 4px 12px 2px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+
+    .ig-status-time {
+      font-size: 0.5rem;
+      font-weight: 700;
+      color: #111;
+      font-family: -apple-system, sans-serif;
+    }
+
+    .ig-status-icons {
+      display: flex;
+      gap: 3px;
+      align-items: center;
+    }
+
+    .ig-status-bar {
+      width: 3px; height: 5px;
+      background: #111;
+      border-radius: 1px;
+    }
+    .ig-status-bar:nth-child(2) { height: 7px; }
+    .ig-status-bar:nth-child(3) { height: 9px; }
+
+    /* Top bar Instagram */
+    .ig-topbar {
+      padding: 4px 10px 4px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 0.5px solid #DBDBDB;
+      background: #fff;
+      flex-shrink: 0;
+    }
+
+    .ig-username {
+      font-size: 0.55rem;
+      font-weight: 700;
+      color: #111;
+      font-family: -apple-system, sans-serif;
+    }
+
+    .ig-topbar-icons {
+      display: flex;
+      gap: 6px;
+    }
+
+    .ig-icon {
+      width: 12px; height: 12px;
+      fill: none;
+      stroke: #111;
+      stroke-width: 1.5;
+    }
+
+    /* Header post : avatar + nom */
+    .ig-post-header {
+      padding: 5px 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #fff;
+      flex-shrink: 0;
+    }
+
+    .ig-avatar {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #FF6B6B, var(--palette-principale));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.5rem; font-weight: 700; color: #fff;
+      flex-shrink: 0;
+    }
+
+    .ig-post-name {
+      font-size: 0.5rem;
+      font-weight: 700;
+      color: #111;
+      font-family: -apple-system, sans-serif;
+      line-height: 1.2;
+    }
+
+    .ig-post-location {
+      font-size: 0.4rem;
+      color: #666;
+      font-family: -apple-system, sans-serif;
+    }
+
+    .ig-more {
+      margin-left: auto;
+      font-size: 0.7rem;
+      color: #111;
+      letter-spacing: 0.05em;
+    }
+
+    /* Zone image du post — carré 1:1 */
+    .ig-image {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      padding: 10px;
+    }
+
+    /* Zone image 4:5 */
+    .ig-image-45 {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      padding: 10px;
+    }
+
+    /* Espace reservé pour la navbar absolue */
+    .ig-navbar-spacer { height: 28px; flex-shrink: 0; }
+
+    /* Fonds des posts */
+    .bg-violet  { background: linear-gradient(160deg, var(--palette-principale) 0%, #3B28CC 100%); }
+    .bg-corail  { background: linear-gradient(160deg, #FF6B6B 0%, #FF8E53 100%); }
+    .bg-dark    { background: #111118; }
+    .bg-light   { background: #fff; }
+    .bg-soleil  { background: linear-gradient(160deg, #FFD93D 0%, #FF6B6B 100%); }
+
+    /* Watermark logo dans l'image */
+    .ig-watermark {
+      position: absolute;
+      top: 8px; right: 8px;
+      width: 20px; height: 20px;
+      border-radius: 5px;
+      background: rgba(255,255,255,0.22);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--police-titres);
+      font-size: 0.55rem; font-weight: 700; color: #fff;
+    }
+
+    .ig-watermark-dark {
+      position: absolute;
+      top: 8px; right: 8px;
+      width: 20px; height: 20px;
+      border-radius: 5px;
+      background: var(--palette-principale);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--police-titres);
+      font-size: 0.55rem; font-weight: 700; color: #fff;
+    }
+
+    /* Contenu dans l'image */
+    .ig-caption-tag {
+      font-size: 0.38rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 3px;
+    }
+
+    .ig-caption-title {
+      font-family: var(--police-titres);
+      font-size: 0.65rem;
+      line-height: 1.2;
+      color: #fff;
+    }
+
+    .ig-caption-title-dark {
+      font-family: var(--police-titres);
+      font-size: 0.65rem;
+      line-height: 1.2;
+      color: var(--palette-texte);
+    }
+
+    .ig-quote-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      padding: 8px;
+    }
+
+    .ig-quote-mark {
+      font-size: 1.4rem;
+      color: var(--palette-principale);
+      line-height: 1;
+      margin-bottom: 2px;
+      font-family: var(--police-titres);
+    }
+
+    .ig-quote-text {
+      font-family: var(--police-titres);
+      font-size: 0.55rem;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.4;
+    }
+
+    .ig-stat-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .ig-stat-number {
+      font-family: var(--police-titres);
+      font-size: 2rem;
+      line-height: 1;
+      color: var(--palette-principale);
+    }
+
+    .ig-stat-sub {
+      font-size: 0.45rem;
+      color: var(--ui-gris);
+      font-weight: 500;
+      margin-top: 3px;
+      text-align: center;
+    }
+
+    /* Barre d'actions Instagram */
+    .ig-actions {
+      padding: 5px 8px 3px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      flex-shrink: 0;
+    }
+
+    .ig-action-icon {
+      width: 14px; height: 14px;
+      fill: none;
+      stroke: #111;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .ig-save {
+      margin-left: auto;
+    }
+
+    /* Likes */
+    .ig-likes {
+      padding: 0 8px 2px;
+      font-size: 0.45rem;
+      font-weight: 700;
+      color: #111;
+      font-family: -apple-system, sans-serif;
+      background: #fff;
+      flex-shrink: 0;
+    }
+
+    /* Legende */
+    .ig-desc {
+      padding: 0 8px 6px;
+      font-size: 0.42rem;
+      color: #111;
+      font-family: -apple-system, sans-serif;
+      line-height: 1.4;
+      background: #fff;
+      flex-shrink: 0;
+    }
+
+    .ig-desc strong {
+      font-weight: 700;
+    }
+
+    /* Indicateur carrousel */
+    .ig-carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 3px;
+      padding: 4px 0;
+      background: #fff;
+      flex-shrink: 0;
+    }
+
+    .ig-dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: #DBDBDB;
+    }
+
+    .ig-dot.active {
+      background: var(--palette-principale);
+      width: 10px;
+      border-radius: 2px;
+    }
+
+    /* Barre de navigation Instagram */
+    .ig-navbar {
+      padding: 6px 0 2px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      border-top: 0.5px solid #DBDBDB;
+      background: #fff;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    .ig-nav-icon {
+      width: 16px; height: 16px;
+      fill: none;
+      stroke: #111;
+      stroke-width: 1.5;
+    }
+
+    .ig-nav-icon.active {
+      stroke: var(--palette-principale);
+      stroke-width: 2;
+    }
+
+    /* Home indicator */
+    .phone-home {
+      width: 40px; height: 4px;
+      background: rgba(255,255,255,0.3);
+      border-radius: 2px;
+      position: absolute;
+      left: 50%;
+      bottom: 7px;
+      transform: translateX(-50%);
+      margin: 0;
+    }
+
+    /* Bloc TikTok (page 2) */
+    .tt-topbar {
+      height: 22px;
+      background: #0E0E10;
+      color: rgba(255,255,255,0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 0.45rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      border-bottom: 0.5px solid rgba(255,255,255,0.1);
+    }
+
+    .tt-topbar .active {
+      color: #fff;
+      position: relative;
+    }
+
+    .tt-topbar .active::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -5px;
+      width: 14px;
+      height: 2px;
+      border-radius: 2px;
+      background: #fff;
+    }
+
+    .tt-video {
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      padding: 8px;
+    }
+
+    .tt-video::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 48%;
+      transform: translate(-50%, -50%);
+      width: 0;
+      height: 0;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-left: 16px solid rgba(255,255,255,0.92);
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.35));
+      opacity: 0.9;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .tt-side {
+      position: absolute;
+      right: 6px;
+      bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .tt-side-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1px;
+      color: #fff;
+      font-size: 0.34rem;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.45);
+    }
+
+    .tt-side-icon {
+      width: 13px;
+      height: 13px;
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+
+    .tt-bottom {
+      color: #fff;
+      font-size: 0.43rem;
+      line-height: 1.35;
+      width: calc(100% - 30px);
+      text-shadow: 0 1px 2px rgba(0,0,0,0.55);
+      z-index: 1;
+    }
+
+    .tt-bottom strong {
+      font-size: 0.48rem;
+    }
+
+    .tt-navbar {
+      height: 22px;
+      background: #0E0E10;
+      border-top: 0.5px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 0 8px;
+    }
+
+    .tt-nav-icon {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      border: 1px solid rgba(255,255,255,0.78);
+      opacity: 0.85;
+    }
+
+    .tt-nav-plus {
+      width: 20px;
+      height: 14px;
+      border-radius: 4px;
+      background: #fff;
+      color: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.62rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    /* =====================
+       SECTION 1b — TABLE DES MATIERES
+    ===================== */
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .toc-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--ui-blanc);
+      border: 1px solid var(--ui-ligne);
+      border-radius: 12px;
+      padding: 14px 16px;
+      text-decoration: none;
+      color: var(--palette-texte);
+      transition: border-color 0.15s, transform 0.15s;
+    }
+
+    .toc-item:hover {
+      border-color: var(--palette-principale);
+      transform: translateX(3px);
+    }
+
+    .toc-num {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--palette-principale);
+      font-family: monospace;
+      min-width: 20px;
+    }
+
+    .toc-name {
+      font-size: 0.825rem;
+      font-weight: 500;
+    }
+
+    /* =====================
+       SECTION 4 — LOGO
+    ===================== */
+    .logo-section-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+
+    .logo-variant-card {
+      border: 1px solid var(--ui-ligne);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .logo-canvas {
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 24px;
+    }
+
+    .logo-canvas.on-light { background: #fff; }
+    .logo-canvas.on-dark  { background: #111118; }
+    .logo-canvas.on-grey  { background: #F9F9FB; border-bottom: 1px solid var(--ui-ligne); }
+
+    .logo-mark {
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--police-titres);
+      font-weight: 400;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .logo-mark.gradient  { background: linear-gradient(135deg, var(--palette-principale) 0%, #FF6B6B 100%); }
+    .logo-mark.white-bg  { background: #fff; color: var(--palette-principale); }
+    .logo-mark.mono-bg   { background: #444; }
+
+    .logo-wordmark {
+      font-family: var(--police-titres);
+      font-weight: 400;
+      line-height: 1.1;
+    }
+
+    .logo-wordmark-sub {
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    .logo-variant-info {
+      padding: 12px 16px;
+      background: var(--ui-blanc);
+      border-top: 1px solid var(--ui-ligne);
+    }
+
+    .logo-variant-name {
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .logo-variant-use {
+      font-size: 0.7rem;
+      color: var(--ui-gris);
+    }
+
+    .logo-variant-dim {
+      margin-top: 5px;
+      font-size: 0.62rem;
+      line-height: 1.35;
+      color: var(--ui-gris);
+      font-family: monospace;
+    }
+
+    /* Tailles de logo */
+    .logo-sizes-row {
+      display: flex;
+      gap: 0;
+      border: 1px solid var(--ui-ligne);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
+
+    .logo-size-cell {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 24px 12px;
+      background: var(--ui-blanc);
+      border-right: 1px solid var(--ui-ligne);
+    }
+
+    .logo-size-cell:last-child { border-right: none; }
+
+    .logo-size-label {
+      font-size: 0.65rem;
+      color: var(--ui-gris);
+      font-family: monospace;
+      text-align: center;
+    }
+
+    .logo-size-use {
+      font-size: 0.6rem;
+      color: var(--ui-gris);
+      font-style: italic;
+      text-align: center;
+    }
+
+    /* Interdictions */
+    .dont-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .dont-card {
+      border: 1px solid #FECACA;
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--ui-blanc);
+    }
+
+    .dont-visual {
+      height: 100px;
+      background: #FFF5F5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* Croix rouge en overlay */
+    .dont-cross::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top right, transparent calc(50% - 1px), #EF4444 calc(50% - 1px), #EF4444 calc(50% + 1px), transparent calc(50% + 1px)),
+        linear-gradient(to bottom right, transparent calc(50% - 1px), #EF4444 calc(50% - 1px), #EF4444 calc(50% + 1px), transparent calc(50% + 1px));
+      opacity: 0.35;
+      border-radius: 12px;
+      pointer-events: none;
+    }
+
+    .dont-body {
+      padding: 12px 14px;
+      border-top: 1px solid #FECACA;
+    }
+
+    .dont-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #DC2626;
+      margin-bottom: 3px;
+    }
+
+    .dont-desc {
+      font-size: 0.7rem;
+      color: var(--ui-gris);
+      line-height: 1.4;
+    }
+
+    /* Ajustements de densite pour les pages logo dediees */
+    #logo-tailles .logo-size-cell {
+      padding: 18px 10px;
+      gap: 8px;
+    }
+
+    #logo-interdits .dont-grid {
+      gap: 10px;
+    }
+
+    #logo-interdits .dont-visual {
+      height: 78px;
+    }
+
+    #logo-interdits .dont-body {
+      padding: 10px 12px;
+    }
+
+    #logo-interdits .dont-title {
+      font-size: 0.7rem;
+      margin-bottom: 2px;
+    }
+
+    #logo-interdits .dont-desc {
+      font-size: 0.62rem;
+      line-height: 1.3;
+    }
+
+    /* Optimisation : Logo et variantes (densite reduite) */
+    #logo .title {
+      font-size: 1.7rem;
+      margin-bottom: 6px;
+    }
+
+    #logo .desc {
+      margin-bottom: 14px;
+      font-size: 0.82rem;
+      line-height: 1.45;
+    }
+
+    #logo hr {
+      margin-bottom: 14px;
+    }
+
+    #logo .subsection-title {
+      margin-top: 4px;
+      margin-bottom: 10px;
+      font-size: 0.62rem;
+      padding-bottom: 6px;
+    }
+
+    #logo .logo-section-grid {
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    #logo .logo-canvas {
+      height: 110px;
+      padding: 14px;
+      gap: 10px;
+    }
+
+    #logo .logo-variant-info {
+      padding: 8px 10px;
+    }
+
+    #logo .logo-variant-name {
+      font-size: 0.72rem;
+    }
+
+    #logo .logo-variant-use {
+      font-size: 0.62rem;
+      line-height: 1.3;
+    }
+
+    /* =====================
+       SECTION 5 — POSTS INSTAGRAM
+    ===================== */
+
+    /* Optimisation : Posts Instagram (5 mockups sur une page) */
+    #posts .title,
+    #posts-2 .title {
+      font-size: 1.7rem;
+      margin-bottom: 6px;
+    }
+
+    #posts .desc,
+    #posts-2 .desc {
+      margin-bottom: 12px;
+      font-size: 0.82rem;
+      line-height: 1.45;
+    }
+
+    #posts hr,
+    #posts-2 hr {
+      margin-bottom: 12px;
+    }
+
+    #posts .mockups-row {
+      gap: 8px;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    #posts .phone,
+    #posts-2 .phone {
+      gap: 6px;
+    }
+
+    #posts .phone-shell,
+    #posts-2 .phone-shell {
+      --shell-pad: 6px;
+      border-radius: 18px;
+      box-shadow: 0 0 0 1px #3A3A3C, 0 12px 24px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+
+    #posts .phone-notch,
+    #posts-2 .phone-notch {
+      width: 42px;
+      height: 7px;
+    }
+
+    #posts .phone-screen,
+    #posts-2 .phone-screen {
+      border-radius: 12px;
+    }
+
+    #posts .phone-label {
+      max-width: 112px;
+      font-size: 0.52rem;
+      line-height: 1.25;
+    }
+
+    #posts .ig-image,
+    #posts .ig-image-45,
+    #posts-2 .ig-image,
+    #posts-2 .ig-image-45 {
+      padding: 6px;
+    }
+
+    #posts .ig-watermark,
+    #posts .ig-watermark-dark,
+    #posts-2 .ig-watermark,
+    #posts-2 .ig-watermark-dark {
+      width: 14px;
+      height: 14px;
+      font-size: 0.42rem;
+      border-radius: 4px;
+      top: 5px;
+      right: 5px;
+    }
+
+    /* =====================
+       SECTION 6 — CALENDRIER EDITORIAL
+    ===================== */
+
+    /* Optimisation : Calendrier editorial */
+    #calendrier .title {
+      font-size: 1.65rem;
+      margin-bottom: 6px;
+    }
+
+    #calendrier .desc {
+      margin-bottom: 10px;
+      font-size: 0.8rem;
+      line-height: 1.4;
+    }
+
+    #calendrier hr {
+      margin-bottom: 10px;
+    }
+
+    #calendrier .cal-month-header {
+      margin-bottom: 8px;
+    }
+
+    #calendrier .cal-month-title {
+      font-size: 1.05rem;
+    }
+
+    #calendrier .cal-grid {
+      gap: 4px;
+    }
+
+    #calendrier .cal-day-header {
+      font-size: 0.54rem;
+      padding-bottom: 4px;
+    }
+
+    #calendrier .cal-cell {
+      min-height: 46px;
+      padding: 5px 4px;
+      gap: 2px;
+      border-radius: 7px;
+    }
+
+    #calendrier .cal-date {
+      font-size: 0.62rem;
+    }
+
+    #calendrier .cal-post {
+      font-size: 0.5rem;
+      padding: 2px 4px;
+      border-radius: 3px;
+      line-height: 1.2;
+    }
+
+    #calendrier .cal-post-time,
+    #calendrier .cal-post-type {
+      font-size: 0.44rem;
+    }
+
+    #calendrier .cal-post-detail {
+      padding-left: 10px;
+      gap: 2px;
+    }
+
+    #calendrier .cal-post-icon {
+      width: 8px;
+      height: 8px;
+    }
+
+    #calendrier .cal-legend {
+      margin-top: 8px;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    #calendrier .cal-legende-item {
+      font-size: 0.6rem;
+      gap: 4px;
+    }
+
+    #calendrier .cal-legende-point {
+      width: 8px;
+      height: 8px;
+    }
+
+    /* =====================
+       SECTION 7 — DECLINAISONS DE LA MARQUE
+    ===================== */
+
+    /* Optimisation : Declinaisons de la marque */
+    #reseaux-profils .title,
+    #web-landing .title,
+    #print-carte .title,
+    #emailing-campagne .title {
+      font-size: 1.65rem;
+      margin-bottom: 6px;
+    }
+
+    #reseaux-profils .desc,
+    #web-landing .desc,
+    #print-carte .desc,
+    #emailing-campagne .desc {
+      margin-bottom: 10px;
+      font-size: 0.8rem;
+      line-height: 1.4;
+    }
+
+    #reseaux-profils hr,
+    #web-landing hr,
+    #print-carte hr,
+    #emailing-campagne hr {
+      margin-bottom: 10px;
+    }
+
+    #reseaux-profils .subsection-title,
+    #web-landing .subsection-title,
+    #print-carte .subsection-title,
+    #emailing-campagne .subsection-title {
+      margin-top: 2px;
+      margin-bottom: 8px;
+      font-size: 0.62rem;
+      padding-bottom: 6px;
+    }
+
+    #reseaux-profils .mockup-flat-row,
+    #web-landing .mockup-flat-row,
+    #print-carte .mockup-flat-row,
+    #emailing-campagne .mockup-flat-row {
+      gap: 10px;
+      margin-bottom: 14px !important;
+    }
+
+    #reseaux-profils .mockup-flat-row {
+      gap: 18px;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    #reseaux-profils .mockup-flat {
+      flex: 0 1 320px;
+      min-width: 280px;
+      max-width: 340px;
+      width: 100%;
+    }
+
+    #reseaux-profils .fb-cover-shell,
+    #reseaux-profils .li-banner-shell {
+      width: 100%;
+      max-width: 340px;
+      aspect-ratio: auto;
+      height: 176px;
+      display: block;
+    }
+
+    /* Echelles profils/couvertures :
+       FB avatar = 170/820 de la couverture, LinkedIn avatar = 400/1584 de la banniere */
+    #reseaux-profils .fb-avatar {
+      width: 58px;
+      height: 58px;
+      bottom: -20px;
+      left: 12px;
+      font-size: 1.25rem;
+    }
+
+    #reseaux-profils .fb-cover-body {
+      padding: 34px 14px 12px;
+    }
+
+    #reseaux-profils .li-avatar {
+      width: 72px;
+      height: 72px;
+      bottom: -30px;
+      left: 12px;
+      font-size: 1.5rem;
+    }
+
+    #reseaux-profils .li-body {
+      padding: 40px 14px 12px;
+    }
+
+    #reseaux-profils .fb-cover-img {
+      height: 96px;
+      aspect-ratio: auto;
+    }
+
+    #reseaux-profils .li-banner-img {
+      height: 78px;
+      aspect-ratio: auto;
+      position: relative;
+    }
+
+    #print-carte .card-mockup {
+      width: 188px;
+      height: 106px;
+      padding: 12px 14px;
+    }
+
+    #print-carte .email-sig {
+      width: 236px;
+    }
+
+    #print-carte .email-sig-body {
+      padding: 10px 12px;
+      gap: 10px;
+    }
+
+    #print-carte .email-sig-footer {
+      padding: 6px 12px;
+    }
+
+    #web-landing .screen-shell[style] {
+      width: 520px !important;
+    }
+
+    #web-landing .screen-content > div:first-child {
+      height: 132px !important;
+      padding: 0 22px !important;
+    }
+
+    /* =====================
+       SECTION 8 — RATIOS MOCKUPS
+    ===================== */
+
+    /* Ratios mockups : references standardisees */
+    .phone-shell {
+      aspect-ratio: auto;
+      height: auto;
+    }
+
+    .tt-video {
+      aspect-ratio: auto;
+      height: auto;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .fb-cover-shell {
+      aspect-ratio: 820 / 312;
+      height: 176px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .fb-cover-img { height: 96px; }
+    .fb-cover-body { flex: 1; }
+
+    .li-banner-shell {
+      aspect-ratio: 1584 / 396;
+      height: 150px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .li-banner-img { height: 78px; }
+    .li-body { flex: 1; }
+
+    .card-mockup {
+      aspect-ratio: 85 / 55;
+      height: 155px;
+    }
+
+    .email-sig {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .email-sig-body { flex: 1; }
+
+    .screen-shell {
+      aspect-ratio: 16 / 9;
+      height: 292px;
+    }
+
+    /* =====================
+       SECTION 9 — AJUSTEMENTS RESPONSIVE PAGES
+    ===================== */
+
+    /* Posts Instagram en 2 pages */
+    #posts .mockups-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      justify-items: center;
+      align-items: start;
+    }
+
+    #posts .mockups-row .phone:nth-child(n+3) {
+      display: none;
+    }
+
+    #posts .phone-shell,
+    #posts-2 .phone-shell {
+      --screen-w: 150px;
+      height: auto;
+    }
+
+    #posts .phone-label {
+      max-width: 170px;
+      font-size: 0.6rem;
+    }
+
+    #posts-2 .mockups-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      justify-items: center;
+      align-items: start;
+    }
+
+    #posts-2 .phone-label {
+      max-width: 170px;
+      font-size: 0.6rem;
+    }
+
+    #print-carte .mockup-flat-row,
+    #web-landing .mockup-flat-row {
+      gap: 14px;
+      justify-content: center;
+    }
+
+    #reseaux-profils .title,
+    #web-landing .title,
+    #print-carte .title {
+      font-size: 1.72rem;
+    }
+
+    #print-carte .card-mockup {
+      width: 240px;
+      height: 155px;
+      padding: 14px 16px;
+    }
+
+    #print-carte .mockup-flat-label {
+      max-width: 280px;
+      text-align: center;
+    }
+
+    #print-carte .emailing-grid,
+    #emailing-campagne .emailing-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    #print-carte .email-sig,
+    #emailing-campagne .email-sig {
+      width: 280px;
+    }
+
+    #print-carte .email-campaign,
+    #emailing-campagne .email-campaign {
+      background: #fff;
+      border: 1px solid var(--ui-ligne);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+
+    #print-carte .email-campaign-head,
+    #emailing-campagne .email-campaign-head {
+      background: linear-gradient(135deg, var(--palette-principale) 0%, #3B28CC 100%);
+      color: #fff;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    #print-carte .email-campaign-title,
+    #emailing-campagne .email-campaign-title {
+      font-family: var(--police-titres);
+      font-size: 0.9rem;
+      line-height: 1.2;
+    }
+
+    #print-carte .email-campaign-preheader,
+    #emailing-campagne .email-campaign-preheader {
+      font-size: 0.55rem;
+      color: rgba(255,255,255,0.75);
+      font-family: monospace;
+    }
+
+    #print-carte .email-campaign-body,
+    #emailing-campagne .email-campaign-body {
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.68rem;
+      line-height: 1.5;
+      color: var(--palette-texte);
+    }
+
+    #print-carte .email-campaign-cta,
+    #emailing-campagne .email-campaign-cta {
+      display: inline-block;
+      align-self: flex-start;
+      padding: 7px 12px;
+      border-radius: 100px;
+      background: var(--palette-principale);
+      color: #fff;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    #print-carte .email-campaign-foot,
+    #emailing-campagne .email-campaign-foot {
+      padding: 9px 14px;
+      border-top: 1px solid var(--ui-ligne);
+      background: #F9F9FB;
+      font-size: 0.55rem;
+      color: var(--ui-gris);
+      line-height: 1.4;
+      font-family: monospace;
+    }
+
+    /* =====================
+       SECTION 5 — CALENDRIER
+    ===================== */
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+    }
+
+    .cal-day-header {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ui-gris);
+      text-align: center;
+      padding-bottom: 8px;
+    }
+
+    .cal-cell {
+      background: var(--ui-blanc);
+      border: 1px solid var(--ui-ligne);
+      border-radius: 10px;
+      padding: 10px 8px;
+      min-height: 72px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .cal-cell.empty { background: transparent; border-color: transparent; }
+
+    .cal-date {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--palette-texte);
+    }
+
+    .cal-post {
+      font-size: 0.6rem;
+      border-radius: 4px;
+      padding: 3px 6px;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    .cal-post.ig    { background: #EDE9FE; color: #5C4EFA; }
+    .cal-post.li    { background: #DBEAFE; color: #1D4ED8; }
+    .cal-post.story { background: #FCE7F3; color: #BE185D; }
+    .cal-post.fb    { background: #DBEAFE; color: #1877F2; }
+    .cal-post.placeholder    { background: #F3F4F6; color: var(--ui-gris); border: 1px dashed #D1D5DB; }
+
+    .cal-post-inner {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .cal-post-icon {
+      flex-shrink: 0;
+      width: 10px; height: 10px;
+      fill: currentColor;
+    }
+
+    .cal-post-text { flex: 1; }
+
+    .cal-post-time {
+      font-size: 0.52rem;
+      opacity: 0.65;
+      font-family: monospace;
+      white-space: nowrap;
+    }
+
+    /* En-tête mois du calendrier */
+    .cal-month-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .cal-month-header > div:first-child {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      flex-wrap: nowrap;
+    }
+
+    .cal-month-title {
+      font-family: var(--police-titres);
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--palette-texte);
+      line-height: 1;
+    }
+
+    .cal-month-year {
+      font-family: monospace;
+      font-size: 0.7rem;
+      color: var(--ui-gris);
+      margin-left: 0;
+      line-height: 1;
+    }
+
+    .cal-month-nav {
+      display: flex;
+      gap: 6px;
+    }
+
+    .cal-nav-btn {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      border: 1px solid var(--ui-ligne);
+      background: var(--ui-blanc);
+      display: flex; align-items: center; justify-content: center;
+      cursor: default;
+      color: var(--ui-gris);
+    }
+
+    /* Type de contenu dans le post */
+    .cal-post-type {
+      font-size: 0.48rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.55;
+      white-space: nowrap;
+    }
+
+    .cal-post-body {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .cal-post-entete {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .cal-post-detail {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      padding-left: 13px;
+    }
+
+    /* =====================
+       PRINT
+    ===================== */
+    @media print {
+    }
+
+    .cal-legend {
+      display: flex;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .cal-legende-item { display: flex; align-items: center; gap: 6px; font-size: 0.7rem; color: var(--ui-gris); }
+    .cal-legende-point  { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
+
+    /* =====================
+       SECTION 6 — TELECHARGEMENT
+    ===================== */
+    .cta-block {
+      background: linear-gradient(135deg, var(--palette-principale) 0%, #3B28CC 100%);
+      border-radius: 20px;
+      padding: 48px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .cta-block .title { color: #fff; }
+    .cta-block .desc  { color: rgba(255,255,255,0.7); margin-bottom: 0; }
+
+    .btn-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      color: var(--palette-principale);
+      font-family: var(--police-corps);
+      font-size: 0.875rem;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+
+    .btn-white:hover { opacity: 0.9; }
+
+    .cta-note {
+      margin-top: 12px;
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.05em;
+    }
+
+    /* =====================
+       MOCKUPS SUPPLEMENTAIRES
+    ===================== */
+    .mockup-flat-row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+
+    .mockup-flat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .mockup-flat-label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: var(--ui-gris);
+      text-align: center;
+    }
+
+    /* Ecran ordinateur */
+    .screen-shell {
+      background: #1C1C1E;
+      border-radius: 10px;
+      padding: 6px 6px 0;
+      box-shadow: 0 0 0 1px #3A3A3C, 0 12px 40px rgba(0,0,0,0.3);
+      position: relative;
+    }
+
+    .screen-bar {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 8px 6px;
+    }
+
+    .screen-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+    }
+
+    .screen-dot.red    { background: #FF5F57; }
+    .screen-dot.yellow { background: #FFBD2E; }
+    .screen-dot.green  { background: #28C840; }
+
+    .screen-content {
+      border-radius: 4px 4px 0 0;
+      overflow: hidden;
+    }
+
+    .screen-stand {
+      width: 50px; height: 8px;
+      background: #2C2C2E;
+      margin: 0 auto;
+      border-radius: 0 0 4px 4px;
+    }
+
+    .screen-base {
+      width: 90px; height: 4px;
+      background: #3A3A3C;
+      margin: 0 auto;
+      border-radius: 2px;
+    }
+
+    /* Carte de visite */
+    .card-mockup {
+      width: 240px;
+      height: 135px;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(17,17,24,0.08);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.16), 0 1px 0 rgba(255,255,255,0.5) inset;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 18px 20px;
+    }
+
+    .card-mockup.recto {
+      background: linear-gradient(135deg, var(--palette-principale) 0%, #3B28CC 100%);
+      color: #fff;
+    }
+
+    .card-mockup.verso {
+      background: #fff;
+      border: 1px solid var(--ui-ligne);
+      color: var(--palette-texte);
+    }
+
+    .card-logo-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-logo-icon {
+      width: 28px; height: 28px;
+      border-radius: 7px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--police-titres);
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .card-logo-icon.white-icon { background: rgba(255,255,255,0.2); color: #fff; }
+    .card-logo-icon.brand-icon { background: var(--palette-principale); color: #fff; }
+
+    .card-brand-name {
+      font-family: var(--police-titres);
+      font-size: 0.85rem;
+      font-weight: 400;
+    }
+
+    .card-name {
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .card-role {
+      font-size: 0.6rem;
+      opacity: 0.7;
+      margin-top: 2px;
+    }
+
+    .card-contact {
+      font-size: 0.55rem;
+      opacity: 0.6;
+      font-family: monospace;
+    }
+
+    /* Couverture Facebook */
+    .fb-cover-shell {
+      width: 320px;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+      border: 1px solid var(--ui-ligne);
+    }
+
+    .fb-cover-img {
+      height: 90px;
+      background: linear-gradient(160deg, var(--palette-principale) 0%, #FF6B6B 100%);
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      padding: 10px 14px;
+    }
+
+    .fb-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #FF6B6B, var(--palette-principale));
+      border: 3px solid #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--police-titres);
+      font-size: 1.1rem;
+      color: #fff;
+      position: absolute;
+      bottom: -18px;
+      left: 14px;
+    }
+
+    .fb-cover-body {
+      padding: 24px 14px 12px;
+    }
+
+    .fb-page-name {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--palette-texte);
+    }
+
+    .fb-page-category {
+      font-size: 0.65rem;
+      color: var(--ui-gris);
+      margin-top: 2px;
+    }
+
+    .fb-stats {
+      display: flex;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .fb-stat {
+      font-size: 0.6rem;
+      color: var(--ui-gris);
+    }
+
+    .fb-stat strong {
+      font-size: 0.7rem;
+      color: var(--palette-texte);
+      display: block;
+    }
+
+    /* Banniere LinkedIn */
+    .li-banner-shell {
+      width: 320px;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+      border: 1px solid var(--ui-ligne);
+    }
+
+    .li-banner-img {
+      height: 70px;
+      background: linear-gradient(160deg, #111118 0%, var(--palette-principale) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0 16px;
+    }
+
+    .li-banner-watermark {
+      font-family: var(--police-titres);
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.15);
+      letter-spacing: 0.1em;
+    }
+
+    .li-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--palette-principale), #FF6B6B);
+      border: 3px solid #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--police-titres);
+      font-size: 1rem;
+      color: #fff;
+      position: absolute;
+      bottom: -16px;
+      left: 14px;
+    }
+
+    .li-body {
+      padding: 22px 14px 12px;
+      position: relative;
+    }
+
+    .li-name {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--palette-texte);
+    }
+
+    .li-headline {
+      font-size: 0.65rem;
+      color: var(--ui-gris);
+      margin-top: 3px;
+    }
+
+    /* Signature email */
+    .email-sig {
+      width: 300px;
+      background: #fff;
+      border-radius: 10px;
+      border: 1px solid #D8DCE6;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(17,17,24,0.10), 0 1px 0 rgba(255,255,255,0.7) inset;
+    }
+
+    .email-sig-header {
+      background: linear-gradient(90deg, var(--palette-principale) 0%, #3B28CC 55%, #FF6B6B 100%);
+      height: 4px;
+    }
+
+    .email-sig-body {
+      padding: 14px 16px;
+      display: flex;
+      gap: 14px;
+      align-items: stretch;
+    }
+
+    .email-sig-avatar {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--palette-principale), #FF6B6B);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--police-titres);
+      font-size: 1.3rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .email-sig-divider {
+      width: 2px;
+      background: linear-gradient(180deg, var(--palette-principale), #FF6B6B);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    .email-sig-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2px;
+    }
+
+    .email-sig-name {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--palette-texte);
+      line-height: 1.2;
+    }
+
+    .email-sig-role {
+      font-size: 0.62rem;
+      color: var(--palette-principale);
+      font-weight: 500;
+    }
+
+    .email-sig-sep {
+      width: 100%;
+      height: 1px;
+      background: var(--ui-ligne);
+      margin: 5px 0;
+    }
+
+    .email-sig-contact {
+      font-size: 0.58rem;
+      color: var(--ui-gris);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .email-sig-contact span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .email-sig-contact span::before {
+      content: "";
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      flex-shrink: 0;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 0.55;
+    }
+
+    .email-sig-contact .sig-email::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='4' width='20' height='16' rx='2'/%3E%3Cpath d='m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7'/%3E%3C/svg%3E");
+    }
+
+    .email-sig-contact .sig-phone::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z'/%3E%3C/svg%3E");
+    }
+
+    .email-sig-contact .sig-web::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z'/%3E%3C/svg%3E");
+    }
+
+    .email-sig-footer {
+      padding: 7px 16px;
+      background: #F9F9FB;
+      border-top: 1px solid var(--ui-ligne);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .email-sig-logo {
+      width: 22px; height: 22px;
+      border-radius: 5px;
+      background: linear-gradient(135deg, var(--palette-principale), #FF6B6B);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--police-titres);
+      font-size: 0.55rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .email-sig-brand {
+      font-family: var(--police-titres);
+      font-size: 0.68rem;
+      color: var(--palette-texte);
+      font-weight: 600;
+    }
+
+    .email-sig-tagline {
+      font-size: 0.52rem;
+      color: var(--ui-gris);
+      font-style: italic;
+    }
+
+    .email-sig-url {
+      margin-left: auto;
+      font-size: 0.54rem;
+      color: var(--palette-principale);
+      font-family: monospace;
+    }
+
+    /* =====================
+       SECTION 10 — SOUS-TITRES ET EN-TETES
+    ===================== */
+
+    /* Bandeau "section courante" visible en haut de chaque page imprimee */
+    /* Sous-titres de section */
+    .subsection-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--police-corps);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ui-gris);
+      margin-bottom: 16px;
+      margin-top: 8px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--ui-ligne);
+    }
+
+    .print-section-header {
+      display: none; /* masque en mode ecran */
+    }
+
+    /* Mode ecran/import plugin : forcer strictement 842x595 par bloc */
+    @media screen {
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        padding: 16px 0 24px !important;
+      }
+
+      .page {
+        width: var(--figma-page-width) !important;
+        max-width: var(--figma-page-width) !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        gap: 24px !important;
+      }
+
+      .figma-page {
+        width: var(--figma-page-width) !important;
+        min-width: var(--figma-page-width) !important;
+        max-width: var(--figma-page-width) !important;
+        height: var(--figma-page-height) !important;
+        min-height: var(--figma-page-height) !important;
+        max-height: var(--figma-page-height) !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        left: auto !important;
+        right: auto !important;
+        transform: none !important;
+        overflow: hidden !important;
+      }
+    }
+
+    @media print {
+
+      /* ---- Couleurs forcées ---- */
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      /* ---- Marges et dimensions de page ---- */
+      @page {
+        size: 297mm 210mm;
+        margin: 0;
+      }
+
+      /* ---- Corps ---- */
+      html,
+      body {
+        width: 297mm;
+        margin: 0;
+        padding: 0;
+        background: #fff;
+        font-size: 9pt;
+      }
+
+      .page {
+        width: 297mm;
+        padding: 0;
+        gap: 0;
+        max-width: 297mm;
+        margin: 0;
+      }
+
+      .page-num {
+        right: 12mm;
+        bottom: 6mm;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        font-size: 7pt;
+        letter-spacing: 0.08em;
+        color: #9E9E9E;
+      }
+
+      /* ---- Éléments masqués en impression ---- */
+      .btn,
+      .btn-white,
+      .cal-month-nav,
+      .cta-block,
+      .phone-home,
+      /* TOC non utile en impression (navigation digitale) */
+      #toc { display: none !important; }
+
+      /* ---- Couverture : pleine page, centrée, sans bordures ---- */
+      .cover {
+        width: 297mm;
+        min-height: 210mm;
+        padding: 12mm;
+        border: none;
+        border-radius: 0;
+        background: #fff;
+        overflow: hidden;
+        page-break-after: always;
+        break-after: page;
+        /* Ligne décorative en haut */
+        border-top: 4px solid var(--palette-principale) !important;
+      }
+
+      /* Le bandeau section n'apparait pas sur la couverture */
+      .cover .print-section-header { display: none !important; }
+
+      /* Logo box en impression : bordures simples, pas de dégradé de fond */
+      .logo-box {
+        border: 1px solid var(--ui-ligne);
+      }
+
+      /* ---- Sauts de page : une section = une nouvelle page ---- */
+      #couleurs,
+      #typo,
+      #logo,
+      #logo-tailles,
+      #logo-interdits,
+      #posts,
+      #posts-2,
+      #calendrier,
+      #reseaux-profils,
+      #print-carte,
+      #emailing-campagne,
+      #web-landing {
+        width: 297mm;
+        min-height: 210mm;
+        padding: 12mm;
+        overflow: hidden;
+        page-break-before: always;
+        break-before: page;
+        page-break-after: always;
+        break-after: page;
+      }
+
+      /* ---- Bandeau section visible en haut de page imprimée ---- */
+      .print-section-header {
+        display: flex !important;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5px 0 8px;
+        margin-bottom: 10px;
+        border-bottom: 2px solid var(--palette-principale);
+        page-break-after: avoid;
+        break-after: avoid;
+      }
+
+      .print-section-header-name {
+        font-size: 7pt;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--palette-principale);
+      }
+
+      .print-section-header-brand {
+        font-size: 7pt;
+        color: #9E9E9E;
+        font-family: var(--police-titres);
+      }
+
+      /* ---- Labels de section masqués : le print-section-header joue ce role ---- */
+      /* Exception : .label a l'interieur d'une card (typo, etc.) reste visible */
+      #couleurs > .label,
+      #typo > .label,
+      #logo > .label,
+      #logo-tailles > .label,
+      #logo-interdits > .label,
+      #posts > .label,
+      #posts-2 > .label,
+      #calendrier > .label,
+      #reseaux-profils > .label,
+      #print-carte > .label,
+      #emailing-campagne > .label,
+      #web-landing > .label {
+        display: none !important;
+      }
+
+      /* ---- Anti-orphelins : titre toujours suivi de son contenu ---- */
+      .title,
+      h2, h3,
+      .subsection-title {
+        page-break-after: avoid;
+        break-after: avoid;
+      }
+
+      .label + h2,
+      h2 + .desc,
+      h2 + hr,
+      .desc + hr,
+      hr + .colors-row,
+      hr + .typo-grid,
+      hr + .logo-section-grid,
+      hr + .dont-grid,
+      hr + .mockups-row,
+      hr + .mockup-flat-row,
+      hr + .toc-grid {
+        page-break-before: avoid;
+        break-before: avoid;
+      }
+
+      /* ---- Blocs non coupables ---- */
+      .swatch,
+      .typo-card,
+      .logo-variant-card,
+      .dont-card,
+      .cal-cell,
+      .phone,
+      .mockup-flat,
+      .card-mockup,
+      .email-sig,
+      .fb-cover-shell,
+      .li-banner-shell,
+      .screen-shell,
+      .logo-size-cell,
+      .cal-month-header,
+      .toc-item {
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+
+      /* ---- Grilles non coupables ---- */
+      .colors-row,
+      .typo-grid,
+      .logo-section-grid,
+      .logo-sizes-row,
+      .dont-grid,
+      .mockups-row,
+      .mockup-flat-row,
+      .cal-grid,
+      .cal-legend {
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+    }
+
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ================================================
+       COVER
+  ================================================ -->
+  <div class="cover figma-page"
+    data-side="left"
+    data-icon="📄"
+    data-title="La page de couverture"
+    data-tip="Incrementer la version a chaque modification majeure : 1.0, 1.1, 2.0..."
+    data-badges="ok:Indispensable"
+    title="La couverture est la carte d'identite de votre charte graphique. Elle doit comporter le nom de la marque, la tagline, la version du document, le nom du CM et la date de creation.">
+    <span class="page-num">Page 1</span>
+    <div>
+      <div class="label">Charte graphique</div>
+      <h1 class="cover-title">
+        <!-- [Nom de la marque] -->
+        Bloom<br>Studio
+      </h1>
+      <p class="cover-sub">
+        <!-- [Tagline] -->
+        [Votre tagline ici]
+      </p>
+      <div class="cover-meta">
+        <div class="meta-item">
+          <span class="meta-label">Version</span>
+          <span class="meta-valeur">1.0</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Redige par</span>
+          <!-- [Nom CM] -->
+          <span class="meta-valeur">[Votre nom]</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Date</span>
+          <span class="meta-valeur">Mars 2026</span>
+        </div>
+      </div>
+      <a class="btn" href="./Charte-Graphique-Didactique.html">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+        Version didactique
+      </a>
+    </div>
+    <!-- [Remplacer par le vrai logo SVG] -->
+    <div class="logo-box">
+      <span class="logo-box-letter">B</span>
+      <span class="logo-box-name">Bloom</span>
+    </div>
+  </div>
+
+  <!-- ================================================
+       TOC
+  ================================================ -->
+  <div id="toc" class="figma-page"
+    data-side="right"
+    data-icon="📋"
+    data-title="Le sommaire"
+    data-tip="En digital, les liens d'ancrage permettent un acces direct a chaque section."
+    data-badges="opt:Optionnel"
+    title="Le sommaire permet de naviguer rapidement dans la charte. Tres utile quand le document est partage avec des clients ou des prestataires : imprimeur, developpeur, direction.">
+    <span class="page-num">Page 2</span>
+    <div class="print-section-header"><span class="print-section-header-name">Sommaire</span><span class="print-section-header-brand">Bloom Studio — Charte graphique</span></div>
+    <div class="label">Sommaire</div>
+    <h2 class="title">Table des matieres</h2>
+    <p class="desc">Structure de la charte graphique Bloom Studio.</p>
+    <hr>
+    <div class="toc-grid">
+      <a href="#couleurs" class="toc-item"><span class="toc-num">03</span><span class="toc-name">Palette de couleurs</span></a>
+      <a href="#typo" class="toc-item"><span class="toc-num">04</span><span class="toc-name">Typographie</span></a>
+      <a href="#logo" class="toc-item"><span class="toc-num">05</span><span class="toc-name">Logo et variantes</span></a>
+      <a href="#logo-tailles" class="toc-item"><span class="toc-num">06</span><span class="toc-name">Tailles du logo</span></a>
+      <a href="#logo-interdits" class="toc-item"><span class="toc-num">07</span><span class="toc-name">Interdits logo</span></a>
+      <a href="#posts" class="toc-item"><span class="toc-num">08</span><span class="toc-name">Posts Instagram I</span></a>
+      <a href="#posts-2" class="toc-item"><span class="toc-num">09</span><span class="toc-name">Templates TikTok</span></a>
+      <a href="#calendrier" class="toc-item"><span class="toc-num">10</span><span class="toc-name">Calendrier editorial</span></a>
+      <a href="#reseaux-profils" class="toc-item"><span class="toc-num">11</span><span class="toc-name">Reseaux sociaux profils</span></a>
+      <a href="#print-carte" class="toc-item"><span class="toc-num">12</span><span class="toc-name">Print carte de visite</span></a>
+      <a href="#emailing-campagne" class="toc-item"><span class="toc-num">13</span><span class="toc-name">Signature et emailing</span></a>
+      <a href="#web-landing" class="toc-item"><span class="toc-num">14</span><span class="toc-name">Web et landing page</span></a>
+    </div>
+  </div>
+
+  <!-- ================================================
+       COULEURS
+  ================================================ -->
+  <div id="couleurs" class="figma-page"
+    data-side="left"
+    data-icon="🎨"
+    data-title="La regle des 60-30-10"
+    data-tip="Toujours noter le code HEX pour le digital et CMJN pour l'impression."
+    data-warn="Erreur frequente : utiliser trop de couleurs. 3 a 5 couleurs maximum par palette."
+    data-badges="ok:Indispensable"
+    title="60% couleur principale, 30% secondaire, 10% accent. Cette proportion garantit une harmonie visuelle sur tous les supports et renforce la reconnaissance de marque.">
+    <span class="page-num">Page 3</span>
+    <div class="print-section-header"><span class="print-section-header-name">03 — Couleurs</span><span class="print-section-header-brand">Bloom Studio — Charte graphique</span></div>
+    <div class="label">01 — Couleurs</div>
+    <h2 class="title" title="Une palette se limite generalement a 3-5 couleurs. 1 couleur principale, 1-2 secondaires, 1-2 neutres. Toujours noter le code HEX pour la coherence digitale.">
+      Palette principale
+    </h2>
+    <p class="desc">Les 5 couleurs qui composent l'identite visuelle de la marque.</p>
+    <hr>
+
+    <div class="colors-row">
+
+      <div class="swatch" title="Regle 60-30-10 : la couleur principale occupe 60% de l&#39;espace visuel. Utiliser pour : boutons, liens, elements d&#39;action. Format HEX pour le digital, CMJN pour l&#39;impression.">
+        <!-- [Couleur principale] -->
+        <div class="swatch-fill" style="background:#5C4EFA;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Indigo</div>
+          <div class="swatch-hex">#5C4EFA</div>
+          <div class="swatch-alt">RGB 92, 78, 250<br>HSL 245, 94%, 64%<br>CMJN 63, 69, 0, 2</div>
+          <div class="swatch-use">Couleur principale — boutons, accents</div>
+        </div>
+      </div>
+
+      <div class="swatch" title="La couleur secondaire represente 30% de l&#39;espace visuel. Utiliser avec parcimonie pour creer du contraste et de l&#39;energie. Eviter de l&#39;utiliser autant que la couleur principale.">
+        <!-- [Couleur secondaire] -->
+        <div class="swatch-fill" style="background:#FF6B6B;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Corail</div>
+          <div class="swatch-hex">#FF6B6B</div>
+          <div class="swatch-alt">RGB 255, 107, 107<br>HSL 0, 100%, 71%<br>CMJN 0, 58, 58, 0</div>
+          <div class="swatch-use">Secondaire — alertes, energie</div>
+        </div>
+      </div>
+
+      <div class="swatch" title="L&#39;accent (10%) sert uniquement a attirer l&#39;attention sur un element cle. Ideal pour : badges, highlights, call-to-action secondaires. Trop d&#39;accent = plus d&#39;accent.">
+        <!-- [Couleur accent] -->
+        <div class="swatch-fill" style="background:#FFD93D;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Soleil</div>
+          <div class="swatch-hex">#FFD93D</div>
+          <div class="swatch-alt">RGB 255, 217, 61<br>HSL 48, 100%, 62%<br>CMJN 0, 15, 76, 0</div>
+          <div class="swatch-use">Accent — mise en avant, CTA</div>
+        </div>
+      </div>
+
+      <div class="swatch" title="La couleur neutre sombre sert pour le texte et les contrastes. Contraste WCAG AA : verifier que le ratio est superieur a 4.5:1 sur fond clair. Ne pas utiliser le noir pur #000 : trop agressif visuellement.">
+        <!-- [Couleur neutre] -->
+        <div class="swatch-fill" style="background:#111118;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Nuit</div>
+          <div class="swatch-hex">#111118</div>
+          <div class="swatch-alt">RGB 17, 17, 24<br>HSL 240, 17%, 8%<br>CMJN 29, 29, 0, 91</div>
+          <div class="swatch-use">Texte, fonds sombres</div>
+        </div>
+      </div>
+
+      <div class="swatch" title="La couleur de fond structure la lecture sans agresser l&#39;oeil. Un blanc casse (#F9F9FB) est plus doux que le blanc pur (#FFF). Utiliser aussi en negatif : texte blanc sur fond colore.">
+        <!-- [Blanc / fond] -->
+        <div class="swatch-fill" style="background:#F9F9FB; border-bottom:1px solid #E5E7EB;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Creme</div>
+          <div class="swatch-hex">#F9F9FB</div>
+          <div class="swatch-alt">RGB 249, 249, 251<br>HSL 240, 20%, 98%<br>CMJN 1, 1, 0, 2</div>
+          <div class="swatch-use">Fond de page</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================================================
+       TYPO
+  ================================================ -->
+  <div id="typo" class="figma-page"
+    data-side="right"
+    data-icon="✍️"
+    data-title="Maximum 2 polices"
+    data-tip="Verifier la disponibilite gratuite sur Google Fonts. DM Serif Display + DM Sans sont une paire tres efficace."
+    data-warn="Taille minimale : 14px pour le web, 11pt pour l'impression."
+    data-badges="ok:Indispensable"
+    title="Une police serif pour les titres (elegance, personnalite) et une sans-serif pour les corps de texte (lisibilite, neutralite). Jamais plus de 2 polices dans une meme identite visuelle.">
+    <span class="page-num">Page 4</span>
+    <div class="print-section-header"><span class="print-section-header-name">04 — Typographie</span><span class="print-section-header-brand">Bloom Studio — Charte graphique</span></div>
+    <div class="label">02 — Typographie</div>
+    <h2 class="title" title="Limiter a 2 polices maximum par identite visuelle. Une pour les titres (serif ou display), une pour le corps (sans-serif). Verifier la disponibilite gratuite sur Google Fonts.">
+      Polices de la marque
+    </h2>
+    <p class="desc">Deux polices complementaires pour les titres et le corps de texte.</p>
+    <hr>
+
+    <div class="typo-grid">
+
+      <div class="typo-card" title="Une police serif transmet elegance et autorite. Reservee aux titres et accroches : H1, H2, citations grandes. Ne jamais l&#39;utiliser en corps de texte long : fatigue la lecture.">
+        <div class="label">Titres</div>
+        <div class="typo-sample-serif">DM Serif Display</div>
+        <!-- [Remplacer par la police titres choisie] -->
+        <div style="font-size:0.75rem; color:var(--ui-gris);">Elegant, serif, pour les accroches et H1/H2</div>
+        <div class="typo-sizes">
+          <div class="typo-row"><span class="typo-taille">H1 / 48px</span><span style="font-family:var(--police-titres); font-size:1.6rem;">Titre principal</span></div>
+          <div class="typo-row"><span class="typo-taille">H2 / 32px</span><span style="font-family:var(--police-titres); font-size:1.2rem;">Sous-titre</span></div>
+          <div class="typo-row"><span class="typo-taille">H3 / 24px</span><span style="font-family:var(--police-titres); font-size:1rem;">Section</span></div>
+        </div>
+      </div>
+
+      <div class="typo-card" title="Une police sans-serif assure la lisibilite sur ecran. Taille minimale recommandee : 14px pour le web, 11pt pour le print. Interligne ideal : 1.5 a 1.6 pour un texte courant.">
+        <div class="label">Corps de texte</div>
+        <div class="typo-sample-sans">DM Sans</div>
+        <!-- [Remplacer par la police corps choisie] -->
+        <div style="font-size:0.75rem; color:var(--ui-gris);">Moderne, lisible, pour les paragraphes et UI</div>
+        <div class="typo-sizes">
+          <div class="typo-row"><span class="typo-taille">Body / 16px</span><span style="font-size:0.875rem;">Texte courant</span></div>
+          <div class="typo-row"><span class="typo-taille">Small / 14px</span><span style="font-size:0.8rem; color:var(--ui-gris);">Legendes, metadata</span></div>
+          <div class="typo-row"><span class="typo-taille">Label / 11px</span><span style="font-size:0.7rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--palette-principale);">TAGS, LABELS</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================================================
+       LOGO
+  ================================================ -->
+  <div id="logo" class="figma-page"
+    data-side="left"
+    data-icon="🔢"
+    data-title="Pourquoi plusieurs versions ?"
+    data-tip="Formats a fournir : SVG (web), PNG transparent (reseaux sociaux), PDF (print). Jamais de JPEG pour un logo."
+    data-badges="ok:Icone seule indispensable,opt:Version complete optionnel"
+    title="Un logo doit exister en au moins 3 versions : fond clair (usage courant), fond sombre (presentations, videos), icone seule (favicon, avatar, app icon). Chaque contexte a ses propres contraintes.">
+    <span class="page-num">Page 5</span>
+    <div class="print-section-header"><span class="print-section-header-name">05 — Logo</span><span class="print-section-header-brand">Bloom Studio — Charte graphique</span></div>
+    <div class="label">03 — Logo</div>
+    <h2 class="title" title="Le logo doit exister en au moins 3 versions : Fond clair (usage courant), Fond sombre (presentations, videos), Monochrome (impression NB, tampon). Fournir toujours les fichiers en SVG + PNG transparent.">
+      Logo et variantes
+    </h2>
+    <p class="desc">Declinaisons officielles selon le contexte d'utilisation. Ne jamais modifier les proportions, couleurs ou polices du logo.</p>
+    <hr>
+
+    <!-- Declinaisons complete / compact -->
+    <h3 class="subsection-title" title="Version complete : usage principal, documents officiels. Version compacte : espaces reduits, reseaux sociaux. Fond sombre : quand le fond ne permet pas le logo colore. Icone seule : favicon, profil, app icon.">
+      Declinaisons
+    </h3>
+    <div class="logo-section-grid">
+
+      <!-- Version complete : icone + nom + baseline -->
+      <div class="logo-variant-card" title="Usage : documents officiels, en-tete de site, presentations. Inclut : icone + nom de marque + baseline. C&#39;est la version de reference a privilegier partout ou l&#39;espace le permet.">
+        <div class="logo-canvas on-light">
+          <div class="logo-mark gradient" style="width:52px; height:52px; font-size:1.6rem; border-radius:14px;">B</div>
+          <div>
+            <div class="logo-wordmark" style="font-size:1.3rem; color:#111;">Bloom Studio</div>
+            <!-- [Remplacer par la baseline reelle] -->
+            <div class="logo-wordmark-sub" style="color:var(--palette-principale);">[Votre baseline]</div>
+          </div>
+        </div>
+        <div class="logo-variant-info">
+          <div class="logo-variant-name">Version complete</div>
+          <div class="logo-variant-use">Usage principal — en-tetes, documents, site web</div>
+          <div class="logo-variant-dim">Icone 52 x 52 px (14 x 14 mm)<br>Largeur recommandee du bloc complet : 180-260 px (48-69 mm)</div>
+        </div>
+      </div>
+
+      <!-- Version compacte : icone + nom seul -->
+      <div class="logo-variant-card" title="Usage : reseaux sociaux, navigation, petits espaces. Inclut : icone + nom, sans la baseline. Garder les memes proportions entre icone et texte.">
+        <div class="logo-canvas on-light">
+          <div class="logo-mark gradient" style="width:40px; height:40px; font-size:1.2rem; border-radius:10px;">B</div>
+          <div class="logo-wordmark" style="font-size:1.1rem; color:#111;">Bloom Studio</div>
+        </div>
+        <div class="logo-variant-info">
+          <div class="logo-variant-name">Version compacte</div>
+          <div class="logo-variant-use">Reseaux sociaux, signatures email, badges</div>
+        </div>
+      </div>
+
+      <!-- Version fond sombre -->
+      <div class="logo-variant-card" title="Usage : fonds colores, videos, banniere sombre, slides. Le texte passe en blanc pour rester lisible. Toujours tester le contraste : minimum 4.5:1 (norme WCAG AA).">
+        <div class="logo-canvas on-dark">
+          <div class="logo-mark gradient" style="width:52px; height:52px; font-size:1.6rem; border-radius:14px;">B</div>
+          <div>
+            <div class="logo-wordmark" style="font-size:1.3rem; color:#fff;">Bloom Studio</div>
+            <div class="logo-wordmark-sub" style="color:rgba(255,255,255,0.45);">[Votre baseline]</div>
+          </div>
+        </div>
+        <div class="logo-variant-info">
+          <div class="logo-variant-name">Version fond sombre</div>
+          <div class="logo-variant-use">Fonds colores, presentations, print NB</div>
+        </div>
+      </div>
+
+      <!-- Version icone seule (favicon / app) -->
+      <div class="logo-variant-card" title="Usage : favicon (16-32px), photo de profil reseaux, app icon. Doit rester reconnaissable a toute petite taille. Exporter en .ico (favicon), .png 512x512 (reseaux), .svg (web).">
+        <div class="logo-canvas on-grey" style="gap:20px;">
+          <div class="logo-mark gradient" style="width:64px; height:64px; font-size:2rem; border-radius:16px;">B</div>
+          <div class="logo-mark gradient" style="width:40px; height:40px; font-size:1.2rem; border-radius:10px;">B</div>
+          <div class="logo-mark gradient" style="width:24px; height:24px; font-size:0.75rem; border-radius:6px;">B</div>
+        </div>
+        <div class="logo-variant-info">
+          <div class="logo-variant-name">Icone seule (symbole)</div>
+          <div class="logo-variant-use">Favicon, avatar, app icon, profil reseaux sociaux</div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ================================================
+       LOGO TAILLES
+  ================================================ -->
+  <div id="logo-tailles" class="figma-page"
+    data-side="right"
+    data-icon="📐"
+    data-title="Les tailles recommandees"
+    data-warn="En dessous de 24px, les details disparaissent. Utiliser l'icone seule, jamais le logo complet."
+    data-badges="ok:Indispensable"
+    title="80px pour les en-tetes de document et hero web, 48px pour la navigation et les cartes de visite, 32px pour les signatures email et badges, 24px taille minimale absolue a ne jamais depasser.">
+    <span class="page-num">Page 6</span>
+    <div class="print-section-header"><span class="print-section-header-name">06 — Tailles logo</span><span class="print-section-header-brand">Bloom Studio — Charte graphique</span></div>
+    <div class="label">04 — Tailles logo</div>
+    <h2 class="title">Tailles recommandees</h2>
+    <p class="desc">Repere de tailles digitales et print pour garantir la lisibilite du logo dans chaque contexte.</p>
+    <hr>
+    <div class="logo-sizes-row">
+
+      <div class="logo-size-cell" title="Taille hero : usage premium, grands espaces. Equivalent print : 21mm - ideal pour une affiche ou une couverture. Utiliser la version complete avec baseline a cette taille.">
+        <div class="logo-mark gradient" style="width:80px; height:80px; font-size:2.2rem; border-radius:20px;">B</div>
+        <div class="logo-size-label">80 px / 21 mm / 2.1 cm</div>
+        <div class="logo-size-use">En-tete document<br>Page web hero</div>
+      </div>
+
+      <div class="logo-size-cell" title="Taille standard : navigation de site, en-tete d&#39;email, carte de visite. La version compacte (icone + nom) est ideale a cette taille. Equivalent print : 13mm.">
+        <div class="logo-mark gradient" style="width:48px; height:48px; font-size:1.4rem; border-radius:12px;">B</div>
+        <div class="logo-size-label">48 px / 13 mm / 1.3 cm</div>
+        <div class="logo-size-use">Navigation, banniere<br>Carte de visite</div>
+      </div>
+
+      <div class="logo-size-cell" title="Taille reduite : signatures email, profils reseaux. Utiliser l&#39;icone seule a cette taille, le texte devient illisible. Toujours exporter en PNG avec fond transparent.">
+        <div class="logo-mark gradient" style="width:32px; height:32px; font-size:0.9rem; border-radius:8px;">B</div>
+        <div class="logo-size-label">32 px / 8 mm / 0.8 cm</div>
+        <div class="logo-size-use">Avatar, badge<br>Signature email</div>
+      </div>
+
+      <div class="logo-size-cell" title="Taille minimale absolue : favicon, watermark discret. En dessous de cette taille, le logo perd sa lisibilite. Ne jamais utiliser le logo complet sous 24px.">
+        <div class="logo-mark gradient" style="width:24px; height:24px; font-size:0.65rem; border-radius:6px;">B</div>
+        <div class="logo-size-label">24 px / 6 mm / 0.6 cm</div>
+        <div class="logo-size-use">Taille minimale<br>Ne pas descendre sous</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================================================
+       LOGO INTERDITS
+  ================================================ -->
+  <div id="logo-interdits" class="figma-page"
+    data-side="left"
+    data-icon="🚫"
+    data-title="Les Ne jamais faire"
+    data-tip="Astuce Canva : maintenir Maj (Shift) lors du redimensionnement pour conserver les proportions."
+    data-badges="ok:Indispensable"
+    title="Ces regles protegent l'integrite visuelle de la marque. Elles s'appliquent dans Canva, Figma et tous les logiciels d'edition. Les violations les plus frequentes : deformation, recoloriage et effets visuels.">
+    <span class="page-num">Page 7</span>
+    <div class="print-section-header"><span class="print-section-header-name">07 — Interdits logo</span><span class="print-section-header-brand">Bloom Studio — Charte graphique</span></div>
+    <div class="label">05 — Interdits logo</div>
+    <h2 class="title">Interdictions</h2>
+    <p class="desc">Ces usages degradent la reconnaissance de marque. Respecter ces regles en digital et en impression.</p>
+    <hr>
+    <div class="dont-grid">
+
+      <!-- Interdit 1 : deformation -->
+      <div class="dont-card" title="Etirer ou ecraser le logo casse l&#39;identite visuelle. Dans Canva ou Photoshop : maintenir Maj pour conserver les proportions. Toujours utiliser les fichiers SVG ou PNG fournis dans la charte.">
+        <div class="dont-visual dont-cross">
+          <div class="logo-mark gradient" style="width:52px; height:28px; font-size:1.2rem; border-radius:14px; transform:scaleX(1.8);">B</div>
+        </div>
+        <div class="dont-body">
+          <div class="dont-title">Ne pas deformer</div>
+          <div class="dont-desc">Aucune modification des proportions. Conserver le ratio original en toutes circonstances.</div>
+        </div>
+      </div>
+
+      <!-- Interdit 2 : mauvaises couleurs -->
+      <div class="dont-card" title="Les couleurs du logo font partie de l&#39;identite de marque. 3 versions autorisees uniquement : couleur, blanc, noir. Toute autre couleur dilue la reconnaissance de la marque.">
+        <div class="dont-visual dont-cross">
+          <div class="logo-mark" style="width:52px; height:52px; font-size:1.6rem; border-radius:14px; background:#FFD93D; color:#111;">B</div>
+        </div>
+        <div class="dont-body">
+          <div class="dont-title">Ne pas recolorer</div>
+          <div class="dont-desc">Utiliser uniquement les 3 versions officielles. Aucun remplacement de couleur n'est autorise.</div>
+        </div>
+      </div>
+
+      <!-- Interdit 3 : fond peu contrasté -->
+      <div class="dont-card" title="Le logo doit trancher sur son fond pour etre identifiable. Tester avec l&#39;outil WebAIM Contrast Checker. Sur fond colore : utiliser la version blanche du logo.">
+        <div class="dont-visual dont-cross" style="background: linear-gradient(135deg, #7C6AF7, #9B7CF8);">
+          <div class="logo-mark" style="width:52px; height:52px; font-size:1.6rem; border-radius:14px; background:rgba(92,78,250,0.4); color:rgba(255,255,255,0.5);">B</div>
+        </div>
+        <div class="dont-body">
+          <div class="dont-title">Eviter les fonds similaires</div>
+          <div class="dont-desc">Le logo doit rester lisible. Eviter tout fond proche de la couleur du logo (violet sur violet).</div>
+        </div>
+      </div>
+
+      <!-- Interdit 4 : trop petit -->
+      <div class="dont-card" title="En dessous de 24px, les details du logo disparaissent. Pour les tres petits espaces : icone seule, jamais le logo complet. En impression : ne pas descendre sous 6mm de largeur.">
+        <div class="dont-visual dont-cross">
+          <div class="logo-mark gradient" style="width:14px; height:14px; font-size:0.4rem; border-radius:3px;">B</div>
+          <span style="font-size:0.6rem; color:var(--ui-gris); margin-left:8px;">bloom.studio</span>
+        </div>
+        <div class="dont-body">
+          <div class="dont-title">Taille minimale</div>
+          <div class="dont-desc">Ne jamais descendre sous 24 px en digital ou 6 mm en impression. Le logo devient illisible.</div>
+        </div>
+      </div>
+
+      <!-- Interdit 5 : ombres / effets -->
+      <div class="dont-card" title="Les effets (ombre, lueur, biseau) vieillissent vite et alourdissent le logo. Un bon logo fonctionne a plat, sans decoration. Interdit dans Canva : ombre portee, lueur, relief.">
+        <div class="dont-visual dont-cross">
+          <div class="logo-mark gradient" style="width:52px; height:52px; font-size:1.6rem; border-radius:14px; filter: drop-shadow(0 0 12px rgba(92,78,250,0.9)) drop-shadow(3px 3px 4px rgba(0,0,0,0.5));">B</div>
+        </div>
+        <div class="dont-body">
+          <div class="dont-title">Pas d'effets visuels</div>
+          <div class="dont-desc">Interdire les ombres portees, lueurs, contours, flous ou effets de relief sur le logo.</div>
+        </div>
+      </div>
+
+      <!-- Interdit 6 : rotation -->
+      <div class="dont-card" title="Un logo incline perd son autorite et parait peu professionnel. Exception unique : si la charte prevoit explicitement une version en angle. Toujours verifier l&#39;horizontalite avant de publier ou d&#39;imprimer.">
+        <div class="dont-visual dont-cross">
+          <div style="display:flex; align-items:center; gap:8px; transform:rotate(-25deg);">
+            <div class="logo-mark gradient" style="width:36px; height:36px; font-size:1rem; border-radius:9px;">B</div>
+            <div style="font-family:var(--police-titres); font-size:0.9rem; color:#111;">Bloom Studio</div>
+          </div>
+        </div>
+        <div class="dont-body">
+          <div class="dont-title">Pas de rotation</div>
+          <div class="dont-desc">Le logo doit toujours etre positionne a l'horizontale, jamais incline ou pivote.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================================================
+       POSTS
+  ================================================ -->
+  <div id="posts" class="figma-page"
+    data-side="right"
+    data-icon="📱"
+    data-title="Les formats essentiels Instagram"
+    data-tip="Le format 4:5 portrait est a privilegier : il prend plus de place dans le fil d'actualite."
+    data-badges="ok:1 format minimum,opt:Autres formats optionnel"
+    title="1:1 Carre (1080x1080px) : format standard. 4:5 Portrait (1080x1350px) : meilleure visibilite dans le feed. Carrousel : jusqu'a 10 visuels, meilleur reach organique. Citation et chiffre cle : fort taux de sauvegarde.">
+    <span class="page-num">Page 8</span>
+    <div class="print-section-header"><span class="print-section-header-name">08 — Posts Instagram</span><span class="print-section-header-brand">Bloom Studio — Charte graphique</span></div>
+    <div class="label">06 — Exemples de posts</div>
+    <h2 class="title" title="5 formats essentiels a maitriser : 1:1 Carre (feed standard), 4:5 Portrait (prioritaire dans le feed), 1:1 Citation (engagement eleve), 1:1 Chiffre (credibilite, partage), 1:1 Carrousel (meilleur reach organique)">
+      Posts Instagram
+    </h2>
+    <p class="desc">5 formats types integres dans un mockup telephone. Remplacer les fonds par les visuels de la marque.</p>
+    <hr>
+
+    <div class="mockups-row">
+
+      <!-- ---- MOCKUP 1 : Post carre 1:1 — Annonce ---- -->
+      <div class="phone">
+        <div class="phone-shell">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+
+            <div class="ig-status">
+              <span class="ig-status-time">9:41</span>
+              <div class="ig-status-icons">
+                <div class="ig-status-bar"></div>
+                <div class="ig-status-bar"></div>
+                <div class="ig-status-bar"></div>
+              </div>
+            </div>
+
+            <div class="ig-topbar">
+              <svg class="ig-icon" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"></path><circle cx="12" cy="12" r="3.6"></circle><circle cx="18.406" cy="5.594" r="1"></circle></svg>
+              <span class="ig-username">bloom.studio</span>
+              <div class="ig-topbar-icons">
+                <svg class="ig-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                <svg class="ig-icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path></svg>
+              </div>
+            </div>
+
+            <div class="ig-post-header">
+              <div class="ig-avatar">B</div>
+              <div>
+                <div class="ig-post-name">bloom.studio</div>
+                <!-- [Remplacer par la localisation] -->
+                <div class="ig-post-location">Paris 11e</div>
+              </div>
+              <span class="ig-more">...</span>
+            </div>
+
+            <!-- Image 1:1 — fond violet, texte annonce -->
+            <div class="ig-image bg-violet">
+              <div class="ig-watermark">B</div>
+              <div>
+                <div class="ig-caption-tag">Nouveaute</div>
+                <!-- [Remplacer par le titre du post] -->
+                <div class="ig-caption-title">Lancement de<br>Social Boost</div>
+              </div>
+            </div>
+
+            <div class="ig-actions">
+              <svg class="ig-action-icon" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path></svg>
+              <svg class="ig-action-icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path></svg>
+              <svg class="ig-action-icon" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              <svg class="ig-action-icon ig-save" viewBox="0 0 24 24"><polygon points="19 21 12 16 5 21 5 3 19 3 19 21"></polygon></svg>
+            </div>
+
+            <div class="ig-likes">1 243 J'aime</div>
+            <div class="ig-desc"><strong>bloom.studio</strong> Decouvrez notre nouvelle offre d'accompagnement social media. <span style="color:#999;">#communitymanagement #branding</span></div>
+
+            <div class="ig-navbar-spacer"></div>
+            <div class="ig-navbar">
+              <svg class="ig-nav-icon active" viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H5a1 1 0 01-1-1V9.5z"></path></svg>
+              <svg class="ig-nav-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <svg class="ig-nav-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+              <svg class="ig-nav-icon" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path></svg>
+              <div class="ig-avatar" style="width:16px;height:16px;font-size:0.4rem;border-radius:50%;">B</div>
+            </div>
+
+          </div>
+          <div class="phone-home"></div>
+        </div>
+        <div class="phone-label" title="Format 1080x1080px — ratio 1:1. Usage : annonces, promotions, lancement produit. Le carre est le format le plus courant du feed Instagram.">Post carre 1:1 — Annonce</div>
+      </div>
+
+
+      <!-- ---- MOCKUP 2 : Post 4:5 — Photo lifestyle ---- -->
+      <div class="phone">
+        <div class="phone-shell">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+
+            <div class="ig-status">
+              <span class="ig-status-time">9:41</span>
+              <div class="ig-status-icons">
+                <div class="ig-status-bar"></div>
+                <div class="ig-status-bar"></div>
+                <div class="ig-status-bar"></div>
+              </div>
+            </div>
+
+            <div class="ig-post-header">
+              <div class="ig-avatar">B</div>
+              <div>
+                <div class="ig-post-name">bloom.studio</div>
+                <div class="ig-post-location">Lyon, France</div>
+              </div>
+              <span class="ig-more">...</span>
+            </div>
+
+            <!-- Image 4:5 — fond corail, zone photo -->
+            <div class="ig-image-45 bg-corail" style="align-items:center; justify-content:center;">
+              <div class="ig-watermark">B</div>
+              <!-- [Remplacer bg-corail par une vraie photo] -->
+              <div style="border:1px dashed rgba(255,255,255,0.4); border-radius:8px; padding:8px 10px; text-align:center;">
+                <div style="font-size:0.45rem; color:rgba(255,255,255,0.7); font-style:italic;">Photo lifestyle<br>shooting client</div>
+              </div>
+            </div>
+
+            <div class="ig-actions">
+              <svg class="ig-action-icon" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path></svg>
+              <svg class="ig-action-icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path></svg>
+              <svg class="ig-action-icon" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              <svg class="ig-action-icon ig-save" viewBox="0 0 24 24"><polygon points="19 21 12 16 5 21 5 3 19 3 19 21"></polygon></svg>
+            </div>
+
+            <div class="ig-likes">876 J'aime</div>
+            <div class="ig-desc"><strong>bloom.studio</strong> Nouvelle identite visuelle, meme energie. <span style="color:#999;">#directionartistique</span></div>
+
+            <div class="ig-navbar-spacer"></div>
+            <div class="ig-navbar">
+              <svg class="ig-nav-icon active" viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H5a1 1 0 01-1-1V9.5z"></path></svg>
+              <svg class="ig-nav-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <svg class="ig-nav-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+              <svg class="ig-nav-icon" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path></svg>
+              <div class="ig-avatar" style="width:16px;height:16px;font-size:0.4rem;border-radius:50%;">B</div>
+            </div>
+
+          </div>
+          <div class="phone-home"></div>
+        </div>
+        <div class="phone-label" title="Format 1080x1350px — ratio 4:5. Ce format occupe plus de place dans le feed : meilleure visibilite. Ideal pour les photos de produit, lifestyle, portrait.">Post portrait 4:5 — Photo lifestyle</div>
+      </div>
+
+
+      <!-- ---- MOCKUP 3 : Post 1:1 — Citation ---- -->
+      <div class="phone">
+        <div class="phone-shell">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+
+            <div class="ig-status">
+              <span class="ig-status-time">9:41</span>
+              <div class="ig-status-icons">
+                <div class="ig-status-bar"></div>
+                <div class="ig-status-bar"></div>
+                <div class="ig-status-bar"></div>
+              </div>
+            </div>
+
+            <div class="ig-post-header">
+              <div class="ig-avatar">B</div>
+              <div><div class="ig-post-name">bloom.studio</div></div>
+              <span class="ig-more">...</span>
+            </div>
+
+            <div class="ig-image bg-dark">
+              <div class="ig-watermark">B</div>
+              <div class="ig-quote-block">
+                <div class="ig-quote-mark">"</div>
+                <!-- [Remplacer par la citation] -->
+                <div class="ig-quote-text">La clarte attire,<br>la coherence convertit.</div>
+              </div>
+            </div>
+
+            <div class="ig-actions">
+              <svg class="ig-action-icon" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path></svg>
+              <svg class="ig-action-icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path></svg>
+              <svg class="ig-action-icon" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              <svg class="ig-action-icon ig-save" viewBox="0 0 24 24"><polygon points="19 21 12 16 5 21 5 3 19 3 19 21"></polygon></svg>
+            </div>
+
+            <div class="ig-likes">2 104 J'aime</div>
+            <div class="ig-desc"><strong>bloom.studio</strong> Citation de notre equipe strategie pour guider chaque campagne.</div>
+
+            <div class="ig-navbar-spacer"></div>
+            <div class="ig-navbar">
+              <svg class="ig-nav-icon active" viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H5a1 1 0 01-1-1V9.5z"></path></svg>
+              <svg class="ig-nav-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <svg class="ig-nav-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+              <svg class="ig-nav-icon" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path></svg>
+              <div class="ig-avatar" style="width:16px;height:16px;font-size:0.4rem;border-radius:50%;">B</div>
+            </div>
+
+          </div>
+          <div class="phone-home"></div>
+        </div>
+        <div class="phone-label" title="Format 1080x1080px — ratio 1:1. Les citations generent un fort taux de sauvegarde et de partage. Choisir une citation courte, impactante, alignee avec les valeurs de la marque.">Post carre 1:1 — Citation</div>
+      </div>
+
+
+      <!-- ---- MOCKUP 4 : Post 1:1 — Chiffre cle ---- -->
+      <div class="phone">
+        <div class="phone-shell">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+
+            <div class="ig-status">
+              <span class="ig-status-time">9:41</span>
+              <div class="ig-status-icons">
+                <div class="ig-status-bar"></div>
+                <div class="ig-status-bar"></div>
+                <div class="ig-status-bar"></div>
+              </div>
+            </div>
+
+            <div class="ig-post-header">
+              <div class="ig-avatar">B</div>
+              <div><div class="ig-post-name">bloom.studio</div></div>
+              <span class="ig-more">...</span>
+            </div>
+
+            <div class="ig-image bg-light" style="border:0.5px solid #eee;">
+              <div class="ig-watermark-dark">B</div>
+              <div class="ig-stat-block">
+                <!-- [Remplacer par le chiffre cle] -->
+                <div class="ig-stat-number">+42%</div>
+                <div class="ig-stat-sub">d'engagement moyen<br>en 6 mois</div>
+              </div>
+            </div>
+
+            <div class="ig-actions">
+              <svg class="ig-action-icon" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path></svg>
+              <svg class="ig-action-icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path></svg>
+              <svg class="ig-action-icon" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              <svg class="ig-action-icon ig-save" viewBox="0 0 24 24"><polygon points="19 21 12 16 5 21 5 3 19 3 19 21"></polygon></svg>
+            </div>
+
+            <div class="ig-likes">543 J'aime</div>
+            <div class="ig-desc"><strong>bloom.studio</strong> Resultat mesure sur 12 comptes accompagnes entre janv. et juin.</div>
+
+            <div class="ig-navbar-spacer"></div>
+            <div class="ig-navbar">
+              <svg class="ig-nav-icon active" viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H5a1 1 0 01-1-1V9.5z"></path></svg>
+              <svg class="ig-nav-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <svg class="ig-nav-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+              <svg class="ig-nav-icon" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path></svg>
+              <div class="ig-avatar" style="width:16px;height:16px;font-size:0.4rem;border-radius:50%;">B</div>
+            </div>
+
+          </div>
+          <div class="phone-home"></div>
+        </div>
+        <div class="phone-label" title="Format 1080x1080px — ratio 1:1. Les posts chiffres renforcent la credibilite et l&#39;expertise de la marque. Exemple : &#39;85% de nos clients renouvellent&#39; — source a toujours indiquer.">Post carre 1:1 — Chiffre cle</div>
+      </div>
+
+
+      <!-- ---- MOCKUP 5 : Carrousel 1:1 ---- -->
+      <div class="phone">
+        <div class="phone-shell">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+
+            <div class="ig-status">
+              <span class="ig-status-time">9:41</span>
+              <div class="ig-status-icons">
+                <div class="ig-status-bar"></div>
+                <div class="ig-status-bar"></div>
+                <div class="ig-status-bar"></div>
+              </div>
+            </div>
+
+            <div class="ig-post-header">
+              <div class="ig-avatar">B</div>
+              <div><div class="ig-post-name">bloom.studio</div></div>
+              <span class="ig-more">...</span>
+            </div>
+
+            <div class="ig-image bg-soleil">
+              <div class="ig-watermark" style="background:rgba(0,0,0,0.2);">B</div>
+              <div>
+                <div class="ig-caption-tag" style="color:rgba(0,0,0,0.45);">Carrousel 1 / 5</div>
+                <!-- [Titre de la serie de slides] -->
+                <div class="ig-caption-title-dark">5 erreurs qui<br>bloquent votre reach</div>
+              </div>
+            </div>
+
+            <!-- Points de navigation carrousel -->
+            <div class="ig-carousel-dots">
+              <div class="ig-dot active"></div>
+              <div class="ig-dot"></div>
+              <div class="ig-dot"></div>
+              <div class="ig-dot"></div>
+              <div class="ig-dot"></div>
+            </div>
+
+            <div class="ig-actions" style="padding-top:2px;">
+              <svg class="ig-action-icon" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path></svg>
+              <svg class="ig-action-icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path></svg>
+              <svg class="ig-action-icon" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              <svg class="ig-action-icon ig-save" viewBox="0 0 24 24"><polygon points="19 21 12 16 5 21 5 3 19 3 19 21"></polygon></svg>
+            </div>
+
+            <div class="ig-likes">3 892 J'aime</div>
+            <div class="ig-desc"><strong>bloom.studio</strong> Glissez pour corriger votre strategie des cette semaine -&gt; <span style="color:#999;">#socialmedia #tips</span></div>
+
+            <div class="ig-navbar-spacer"></div>
+            <div class="ig-navbar">
+              <svg class="ig-nav-icon active" viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H5a1 1 0 01-1-1V9.5z"></path></svg>
+              <svg class="ig-nav-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <svg class="ig-nav-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+              <svg class="ig-nav-icon" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path></svg>
+              <div class="ig-avatar" style="width:16px;height:16px;font-size:0.4rem;border-radius:50%;">B</div>
+            </div>
+
+          </div>
+          <div class="phone-home"></div>
+        </div>
+        <div class="phone-label" title="Format 1080x1080px — jusqu&#39;a 10 slides par carrousel. Le carrousel est le format avec le meilleur reach organique sur Instagram. La 1re slide est decisive : elle doit inciter a glisser (swiper).">Carrousel 1:1 — Couverture</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================================================
+       POSTS 2
+  ================================================ -->
+  <div id="posts-2" class="figma-page"
+    data-side="left"
+    data-icon="🎬"
+    data-title="Les templates video"
+    data-tip="Integrer le logo en filigrane discret sur chaque video pour renforcer la reconnaissance de marque."
+    data-badges="opt:Optionnel selon la strategie"
+    title="Le format 9:16 (1080x1920px) est commun a TikTok, Instagram Reels et YouTube Shorts. Un seul template visuel peut servir sur les 3 plateformes pour optimiser la production de contenu.">
+    <span class="page-num">Page 9</span>
+    <div class="print-section-header"><span class="print-section-header-name">09 — Templates TikTok</span><span class="print-section-header-brand">Bloom Studio — Charte graphique</span></div>
+    <div class="label">07 — Templates TikTok</div>
+    <h2 class="title">TikTok — formats video</h2>
+    <p class="desc">Declinaisons TikTok 9:16 avec habillage natif pour la strategie de contenu court.</p>
+    <hr>
+
+    <div class="mockups-row">
+
+      <div class="phone">
+        <div class="phone-shell">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="ig-status">
+              <span class="ig-status-time">9:41</span>
+              <div class="ig-status-icons">
+                <div class="ig-status-bar"></div>
+                <div class="ig-status-bar"></div>
+                <div class="ig-status-bar"></div>
+              </div>
+            </div>
+            <div class="tt-topbar">
+              <span class="active">Pour toi</span>
+              <span>Abonnements</span>
+            </div>
+            <div class="tt-video bg-dark">
+              <div class="tt-bottom">
+                <strong>@bloom.studio</strong><br>
+                3 erreurs qui plombent votre contenu en 2026<br>
+                #socialmedia #tiktoktips
+              </div>
+              <div class="tt-side">
+                <div class="tt-side-item"><div class="tt-side-icon"></div><span>12.4K</span></div>
+                <div class="tt-side-item"><div class="tt-side-icon"></div><span>820</span></div>
+                <div class="tt-side-item"><div class="tt-side-icon"></div><span>290</span></div>
+                <div class="tt-side-item"><div class="tt-side-icon"></div><span>1.2K</span></div>
+                <div class="tt-side-item"><div class="tt-side-icon"></div><span>420</span></div>
+                <div class="tt-side-item"><div class="tt-side-icon"></div><span>98</span></div>
+              </div>
+            </div>
+            <div class="tt-navbar">
+              <span class="tt-nav-icon"></span>
+              <span class="tt-nav-icon"></span>
+              <span class="tt-nav-plus">+</span>
+              <span class="tt-nav-icon"></span>
+              <span class="tt-nav-icon"></span>
+            </div>
+          </div>
+          <div class="phone-home"></div>
+        </div>
+        <div class="phone-label">TikTok 9:16 — Hook expert</div>
+      </div>
+
+      <div class="phone">
+        <div class="phone-shell">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="ig-status">
+              <span class="ig-status-time">9:41</span>
+              <div class="ig-status-icons">
+                <div class="ig-status-bar"></div>
+                <div class="ig-status-bar"></div>
+                <div class="ig-status-bar"></div>
+              </div>
+            </div>
+            <div class="tt-topbar">
+              <span class="active">Pour toi</span>
+              <span>Abonnements</span>
+            </div>
+            <div class="tt-video bg-corail">
+              <div class="tt-bottom">
+                <strong>@bloom.studio</strong><br>
+                Avant/apres: x2 en demandes qualifiees en 30 jours<br>
+                #casclient #marketingdigital
+              </div>
+              <div class="tt-side">
+                <div class="tt-side-item"><div class="tt-side-icon"></div><span>8.7K</span></div>
+                <div class="tt-side-item"><div class="tt-side-icon"></div><span>510</span></div>
+                <div class="tt-side-item"><div class="tt-side-icon"></div><span>120</span></div>
+                <div class="tt-side-item"><div class="tt-side-icon"></div><span>900</span></div>
+                <div class="tt-side-item"><div class="tt-side-icon"></div><span>300</span></div>
+                <div class="tt-side-item"><div class="tt-side-icon"></div><span>76</span></div>
+              </div>
+            </div>
+            <div class="tt-navbar">
+              <span class="tt-nav-icon"></span>
+              <span class="tt-nav-icon"></span>
+              <span class="tt-nav-plus">+</span>
+              <span class="tt-nav-icon"></span>
+              <span class="tt-nav-icon"></span>
+            </div>
+          </div>
+          <div class="phone-home"></div>
+        </div>
+        <div class="phone-label">TikTok 9:16 — Avant / apres</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================================================
+       CALENDRIER
+  ================================================ -->
+  <div id="calendrier" class="figma-page"
+    data-side="right"
+    data-icon="📅"
+    data-title="Planifier pour etre regulier"
+    data-tip="Meilleurs horaires : Instagram 12h-14h et 17h-19h. LinkedIn 8h-10h et 12h (horaires bureau)."
+    data-warn="Planifier a minima 2 semaines a l'avance pour maintenir la qualite et eviter la panique."
+    data-badges="ok:Indispensable"
+    title="La regularite est le facteur n°1 de croissance organique. Instagram : 3-5 posts par semaine. LinkedIn : 2-3 posts par semaine. Stories : 1-3 par jour. Le calendrier editorial structure la frequence et les types de contenus.">
+    <span class="page-num">Page 10</span>
+    <div class="print-section-header"><span class="print-section-header-name">10 — Calendrier editorial</span><span class="print-section-header-brand">Bloom Studio — Charte graphique</span></div>
+    <div class="label">08 — Calendrier editorial</div>
+    <h2 class="title" title="Un calendrier editorial planifie vos publications a l'avance. Il indique : quel reseau, quel type de contenu, a quelle heure. Objectif : maintenir une frequence reguliere et coherente.">
+      Calendrier editorial
+    </h2>
+    <p class="desc">Exemple de mois complet avec rythme de publication multi-reseaux.</p>
+    <hr>
+
+    <!-- SVG icons réseaux sociaux réutilisables en ligne -->
+    <svg style="display:none">
+      <symbol id="icon-instagram" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"></path><circle cx="12" cy="12" r="3.6"></circle><circle cx="18.406" cy="5.594" r="1"></circle></symbol>
+      <symbol id="icon-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></symbol>
+      <symbol id="icon-story" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path></symbol>
+      <symbol id="icon-facebook" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></symbol>
+    </svg>
+
+    <!-- En-tete du mois -->
+    <div class="cal-month-header">
+      <div>
+        <span class="cal-month-title" title="Remplacer 'Avril 2026' par le mois en cours. Adapter les dates et le contenu a votre planning reel.">Avril</span>
+        <span class="cal-month-year">2026</span>
+      </div>
+      <div class="cal-month-nav">
+        <div class="cal-nav-btn">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </div>
+        <div class="cal-nav-btn">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="cal-grid">
+      <div class="cal-day-header">Lun</div>
+      <div class="cal-day-header">Mar</div>
+      <div class="cal-day-header">Mer</div>
+      <div class="cal-day-header">Jeu</div>
+      <div class="cal-day-header">Ven</div>
+      <div class="cal-day-header">Sam</div>
+      <div class="cal-day-header">Dim</div>
+
+      <!-- S1 : Lun 3 -->
+      <div class="cal-cell">
+        <div class="cal-date">3</div>
+        <div class="cal-post ig">
+          <div class="cal-post-body">
+            <div class="cal-post-entete">
+              <svg class="cal-post-icon"><use href="#icon-instagram"></use></svg>
+              <span class="cal-post-time">12h00</span>
+            </div>
+            <div class="cal-post-detail">
+              <span class="cal-post-type">Publi.</span>
+              <span class="cal-post-text">Photo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- S1 : Mar 4 -->
+      <div class="cal-cell">
+        <div class="cal-date">4</div>
+        <div class="cal-post story">
+          <div class="cal-post-body">
+            <div class="cal-post-entete">
+              <svg class="cal-post-icon"><use href="#icon-story"></use></svg>
+              <span class="cal-post-time">10h00</span>
+            </div>
+            <div class="cal-post-detail">
+              <span class="cal-post-type">Anim.</span>
+              <span class="cal-post-text">Sondage</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- S1 : Mer 5 -->
+      <div class="cal-cell"><div class="cal-date">5</div></div>
+      <!-- S1 : Jeu 6 -->
+      <div class="cal-cell">
+        <div class="cal-date">6</div>
+        <div class="cal-post li">
+          <div class="cal-post-body">
+            <div class="cal-post-entete">
+              <svg class="cal-post-icon"><use href="#icon-linkedin"></use></svg>
+              <span class="cal-post-time">09h00</span>
+            </div>
+            <div class="cal-post-detail">
+              <span class="cal-post-type">Article</span>
+              <span class="cal-post-text">Conseil</span>
+            </div>
+          </div>
+        </div>
+        <div class="cal-post story">
+          <div class="cal-post-body">
+            <div class="cal-post-entete">
+              <svg class="cal-post-icon"><use href="#icon-story"></use></svg>
+              <span class="cal-post-time">18h30</span>
+            </div>
+            <div class="cal-post-detail">
+              <span class="cal-post-type">Coulisses</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- S1 : Ven 7 -->
+      <div class="cal-cell">
+        <div class="cal-date">7</div>
+        <div class="cal-post ig">
+          <div class="cal-post-body">
+            <div class="cal-post-entete">
+              <svg class="cal-post-icon"><use href="#icon-instagram"></use></svg>
+              <span class="cal-post-time">17h00</span>
+            </div>
+            <div class="cal-post-detail">
+              <span class="cal-post-type">Publi.</span>
+              <span class="cal-post-text">Citation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- S1 : Sam 8 -->
+      <div class="cal-cell">
+        <div class="cal-date">8</div>
+        <div class="cal-post story">
+          <div class="cal-post-body">
+            <div class="cal-post-entete">
+              <svg class="cal-post-icon"><use href="#icon-story"></use></svg>
+              <span class="cal-post-time">14h00</span>
+            </div>
+            <div class="cal-post-detail">
+              <span class="cal-post-type">Anim.</span>
+              <span class="cal-post-text">Q&amp;A</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- S1 : Dim 9 -->
+      <div class="cal-cell"><div class="cal-date">9</div></div>
+
+      <!-- S2 : Lun 10 -->
+      <div class="cal-cell">
+        <div class="cal-date">10</div>
+        <div class="cal-post ig">
+          <div class="cal-post-body">
+            <div class="cal-post-entete">
+              <svg class="cal-post-icon"><use href="#icon-instagram"></use></svg>
+              <span class="cal-post-time">12h00</span>
+            </div>
+            <div class="cal-post-detail">
+              <span class="cal-post-type">Carrousel</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- S2 : Mar 11 -->
+      <div class="cal-cell">
+        <div class="cal-date">11</div>
+        <div class="cal-post story">
+          <div class="cal-post-body">
+            <div class="cal-post-entete">
+              <svg class="cal-post-icon"><use href="#icon-story"></use></svg>
+              <span class="cal-post-time">11h00</span>
+            </div>
+            <div class="cal-post-detail">
+              <span class="cal-post-type">Teaser</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- S2 : Mer 12 -->
+      <div class="cal-cell">
+        <div class="cal-date">12</div>
+        <div class="cal-post placeholder">
+          <div class="cal-post-body">
+            <div class="cal-post-entete">
+              <span class="cal-post-text">[A planifier]</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- S2 : Jeu 13 -->
+      <div class="cal-cell">
+        <div class="cal-date">13</div>
+        <div class="cal-post li">
+          <div class="cal-post-body">
+            <div class="cal-post-entete">
+              <svg class="cal-post-icon"><use href="#icon-linkedin"></use></svg>
+              <span class="cal-post-time">08h30</span>
+            </div>
+            <div class="cal-post-detail">
+              <span class="cal-post-type">Publi.</span>
+              <span class="cal-post-text">Chiffre</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- S2 : Ven 14 -->
+      <div class="cal-cell">
+        <div class="cal-date">14</div>
+        <div class="cal-post ig">
+          <div class="cal-post-body">
+            <div class="cal-post-entete">
+              <svg class="cal-post-icon"><use href="#icon-instagram"></use></svg>
+              <span class="cal-post-time">12h00</span>
+            </div>
+            <div class="cal-post-detail">
+              <span class="cal-post-type">Collab.</span>
+            </div>
+          </div>
+        </div>
+        <div class="cal-post story">
+          <div class="cal-post-body">
+            <div class="cal-post-entete">
+              <svg class="cal-post-icon"><use href="#icon-story"></use></svg>
+              <span class="cal-post-time">19h00</span>
+            </div>
+            <div class="cal-post-detail">
+              <span class="cal-post-type">Resultat</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cal-cell"><div class="cal-date">15</div></div>
+      <div class="cal-cell"><div class="cal-date">16</div></div>
+
+      <!-- S3 : Lun 17 -->
+      <div class="cal-cell">
+        <div class="cal-date">17</div>
+        <div class="cal-post ig">
+          <div class="cal-post-body">
+            <div class="cal-post-entete">
+              <svg class="cal-post-icon"><use href="#icon-instagram"></use></svg>
+              <span class="cal-post-time">12h00</span>
+            </div>
+            <div class="cal-post-detail">
+              <span class="cal-post-type">Publi.</span>
+              <span class="cal-post-text">Produit</span>
+            </div>
+          </div>
+        </div>
+        <div class="cal-post fb">
+          <div class="cal-post-body">
+            <div class="cal-post-entete">
+              <svg class="cal-post-icon"><use href="#icon-facebook"></use></svg>
+              <span class="cal-post-time">13h00</span>
+            </div>
+            <div class="cal-post-detail">
+              <span class="cal-post-type">Partage</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- S3 : Mar 18 -->
+      <div class="cal-cell">
+        <div class="cal-date">18</div>
+        <div class="cal-post story">
+          <div class="cal-post-body">
+            <div class="cal-post-entete">
+              <svg class="cal-post-icon"><use href="#icon-story"></use></svg>
+              <span class="cal-post-time">10h00</span>
+            </div>
+            <div class="cal-post-detail">
+              <span class="cal-post-type">UGC</span>
+              <span class="cal-post-text">Avis</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- S3 : Mer 19 -->
+      <div class="cal-cell">
+        <div class="cal-date">19</div>
+        <div class="cal-post placeholder">
+          <div class="cal-post-body">
+            <div class="cal-post-entete">
+              <span class="cal-post-text">[A planifier]</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- S3 : Jeu 20 -->
+      <div class="cal-cell">
+        <div class="cal-date">20</div>
+        <div class="cal-post li">
+          <div class="cal-post-body">
+            <div class="cal-post-entete">
+              <svg class="cal-post-icon"><use href="#icon-linkedin"></use></svg>
+              <span class="cal-post-time">09h00</span>
+            </div>
+            <div class="cal-post-detail">
+              <span class="cal-post-type">UGC</span>
+              <span class="cal-post-text">Temoign.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- S3 : Ven 21 -->
+      <div class="cal-cell">
+        <div class="cal-date">21</div>
+        <div class="cal-post ig">
+          <div class="cal-post-body">
+            <div class="cal-post-entete">
+              <svg class="cal-post-icon"><use href="#icon-instagram"></use></svg>
+              <span class="cal-post-time">17h00</span>
+            </div>
+            <div class="cal-post-detail">
+              <span class="cal-post-type">Edu.</span>
+              <span class="cal-post-text">Astuce</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- S3 : Sam 22 -->
+      <div class="cal-cell">
+        <div class="cal-date">22</div>
+        <div class="cal-post story">
+          <div class="cal-post-body">
+            <div class="cal-post-entete">
+              <svg class="cal-post-icon"><use href="#icon-story"></use></svg>
+              <span class="cal-post-time">14h00</span>
+            </div>
+            <div class="cal-post-detail">
+              <span class="cal-post-type">Coulisses</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cal-cell"><div class="cal-date">23</div></div>
+
+      <!-- S4 : Lun 24 -->
+      <div class="cal-cell">
+        <div class="cal-date">24</div>
+        <div class="cal-post ig">
+          <div class="cal-post-body">
+            <div class="cal-post-entete">
+              <svg class="cal-post-icon"><use href="#icon-instagram"></use></svg>
+              <span class="cal-post-time">12h00</span>
+            </div>
+            <div class="cal-post-detail">
+              <span class="cal-post-type">Recap</span>
+              <span class="cal-post-text">Mois</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- S4 : Mar 25 -->
+      <div class="cal-cell">
+        <div class="cal-date">25</div>
+        <div class="cal-post story">
+          <div class="cal-post-body">
+            <div class="cal-post-entete">
+              <svg class="cal-post-icon"><use href="#icon-story"></use></svg>
+              <span class="cal-post-time">10h30</span>
+            </div>
+            <div class="cal-post-detail">
+              <span class="cal-post-type">Anim.</span>
+              <span class="cal-post-text">Question</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- S4 : Mer 26 -->
+      <div class="cal-cell">
+        <div class="cal-date">26</div>
+        <div class="cal-post placeholder">
+          <div class="cal-post-body">
+            <div class="cal-post-entete">
+              <span class="cal-post-text">[A planifier]</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- S4 : Jeu 27 -->
+      <div class="cal-cell">
+        <div class="cal-date">27</div>
+        <div class="cal-post li">
+          <div class="cal-post-body">
+            <div class="cal-post-entete">
+              <svg class="cal-post-icon"><use href="#icon-linkedin"></use></svg>
+              <span class="cal-post-time">09h00</span>
+            </div>
+            <div class="cal-post-detail">
+              <span class="cal-post-type">Vision</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- S4 : Ven 28 -->
+      <div class="cal-cell">
+        <div class="cal-date">28</div>
+        <div class="cal-post ig">
+          <div class="cal-post-body">
+            <div class="cal-post-entete">
+              <svg class="cal-post-icon"><use href="#icon-instagram"></use></svg>
+              <span class="cal-post-time">17h30</span>
+            </div>
+            <div class="cal-post-detail">
+              <span class="cal-post-type">Coulisses</span>
+            </div>
+          </div>
+        </div>
+        <div class="cal-post fb">
+          <div class="cal-post-body">
+            <div class="cal-post-entete">
+              <svg class="cal-post-icon"><use href="#icon-facebook"></use></svg>
+              <span class="cal-post-time">18h00</span>
+            </div>
+            <div class="cal-post-detail">
+              <span class="cal-post-type">Partage</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cal-cell"><div class="cal-date">29</div></div>
+      <div class="cal-cell"><div class="cal-date">30</div></div>
+    </div>
+
+    <div class="cal-legend">
+      <div class="cal-legende-item">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#5C4EFA"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"></path><circle cx="12" cy="12" r="3.6"></circle><circle cx="18.406" cy="5.594" r="1"></circle></svg>
+        <span title="Frequence recommandee : 3-5 posts / semaine. Meilleurs horaires : 12h-14h et 17h-19h en semaine. Formats : carre 1:1, portrait 4:5, stories 9:16.">Instagram</span>
+      </div>
+      <div class="cal-legende-item">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        <span title="Frequence recommandee : 2-3 posts / semaine. Meilleurs horaires : 8h-10h et 12h en semaine (horaires bureau). Ton plus professionnel : conseils, retours d&#39;experience, chiffres secteur.">LinkedIn</span>
+      </div>
+      <div class="cal-legende-item">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#BE185D" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg>
+        <span title="Frequence recommandee : 1-3 stories / jour. Les stories expirent apres 24h : usage ephemere et spontane. Formats interactifs : sondage, question, quiz, curseur.">Story</span>
+      </div>
+      <div class="cal-legende-item">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#1877F2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg>
+        <span title="Frequence recommandee : 1-2 posts / semaine. Le reach organique Facebook est limite : privilegier les partages et les evenements. Format lien ou video natif pour maximiser la portee.">Facebook</span>
+      </div>
+      <div class="cal-legende-item" title="Cases a remplir selon les evenements de la marque. Prevoir : temps forts commerciaux, evenements saisonniers, journees mondiales. Planifier a minima 2 semaines a l&#39;avance."><div class="cal-legende-point" style="background:#F3F4F6; border:1px dashed #D1D5DB;"></div>A planifier</div>
+    </div>
+  </div>
+
+  <!-- ================================================
+       RESEAUX PROFILS
+  ================================================ -->
+  <div id="reseaux-profils" class="figma-page"
+    data-side="left"
+    data-icon="🖼"
+    data-title="Dimensions par plateforme"
+    data-tip="Ne pas placer de texte important dans les zones recouvertes par les avatars."
+    data-badges="ok:Indispensable"
+    title="Facebook : couverture 820x312px, photo de profil 170x170px. L'avatar recouvre le coin gauche bas de la couverture. LinkedIn : banniere 1584x396px (ratio 4:1), photo de profil 400x400px, tronquee sur mobile.">
+    <span class="page-num">Page 11</span>
+    <div class="print-section-header"><span class="print-section-header-name">11 — Reseaux sociaux</span><span class="print-section-header-brand">Bloom Studio — Charte graphique</span></div>
+    <div class="label">09 — Reseaux sociaux</div>
+    <h2 class="title" title="Chaque support a ses propres contraintes de taille et de format. Toujours adapter le message au contexte du support. Un post LinkedIn n'a pas le meme ton qu'une story Instagram.">
+      Reseaux sociaux - profils et couvertures
+    </h2>
+    <p class="desc">Apercu visuel des profils et couvertures reseaux sociaux (Facebook et LinkedIn) avec echelles respectees.</p>
+    <hr>
+
+    <!-- Sous-section : Reseaux sociaux -->
+
+    <div class="mockup-flat-row" style="margin-bottom:40px;">
+
+      <!-- Couverture Facebook -->
+      <div class="mockup-flat">
+        <div class="fb-cover-shell">
+          <div class="fb-cover-img">
+            <!-- [Remplacer le degrade par la photo de couverture] -->
+            <div style="position:absolute; top:10px; right:14px; font-size:0.45rem; color:rgba(255,255,255,0.5); font-style:italic;">[820 x 312 px]</div>
+            <div style="position:absolute; top:10px; left:14px;">
+              <div style="font-family:var(--police-titres); font-size:0.7rem; color:#fff; opacity:0.85;">[Accroche ou visuel de couverture]</div>
+            </div>
+            <div class="fb-avatar">B</div>
+          </div>
+          <div class="fb-cover-body">
+            <div class="fb-page-name">Bloom Studio</div>
+            <div class="fb-page-category">[Categorie de la page — ex. : Studio de creation]</div>
+            <div class="fb-stats">
+              <div class="fb-stat"><strong>[X K]</strong>J'aime</div>
+              <div class="fb-stat"><strong>[X K]</strong>Abonnes</div>
+            </div>
+          </div>
+        </div>
+        <div class="mockup-flat-label" title="Dimensions : 820x312px (desktop) / 640x360px (mobile). La photo de profil (170x170px) recouvre le coin gauche de la couverture. Eviter de placer du texte important dans la zone couverte par l&#39;avatar.">Page Facebook — Couverture 820 x 312 px</div>
+      </div>
+
+      <!-- Banniere LinkedIn -->
+      <div class="mockup-flat">
+        <div class="li-banner-shell">
+          <div style="position:relative;">
+            <div class="li-banner-img">
+              <div class="li-banner-watermark">Bloom Studio</div>
+              <!-- [Remplacer le degrade par la banniere LinkedIn] -->
+              <div style="position:absolute; bottom:4px; left:14px; font-size:0.4rem; color:rgba(255,255,255,0.4); font-style:italic;">[1584 x 396 px]</div>
+            </div>
+            <div class="li-avatar">B</div>
+          </div>
+          <div class="li-body">
+            <div class="li-name">Bloom Studio</div>
+            <!-- [Remplacer par le titre LinkedIn du profil / page] -->
+            <div class="li-headline">[Titre professionnel — ex. : Studio creatif | Community Manager]</div>
+          </div>
+        </div>
+        <div class="mockup-flat-label" title="Dimensions : 1584x396px — ratio 4:1. La photo de profil (400x400px) se superpose en bas a gauche. La banniere est visible sur desktop et tronquee sur mobile : centrer le message.">Profil LinkedIn — Banniere 1584 x 396 px</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================================================
+       PRINT CARTE
+  ================================================ -->
+  <div id="print-carte" class="figma-page"
+    data-side="right"
+    data-icon="🖨"
+    data-title="La carte de visite"
+    data-tip="Pour l'impression : utiliser les valeurs CMJN, pas HEX. Prevoir un fond perdu de 3mm."
+    data-badges="opt:Optionnel"
+    title="Format standard ISO : 85x55mm. Recto en couleur de marque avec logo et nom, verso blanc avec coordonnees completes. Le logo doit apparaitre dans sa version compacte ou icone seule.">
+    <span class="page-num">Page 12</span>
+    <div class="print-section-header"><span class="print-section-header-name">12 — Print carte</span><span class="print-section-header-brand">Bloom Studio — Charte graphique</span></div>
+    <div class="label">10 — Print</div>
+    <h2 class="title">Print carte de visite a l'echelle 1</h2>
+    <p class="desc">Carte de visite avec ratio exact 85/55, presentee en dimensions 85px x 55px pour un controle strict.</p>
+    <hr>
+
+    <h3 class="subsection-title">Carte de visite</h3>
+    <div class="mockup-flat-row">
+
+      <div class="mockup-flat">
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <div class="card-mockup recto">
+            <div class="card-logo-row">
+              <div class="card-logo-icon white-icon">B</div>
+              <span class="card-brand-name">Bloom Studio</span>
+            </div>
+            <div>
+              <div class="card-name">[Prenom Nom]</div>
+              <div class="card-role">[Poste — Community Manager]</div>
+            </div>
+          </div>
+          <div class="card-mockup verso">
+            <div style="display:flex; flex-direction:column; gap:4px;">
+              <div class="card-contact">[email@domaine.com]</div>
+              <div class="card-contact">[+33 6 XX XX XX XX]</div>
+              <div class="card-contact">[www.bloom-studio.fr]</div>
+            </div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <div class="card-logo-icon brand-icon">B</div>
+              <span style="font-family:var(--police-titres); font-size:0.75rem; color:var(--palette-texte);">Bloom Studio</span>
+            </div>
+          </div>
+        </div>
+        <div class="mockup-flat-label">Carte de visite — ratio 85/55</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================================================
+       EMAILING CAMPAGNE
+  ================================================ -->
+  <div id="emailing-campagne" class="figma-page"
+    data-side="left"
+    data-icon="✉️"
+    data-title="Signature et emailing"
+    data-warn="Ne jamais utiliser de SVG dans les emails : non supporte par Outlook et certains clients mail."
+    data-badges="ok:Signature indispensable,opt:Template emailing optionnel"
+    title="La signature email est presente dans chaque mail envoye : largeur maximale 600px, utiliser PNG pour le logo. Le template d'emailing definit la mise en page des campagnes marketing avec header, corps et footer.">
+    <span class="page-num">Page 13</span>
+    <div class="print-section-header"><span class="print-section-header-name">13 — Emailing</span><span class="print-section-header-brand">Bloom Studio — Charte graphique</span></div>
+    <div class="label">11 — Emailing</div>
+    <h2 class="title">Signature et template de campagne</h2>
+    <p class="desc">Presentation d'une signature electronique standard et d'un corps d'email type pour campagne marketing.</p>
+    <hr>
+
+    <h3 class="subsection-title">Signature email + corps d'emailing</h3>
+    <div class="emailing-grid">
+
+      <div class="mockup-flat">
+        <div class="email-sig">
+          <div class="email-sig-header"></div>
+          <div class="email-sig-body">
+            <div class="email-sig-avatar">B</div>
+            <div class="email-sig-divider"></div>
+            <div class="email-sig-info">
+              <div class="email-sig-name">[Prenom Nom]</div>
+              <div class="email-sig-role">Community Manager - Bloom Studio</div>
+              <div class="email-sig-sep"></div>
+              <div class="email-sig-contact">
+                <span class="sig-email">[email@bloom-studio.fr]</span>
+                <span class="sig-phone">[+33 6 XX XX XX XX]</span>
+                <span class="sig-web">[www.bloom-studio.fr]</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mockup-flat-label">Signature electronique — largeur 600 px max</div>
+      </div>
+
+      <div class="mockup-flat" style="align-items:stretch;">
+        <div class="email-campaign">
+          <div class="email-campaign-head">
+            <div>
+              <div class="email-campaign-title">[Titre campagne] — [Offre du mois]</div>
+              <div class="email-campaign-preheader">Preheader: [Resume en 35-90 caracteres]</div>
+            </div>
+            <div style="display:flex; align-items:center; gap:6px; flex-shrink:0;">
+              <div style="width:22px; height:22px; border-radius:5px; background:rgba(255,255,255,0.25); display:flex; align-items:center; justify-content:center; font-family:var(--police-titres); font-size:0.6rem; color:#fff;">B</div>
+              <span style="font-family:var(--police-titres); font-size:0.75rem; color:#fff; font-weight:600;">Bloom Studio</span>
+            </div>
+          </div>
+
+          <div class="email-campaign-body">
+            <div style="font-weight:700;">Bonjour [Prenom],</div>
+            <div>[Intro courte de campagne: contexte + benefice principal en 1-2 phrases.]</div>
+            <div style="border:1px dashed #D1D5DB; border-radius:8px; padding:10px; background:#F9FAFB;">[Bloc hero image 600x300 — visuel campagne]</div>
+            <div>[Argument 1] [Argument 2] [Preuve sociale courte / temoignage].</div>
+            <span class="email-campaign-cta">[Call To Action]</span>
+            <div>[Texte secondaire: date limite, conditions, lien miroir].</div>
+          </div>
+
+          <div class="email-campaign-foot">
+            [Adresse entreprise] | [Lien desabonnement] | [Mentions legales]
+            Campagne emailing generic - largeur recommandee 600 px, police web-safe.
+          </div>
+        </div>
+        <div class="mockup-flat-label">Template corps d'email — campagne generic</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================================================
+       WEB LANDING
+  ================================================ -->
+  <div id="web-landing" class="figma-page"
+    data-side="right"
+    data-icon="💻"
+    data-title="La hero section"
+    data-tip="Ratio 16:9 utilise comme reference. En pratique la hero s'adapte au viewport (100vh en CSS)."
+    data-badges="opt:Optionnel si presence web"
+    title="La zone visible sans scroller doit contenir : logo, titre H1 accrocheur, description courte et CTA principal. C'est la premiere impression du visiteur, le taux de conversion en depend directement.">
+    <span class="page-num">Page 14</span>
+    <div class="print-section-header"><span class="print-section-header-name">14 — Web landing</span><span class="print-section-header-brand">Bloom Studio — Charte graphique</span></div>
+    <div class="label">12 — Web</div>
+    <h2 class="title">Web et landing page</h2>
+    <p class="desc">Maquette web hero avec ratio desktop cohérent pour l'import design.</p>
+    <hr>
+
+    <h3 class="subsection-title">Web et landing page</h3>
+    <div class="mockup-flat-row">
+      <div class="mockup-flat">
+        <div class="screen-shell" style="width:560px;">
+          <div class="screen-bar">
+            <div class="screen-dot red"></div>
+            <div class="screen-dot yellow"></div>
+            <div class="screen-dot green"></div>
+            <div style="flex:1; height:10px; background:#2C2C2E; border-radius:4px; margin-left:6px; display:flex; align-items:center; padding:0 8px;">
+              <span style="font-size:0.4rem; color:rgba(255,255,255,0.3); font-family:monospace;">bloom-studio.fr</span>
+            </div>
+          </div>
+          <div class="screen-content">
+            <div style="height:120px; background:linear-gradient(160deg, var(--palette-principale) 0%, #3B28CC 100%); display:flex; align-items:center; padding:0 20px; gap:14px;">
+              <div style="width:28px; height:28px; border-radius:6px; background:linear-gradient(135deg,rgba(255,255,255,0.3),rgba(255,255,255,0.1)); display:flex; align-items:center; justify-content:center; font-family:var(--police-titres); font-size:0.75rem; color:#fff;">B</div>
+              <div>
+                <div style="font-family:var(--police-titres); font-size:0.9rem; color:#fff; line-height:1.2;">[Titre hero du site web]</div>
+                <div style="font-size:0.56rem; color:rgba(255,255,255,0.55); margin-top:2px;">[Sous-titre ou description courte]</div>
+              </div>
+            </div>
+            <div style="background:#fff; padding:14px 16px; display:flex; flex-direction:column; gap:8px;">
+              <div style="display:flex; gap:8px;">
+                <div style="flex:1; height:36px; background:#F3F4F6; border-radius:6px;"></div>
+                <div style="flex:1; height:36px; background:#F3F4F6; border-radius:6px;"></div>
+                <div style="flex:1; height:36px; background:#F3F4F6; border-radius:6px;"></div>
+              </div>
+              <div style="height:8px; background:#F3F4F6; border-radius:4px; width:80%;"></div>
+              <div style="height:8px; background:#F3F4F6; border-radius:4px; width:60%;"></div>
+              <div style="height:20px; background:var(--palette-principale); border-radius:100px; width:100px; opacity:0.7;"></div>
+            </div>
+          </div>
+          <div class="screen-stand"></div>
+          <div class="screen-base"></div>
+        </div>
+        <div class="mockup-flat-label">Site web hero — ratio 16/9</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================
+       AAA
+  ================================================ -->
+  <div id="web-landing" class="figma-page"
+    data-side="left"
+    data-icon="💻"
+    data-title="La hero section"
+    data-tip="Ratio 16:9 utilise comme reference. En pratique la hero s'adapte au viewport (100vh en CSS)."
+    data-badges="opt:Optionnel si presence web"
+    title="La zone visible sans scroller doit contenir : logo, titre H1 accrocheur, description courte et CTA principal. C'est la premiere impression du visiteur, le taux de conversion en depend directement.">
+    <span class="page-num">Page 15</span>
+    <div class="print-section-header"><span class="print-section-header-name">15 — Web landing</span><span class="print-section-header-brand">Bloom Studio — Charte graphique</span></div>
+    <div class="label">12 — AAA</div>
+    <h2 class="title">Test</h2>
+    <p class="desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum est voluptates error omnis incidunt repellendus ullam quas hic pariatur autem totam ad, natus perferendis velit libero alias asperiores quos ipsam?</p>
+    <hr>
+
+    <h3 class="subsection-title">Lorem ipsum dolor sit amet.</h3>
+    <div class="mockup-flat-row">
+      aaa
+    </div>
+  </div>
+
+  <!-- ================================================
+       CTA TELECHARGEMENT
+  ================================================ -->
+  <div class="cta-block figma-page">
+    <span class="page-num">Page 16</span>
+    <div class="label" style="color:rgba(255,255,255,0.5);">Ressources</div>
+    <h2 class="title">Telecharger la charte</h2>
+    <p class="desc" style="margin-bottom:0;">
+      Imprimer ou sauvegarder cette page via votre navigateur (Ctrl+P &gt; Enregistrer en PDF).
+    </p>
+    <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
+      <button class="btn-white" onclick="window.print()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        Telecharger en PDF
+      </button>
+      <a class="btn-white" href="./Charte-Graphique-Didactique.html">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+        Version didactique
+      </a>
+    </div>
+    <p class="cta-note">PDF : A4 portrait — activer "Graphiques d'arriere-plan" dans les options d'impression</p>
+  </div>
+
+</div><!-- /page -->
+</body></html>

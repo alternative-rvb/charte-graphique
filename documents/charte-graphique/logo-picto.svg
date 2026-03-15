@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E1B4B"/>
+      <stop offset="100%" stop-color="#818CF8"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#g)"/>
+  <!-- Lettre B stylisée avec serif -->
+  <text x="32" y="46" font-family="Georgia, 'Times New Roman', serif" font-size="36" font-weight="700" fill="#F59E0B" text-anchor="middle">B</text>
+  <!-- Accent doré en bas à droite -->
+  <rect x="42" y="44" width="10" height="3" rx="1.5" fill="#F59E0B" opacity="0.7"/>
+</svg>

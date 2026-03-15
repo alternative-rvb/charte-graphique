@@ -1,0 +1,70 @@
+  <div id="emailing-campagne" class="figma-page"
+    data-side="left"
+    data-icon="✉️"
+    data-title="Signature et emailing"
+    data-warn="Ne jamais utiliser de SVG dans les emails : non supporte par Outlook et certains clients mail."
+    data-badges="ok:Signature indispensable,opt:Template emailing optionnel"
+    title="La signature email est presente dans chaque mail envoye : largeur maximale 600px, utiliser PNG pour le logo. Le template d'emailing definit la mise en page des campagnes marketing avec header, corps et footer.">
+    <span class="page-num">Page 13</span>
+    <div class="print-section-header"><span class="print-section-header-name">11 — Emailing</span><span class="print-section-header-brand">{{marque.nom}} — Charte graphique</span></div>
+    <div class="label">11 — Emailing</div>
+    <h2 class="title">Signature et template de campagne</h2>
+    <p class="desc">Presentation d'une signature electronique standard et d'un corps d'email type pour campagne marketing.</p>
+    <hr>
+
+    <h3 class="subsection-title">Signature email + corps d'emailing</h3>
+    <div class="emailing-grid">
+
+      <div class="mockup-flat">
+        <div class="email-sig">
+          <div class="email-sig-header"></div>
+          <div class="email-sig-body">
+            <div class="email-sig-avatar">B</div>
+            <div class="email-sig-divider"></div>
+            <div class="email-sig-info">
+              <div class="email-sig-name">[Prenom Nom]</div>
+              <div class="email-sig-role">{{marque.role}} - {{marque.nom}}</div>
+              <div class="email-sig-sep"></div>
+              <div class="email-sig-contact">
+                <span class="sig-email">[email@bloom-studio.fr]</span>
+                <span class="sig-phone">[+33 6 XX XX XX XX]</span>
+                <span class="sig-web">[www.bloom-studio.fr]</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mockup-flat-label">Signature electronique — largeur 600 px max</div>
+      </div>
+
+      <div class="mockup-flat" style="align-items:stretch;">
+        <div class="email-campaign">
+          <div class="email-campaign-head">
+            <div>
+              <div class="email-campaign-title">[Titre campagne] — [Offre du mois]</div>
+              <div class="email-campaign-preheader">Preheader: [Resume en 35-90 caracteres]</div>
+            </div>
+            <div style="display:flex; align-items:center; gap:6px; flex-shrink:0;">
+              <div style="width:22px; height:22px; border-radius:5px; background:rgba(255,255,255,0.25); display:flex; align-items:center; justify-content:center; font-family:var(--police-titres); font-size:0.6rem; color:#fff;">B</div>
+              <span style="font-family:var(--police-titres); font-size:0.75rem; color:#fff; font-weight:600;">{{marque.nom}}</span>
+            </div>
+          </div>
+
+          <div class="email-campaign-body">
+            <div style="font-weight:700;">Bonjour [Prenom],</div>
+            <div>[Intro courte de campagne: contexte + benefice principal en 1-2 phrases.]</div>
+            <div style="border:1px dashed #D1D5DB; border-radius:8px; padding:10px; background:#F9FAFB;">[Bloc hero image 600x300 — visuel campagne]</div>
+            <div>[Argument 1] [Argument 2] [Preuve sociale courte / temoignage].</div>
+            <span class="email-campaign-cta">[Call To Action]</span>
+            <div>[Texte secondaire: date limite, conditions, lien miroir].</div>
+          </div>
+
+          <div class="email-campaign-foot">
+            [Adresse entreprise] | [Lien desabonnement] | [Mentions legales]
+            Campagne emailing generic - largeur recommandee 600 px, police web-safe.
+          </div>
+        </div>
+        <div class="mockup-flat-label">Template corps d'email — campagne generic</div>
+      </div>
+
+    </div>
+  </div>

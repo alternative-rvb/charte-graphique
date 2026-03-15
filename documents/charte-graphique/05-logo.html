@@ -1,0 +1,82 @@
+  <div id="logo" class="figma-page"
+    data-side="left"
+    data-icon="🔢"
+    data-title="Pourquoi plusieurs versions ?"
+    data-tip="Formats a fournir : SVG (web), PNG transparent (reseaux sociaux), PDF (print). Jamais de JPEG pour un logo."
+    data-badges="ok:Icone seule indispensable,opt:Version complete optionnel"
+    title="Un logo doit exister en au moins 3 versions : fond clair (usage courant), fond sombre (presentations, videos), icone seule (favicon, avatar, app icon). Chaque contexte a ses propres contraintes.">
+    <span class="page-num">Page 5</span>
+    <div class="print-section-header"><span class="print-section-header-name">03 — Logo</span><span class="print-section-header-brand">{{marque.nom}} — Charte graphique</span></div>
+    <div class="label">03 — Logo</div>
+    <h2 class="title" title="Le logo doit exister en au moins 3 versions : Fond clair (usage courant), Fond sombre (presentations, videos), Monochrome (impression NB, tampon). Fournir toujours les fichiers en SVG + PNG transparent.">
+      Logo et variantes
+    </h2>
+    <p class="desc">Declinaisons officielles selon le contexte d'utilisation. Ne jamais modifier les proportions, couleurs ou polices du logo.</p>
+    <hr>
+
+    <!-- Declinaisons complete / compact -->
+    <h3 class="subsection-title" title="Version complete : usage principal, documents officiels. Version compacte : espaces reduits, reseaux sociaux. Fond sombre : quand le fond ne permet pas le logo colore. Icone seule : favicon, profil, app icon.">
+      Declinaisons
+    </h3>
+    <div class="logo-section-grid">
+
+      <!-- Version complete : icone + nom + baseline -->
+      <div class="logo-variant-card" title="Usage : documents officiels, en-tete de site, presentations. Inclut : icone + nom de marque + baseline. C&#39;est la version de reference a privilegier partout ou l&#39;espace le permet.">
+        <div class="logo-canvas on-light">
+          <div class="logo-mark gradient" style="width:52px; height:52px; font-size:1.6rem; border-radius:14px;">B</div>
+          <div>
+            <div class="logo-wordmark" style="font-size:1.3rem; color:#111;">{{marque.nom}}</div>
+            <!-- [Remplacer par la baseline reelle] -->
+            <div class="logo-wordmark-sub" style="color:var(--palette-principale);">[Votre baseline]</div>
+          </div>
+        </div>
+        <div class="logo-variant-info">
+          <div class="logo-variant-name">Version complete</div>
+          <div class="logo-variant-use">Usage principal — en-tetes, documents, site web</div>
+          <div class="logo-variant-dim">Icone 52 x 52 px (14 x 14 mm)<br>Largeur recommandee du bloc complet : 180-260 px (48-69 mm)</div>
+        </div>
+      </div>
+
+      <!-- Version compacte : icone + nom seul -->
+      <div class="logo-variant-card" title="Usage : reseaux sociaux, navigation, petits espaces. Inclut : icone + nom, sans la baseline. Garder les memes proportions entre icone et texte.">
+        <div class="logo-canvas on-light">
+          <div class="logo-mark gradient" style="width:40px; height:40px; font-size:1.2rem; border-radius:10px;">B</div>
+          <div class="logo-wordmark" style="font-size:1.1rem; color:#111;">{{marque.nom}}</div>
+        </div>
+        <div class="logo-variant-info">
+          <div class="logo-variant-name">Version compacte</div>
+          <div class="logo-variant-use">Reseaux sociaux, signatures email, badges</div>
+        </div>
+      </div>
+
+      <!-- Version fond sombre -->
+      <div class="logo-variant-card" title="Usage : fonds colores, videos, banniere sombre, slides. Le texte passe en blanc pour rester lisible. Toujours tester le contraste : minimum 4.5:1 (norme WCAG AA).">
+        <div class="logo-canvas on-dark">
+          <div class="logo-mark gradient" style="width:52px; height:52px; font-size:1.6rem; border-radius:14px;">B</div>
+          <div>
+            <div class="logo-wordmark" style="font-size:1.3rem; color:#fff;">{{marque.nom}}</div>
+            <div class="logo-wordmark-sub" style="color:rgba(255,255,255,0.45);">[Votre baseline]</div>
+          </div>
+        </div>
+        <div class="logo-variant-info">
+          <div class="logo-variant-name">Version fond sombre</div>
+          <div class="logo-variant-use">Fonds colores, presentations, print NB</div>
+        </div>
+      </div>
+
+      <!-- Version icone seule (favicon / app) -->
+      <div class="logo-variant-card" title="Usage : favicon (16-32px), photo de profil reseaux, app icon. Doit rester reconnaissable a toute petite taille. Exporter en .ico (favicon), .png 512x512 (reseaux), .svg (web).">
+        <div class="logo-canvas on-grey" style="gap:20px;">
+          <div class="logo-mark gradient" style="width:64px; height:64px; font-size:2rem; border-radius:16px;">B</div>
+          <div class="logo-mark gradient" style="width:40px; height:40px; font-size:1.2rem; border-radius:10px;">B</div>
+          <div class="logo-mark gradient" style="width:24px; height:24px; font-size:0.75rem; border-radius:6px;">B</div>
+        </div>
+        <div class="logo-variant-info">
+          <div class="logo-variant-name">Icone seule (symbole)</div>
+          <div class="logo-variant-use">Favicon, avatar, app icon, profil reseaux sociaux</div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>

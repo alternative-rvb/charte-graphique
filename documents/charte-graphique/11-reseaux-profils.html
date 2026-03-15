@@ -1,0 +1,65 @@
+  <div id="reseaux-profils" class="figma-page"
+    data-side="left"
+    data-icon="🖼"
+    data-title="Dimensions par plateforme"
+    data-tip="Ne pas placer de texte important dans les zones recouvertes par les avatars."
+    data-badges="ok:Indispensable"
+    title="Facebook : couverture 820x312px, photo de profil 170x170px. L'avatar recouvre le coin gauche bas de la couverture. LinkedIn : banniere 1584x396px (ratio 4:1), photo de profil 400x400px, tronquee sur mobile.">
+    <span class="page-num">Page 11</span>
+    <div class="print-section-header"><span class="print-section-header-name">09 — Reseaux sociaux</span><span class="print-section-header-brand">{{marque.nom}} — Charte graphique</span></div>
+    <div class="label">09 — Reseaux sociaux</div>
+    <h2 class="title" title="Chaque support a ses propres contraintes de taille et de format. Toujours adapter le message au contexte du support. Un post LinkedIn n'a pas le meme ton qu'une story Instagram.">
+      Reseaux sociaux - profils et couvertures
+    </h2>
+    <p class="desc">Apercu visuel des profils et couvertures reseaux sociaux (Facebook et LinkedIn) avec echelles respectees.</p>
+    <hr>
+
+    <!-- Sous-section : Reseaux sociaux -->
+
+    <div class="mockup-flat-row" style="margin-bottom:40px;">
+
+      <!-- Couverture Facebook -->
+      <div class="mockup-flat">
+        <div class="fb-cover-shell">
+          <div class="fb-cover-img">
+            <!-- [Remplacer le degrade par la photo de couverture] -->
+            <div style="position:absolute; top:10px; right:14px; font-size:0.45rem; color:rgba(255,255,255,0.5); font-style:italic;">[820 x 312 px]</div>
+            <div style="position:absolute; top:10px; left:14px;">
+              <div style="font-family:var(--police-titres); font-size:0.7rem; color:#fff; opacity:0.85;">[Accroche ou visuel de couverture]</div>
+            </div>
+            <div class="fb-avatar">B</div>
+          </div>
+          <div class="fb-cover-body">
+            <div class="fb-page-name">{{marque.nom}}</div>
+            <div class="fb-page-category">[Categorie de la page — ex. : Studio de creation]</div>
+            <div class="fb-stats">
+              <div class="fb-stat"><strong>[X K]</strong>J'aime</div>
+              <div class="fb-stat"><strong>[X K]</strong>Abonnes</div>
+            </div>
+          </div>
+        </div>
+        <div class="mockup-flat-label" title="Dimensions : 820x312px (desktop) / 640x360px (mobile). La photo de profil (170x170px) recouvre le coin gauche de la couverture. Eviter de placer du texte important dans la zone couverte par l&#39;avatar.">Page Facebook — Couverture 820 x 312 px</div>
+      </div>
+
+      <!-- Banniere LinkedIn -->
+      <div class="mockup-flat">
+        <div class="li-banner-shell">
+          <div style="position:relative;">
+            <div class="li-banner-img">
+              <div class="li-banner-watermark">{{marque.nom}}</div>
+              <!-- [Remplacer le degrade par la banniere LinkedIn] -->
+              <div style="position:absolute; bottom:4px; left:14px; font-size:0.4rem; color:rgba(255,255,255,0.4); font-style:italic;">[1584 x 396 px]</div>
+            </div>
+            <div class="li-avatar">B</div>
+          </div>
+          <div class="li-body">
+            <div class="li-name">{{marque.nom}}</div>
+            <!-- [Remplacer par le titre LinkedIn du profil / page] -->
+            <div class="li-headline">[Titre professionnel — ex. : Studio creatif | Community Manager]</div>
+          </div>
+        </div>
+        <div class="mockup-flat-label" title="Dimensions : 1584x396px — ratio 4:1. La photo de profil (400x400px) se superpose en bas a gauche. La banniere est visible sur desktop et tronquee sur mobile : centrer le message.">Profil LinkedIn — Banniere 1584 x 396 px</div>
+      </div>
+
+    </div>
+  </div>

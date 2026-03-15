@@ -1,0 +1,46 @@
+  <div id="print-carte" class="figma-page"
+    data-side="right"
+    data-icon="🖨"
+    data-title="La carte de visite"
+    data-tip="Pour l'impression : utiliser les valeurs CMJN, pas HEX. Prevoir un fond perdu de 3mm."
+    data-badges="opt:Optionnel"
+    title="Format standard ISO : 85x55mm. Recto en couleur de marque avec logo et nom, verso blanc avec coordonnees completes. Le logo doit apparaitre dans sa version compacte ou icone seule.">
+    <span class="page-num">Page 12</span>
+    <div class="print-section-header"><span class="print-section-header-name">10 — Print carte</span><span class="print-section-header-brand">{{marque.nom}} — Charte graphique</span></div>
+    <div class="label">10 — Print</div>
+    <h2 class="title">Print carte de visite a l'echelle 1</h2>
+    <p class="desc">Carte de visite avec ratio exact 85/55, presentee en dimensions 85px x 55px pour un controle strict.</p>
+    <hr>
+
+    <h3 class="subsection-title">Carte de visite</h3>
+    <div class="mockup-flat-row">
+
+      <div class="mockup-flat">
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <div class="card-mockup recto">
+            <div class="card-logo-row">
+              <div class="card-logo-icon white-icon">B</div>
+              <span class="card-brand-name">{{marque.nom}}</span>
+            </div>
+            <div>
+              <div class="card-name">[Prenom Nom]</div>
+              <div class="card-role">[Poste — Community Manager]</div>
+            </div>
+          </div>
+          <div class="card-mockup verso">
+            <div style="display:flex; flex-direction:column; gap:4px;">
+              <div class="card-contact">[email@domaine.com]</div>
+              <div class="card-contact">[+33 6 XX XX XX XX]</div>
+              <div class="card-contact">[www.bloom-studio.fr]</div>
+            </div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <div class="card-logo-icon brand-icon">B</div>
+              <span style="font-family:var(--police-titres); font-size:0.75rem; color:var(--palette-texte);">{{marque.nom}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="mockup-flat-label">Carte de visite — ratio 85/55</div>
+      </div>
+
+    </div>
+  </div>

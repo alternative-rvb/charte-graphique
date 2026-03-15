@@ -1,0 +1,53 @@
+  <div id="demo-section" class="figma-page"
+    data-side="right"
+    data-icon="🧩"
+    data-title="Structure d'un fragment"
+    data-tip="Chaque page du document est un fragment HTML independant dans documents/[slug]/."
+    data-badges="ok:Indispensable,opt:Personnalisable"
+    title="Un fragment est une page autonome. Il peut contenir du texte, des swatches, des maquettes, des tableaux... Tout ce qui est visible ici est genere depuis config.js et les marqueurs {{section.cle}}.">
+    <span class="page-num">Page 2</span>
+    <div class="print-section-header"><span class="print-section-header-name">01 — Demo</span><span class="print-section-header-brand">{{marque.nom}}</span></div>
+    <div class="label">01 — Demo</div>
+    <h2 class="title">Votre document, votre marque</h2>
+    <p class="desc">Ce document est genere automatiquement depuis <code>config.js</code>. Les valeurs ci-dessous viennent de votre configuration.</p>
+    <hr>
+
+    <div class="colors-row" style="margin-bottom:24px;">
+      <div class="swatch">
+        <div class="swatch-fill" style="background:{{palette.principale}};"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">{{palette.principaleNom}}</div>
+          <div class="swatch-hex">{{palette.principale}}</div>
+          <div class="swatch-use">Couleur principale</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-fill" style="background:{{palette.secondaire}};"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">{{palette.secondaireNom}}</div>
+          <div class="swatch-hex">{{palette.secondaire}}</div>
+          <div class="swatch-use">Couleur secondaire</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-fill" style="background:{{palette.accent}};"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">{{palette.accentNom}}</div>
+          <div class="swatch-hex">{{palette.accent}}</div>
+          <div class="swatch-use">Accent</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="subsection-title">Typographie</h3>
+    <div class="typo-grid">
+      <div class="typo-card">
+        <div class="label">Titres</div>
+        <div class="typo-sample-serif">{{polices.titresNom}}</div>
+      </div>
+      <div class="typo-card">
+        <div class="label">Corps</div>
+        <div class="typo-sample-sans">{{polices.corpsNom}}</div>
+      </div>
+    </div>
+  </div>

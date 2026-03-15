@@ -1,0 +1,515 @@
+/* =====================
+   LAYOUT 3 COLONNES
+   sidebar fixe | contenu 842px | aside popup fixe
+===================== */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+
+body {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  --dot-color: #D1D5DB;
+  --dot-size: 1.5px;
+  --dot-space: 24px;
+  background-color: #F3F4F6;
+  background-image: radial-gradient(circle, var(--dot-color) var(--dot-size), transparent var(--dot-size));
+  background-size: var(--dot-space) var(--dot-space);
+}
+
+/* Barre de progression scroll */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  background: var(--doc-principale, #5C4EFA);
+  z-index: 9999;
+  width: 0%;
+  transition: width 0.1s linear;
+  pointer-events: none;
+}
+
+/* Contenu central */
+.didacto-content {
+  margin-left: 300px;
+  margin-right: 300px;
+  padding: 40px 0 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.didacto-content .page,
+.didacto-hero,
+.didacto-cta {
+  flex-shrink: 0;
+}
+
+/* =====================
+   SIDEBAR
+===================== */
+.didacto-nav {
+  position: fixed;
+  top: 0; left: 0;
+  width: 300px;
+  height: 100vh;
+  background: #fff;
+  border-right: 1px solid #E5E7EB;
+  overflow-y: auto;
+  z-index: 100;
+  padding: 20px 0 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 20px 16px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9CA3AF;
+}
+
+/* Selecteur de document */
+.nav-doc-switcher {
+  padding: 0 14px 12px;
+  border-bottom: 1px solid #F3F4F6;
+  margin-bottom: 8px;
+}
+
+.nav-doc-select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #E5E7EB;
+  border-radius: 10px;
+  background: #F9F8FF;
+  color: var(--doc-principale, #5C4EFA);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding-right: 12px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.nav-doc-select:focus {
+  outline: none;
+  border-color: var(--doc-principale, #5C4EFA);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--doc-principale, #5C4EFA) 15%, transparent);
+}
+
+.nav-doc-label {
+  display: block;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #9CA3AF;
+  margin-bottom: 6px;
+  padding: 0 2px;
+}
+
+.nav-logo-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--doc-principale, #5C4EFA);
+  flex-shrink: 0;
+}
+
+.nav-item {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 8px 20px;
+  text-decoration: none;
+  color: #6B7280;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  transition: background 0.15s, color 0.15s;
+  border-left: 3px solid transparent;
+}
+
+.nav-item:hover {
+  background: #F9F8FF;
+  color: var(--doc-principale, #5C4EFA);
+}
+
+.nav-item.active {
+  background: #F5F3FF;
+  color: var(--doc-principale, #5C4EFA);
+  border-left-color: var(--doc-principale, #5C4EFA);
+  font-weight: 600;
+}
+
+.nav-num {
+  font-size: 0.65rem;
+  color: #D1D5DB;
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+  transition: color 0.15s;
+}
+
+.nav-item.active .nav-num { color: #A78BFA; }
+
+.nav-name { flex: 1; }
+
+/* =====================
+   ASIDE POPUP FIXE
+===================== */
+.didacto-aside {
+  position: fixed;
+  top: 0; right: 0;
+  width: 300px;
+  height: 100vh;
+  padding: 20px 0 40px;
+  overflow-y: auto;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+}
+
+.didacto-aside-inner {
+  width: calc(100% - 32px);
+  margin: 0 16px;
+  background: #fff;
+  border: 1px solid #E5E7EB;
+  border-left: 4px solid var(--doc-principale, #5C4EFA);
+  border-radius: 16px;
+  padding: 24px 26px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  opacity: 0;
+  transform: translateX(32px);
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.didacto-aside-inner.slide-out {
+  opacity: 0;
+  transform: translateX(32px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.didacto-aside-inner.slide-in {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* =====================
+   CONTENU DES POPUPS
+===================== */
+.pop-icon {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+  display: block;
+}
+.pop-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #111118;
+  margin-bottom: 10px;
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.3;
+}
+.pop-body {
+  font-size: 0.9rem;
+  color: #6B7280;
+  line-height: 1.7;
+  font-family: 'DM Sans', sans-serif;
+}
+.pop-body strong { color: #111118; }
+
+.pop-tip {
+  margin-top: 14px;
+  padding: 10px 14px;
+  background: #F5F3FF;
+  border-left: 3px solid var(--doc-principale, #5C4EFA);
+  border-radius: 0 8px 8px 0;
+  font-size: 0.85rem;
+  color: var(--doc-principale, #5C4EFA);
+  line-height: 1.6;
+  font-family: 'DM Sans', sans-serif;
+}
+.pop-warn {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: #FFFBEB;
+  border-left: 3px solid #F59E0B;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.85rem;
+  color: #92400E;
+  line-height: 1.6;
+  font-family: 'DM Sans', sans-serif;
+}
+.pop-badges {
+  display: flex;
+  gap: 5px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+/* =====================
+   BADGES
+===================== */
+.badge-ok {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #E8F5E9;
+  color: #2E7D32;
+  border: 1px solid #A5D6A7;
+  font-family: 'DM Sans', sans-serif;
+  white-space: nowrap;
+}
+.badge-opt {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #F5F5F5;
+  color: #616161;
+  border: 1px solid #E0E0E0;
+  font-family: 'DM Sans', sans-serif;
+  white-space: nowrap;
+}
+.badge-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 999px;
+  vertical-align: middle;
+  margin-left: 6px;
+  font-family: 'DM Sans', sans-serif;
+  pointer-events: none;
+}
+.badge-inline.ok  { background: #E8F5E9; color: #2E7D32; border: 1px solid #A5D6A7; }
+.badge-inline.opt { background: #F5F5F5; color: #616161; border: 1px solid #E0E0E0; }
+
+/* =====================
+   LOADER
+===================== */
+#loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 16px;
+  font-family: 'DM Sans', sans-serif;
+  color: #6B7280;
+  font-size: 0.9rem;
+}
+.loading-spinner {
+  width: 36px; height: 36px;
+  border: 3px solid #E5E7EB;
+  border-top-color: var(--doc-principale, #5C4EFA);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* =====================
+   HERO DIDACTIQUE
+===================== */
+.didacto-hero {
+  width: 842px;
+  margin: 0 auto 48px;
+  padding: 56px 56px 48px;
+  /* 60% — grande surface de fond */
+  background: var(--doc-principale, #5C4EFA);
+  border-radius: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: #fff;
+}
+/* 30% — label, description, tag : couleur secondaire */
+.didacto-hero .hero-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--doc-secondaire, #FF6B6B);
+  opacity: 0.9;
+}
+.didacto-hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.6rem;
+  line-height: 1.15;
+  margin: 0;
+  color: #fff;
+}
+.didacto-hero .hero-desc {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.75);
+  max-width: 520px;
+  line-height: 1.6;
+  margin: 0;
+  border-left: 3px solid var(--doc-secondaire, #FF6B6B);
+  padding-left: 14px;
+}
+.didacto-hero .hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid var(--doc-secondaire, #FF6B6B);
+  border-radius: 999px;
+  padding: 4px 12px;
+  color: var(--doc-secondaire, #FF6B6B);
+  width: fit-content;
+  margin-top: 4px;
+}
+
+/* 10% — bouton CTA principal en accent */
+.didacto-hero .btn-figma:first-of-type {
+  background: var(--doc-accent, #FFD93D);
+  color: var(--doc-sur-accent, #111118);
+  font-weight: 700;
+}
+
+/* =====================
+   FOOTER PORTFOLIO
+===================== */
+.didacto-footer {
+  width: 842px;
+  margin: 24px auto 0;
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 0.75rem;
+  color: #9CA3AF;
+  font-family: 'DM Sans', sans-serif;
+  border-top: 1px solid #E5E7EB;
+}
+
+.didacto-footer a {
+  display: flex;
+  align-items: center;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.didacto-footer a:hover { opacity: 1; }
+
+#backToTop {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--doc-principale, #5C4EFA);
+  color: var(--doc-sur-principale, #fff);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s, transform 0.25s;
+  z-index: 200;
+}
+#backToTop::after {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-top: 2.5px solid var(--doc-sur-principale, #fff);
+  border-right: 2.5px solid var(--doc-sur-principale, #fff);
+  transform: rotate(-45deg) translate(1px, 2px);
+}
+#backToTop.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+#backToTop:hover { transform: translateY(-3px); }
+
+/* =====================
+   CTA FINAL
+===================== */
+.didacto-cta {
+  width: 842px;
+  margin: 48px auto 0;
+  padding: 56px;
+  background: #F9F8FF;
+  border: 2px solid color-mix(in srgb, var(--doc-principale, #5C4EFA) 12%, #fff);
+  border-radius: 20px;
+  box-sizing: border-box;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.didacto-cta .cta-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #9CA3AF;
+}
+.didacto-cta h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.8rem;
+  color: #111118;
+  margin: 0;
+}
+.didacto-cta p {
+  font-size: 0.875rem;
+  color: #6B7280;
+  max-width: 420px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* =====================
+   BOUTON FIGMA
+===================== */
+.btn-figma {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  color: var(--doc-principale, #5C4EFA);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+  border: none;
+}
+.btn-figma:hover { opacity: 0.85; }
+.didacto-cta .btn-figma {
+  background: var(--doc-principale, #5C4EFA);
+  color: var(--doc-sur-principale, #fff);
+  margin-top: 4px;
+}

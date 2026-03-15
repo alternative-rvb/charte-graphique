@@ -1,0 +1,45 @@
+  <div id="typo" class="figma-page"
+    data-side="right"
+    data-icon="✍️"
+    data-title="Maximum 2 polices"
+    data-tip="Verifier la disponibilite gratuite sur Google Fonts. {{polices.titresNom}} + {{polices.corpsNom}} sont une paire tres efficace."
+    data-warn="Taille minimale : 14px pour le web, 11pt pour l'impression."
+    data-badges="ok:Indispensable"
+    title="Une police serif pour les titres (elegance, personnalite) et une sans-serif pour les corps de texte (lisibilite, neutralite). Jamais plus de 2 polices dans une meme identite visuelle.">
+    <span class="page-num">Page 4</span>
+    <div class="print-section-header"><span class="print-section-header-name">02 — Typographie</span><span class="print-section-header-brand">{{marque.nom}} — Charte graphique</span></div>
+    <div class="label">02 — Typographie</div>
+    <h2 class="title" title="Limiter a 2 polices maximum par identite visuelle. Une pour les titres (serif ou display), une pour le corps (sans-serif). Verifier la disponibilite gratuite sur Google Fonts.">
+      Polices de la marque
+    </h2>
+    <p class="desc">Deux polices complementaires pour les titres et le corps de texte.</p>
+    <hr>
+
+    <div class="typo-grid">
+
+      <div class="typo-card" title="Une police serif transmet elegance et autorite. Reservee aux titres et accroches : H1, H2, citations grandes. Ne jamais l&#39;utiliser en corps de texte long : fatigue la lecture.">
+        <div class="label">Titres</div>
+        <div class="typo-sample-serif">{{polices.titresNom}}</div>
+        <!-- [Remplacer par la police titres choisie] -->
+        <div style="font-size:0.75rem; color:var(--ui-gris);">Elegant, serif, pour les accroches et H1/H2</div>
+        <div class="typo-sizes">
+          <div class="typo-row"><span class="typo-taille">H1 / 48px</span><span style="font-family:var(--police-titres); font-size:1.6rem;">Titre principal</span></div>
+          <div class="typo-row"><span class="typo-taille">H2 / 32px</span><span style="font-family:var(--police-titres); font-size:1.2rem;">Sous-titre</span></div>
+          <div class="typo-row"><span class="typo-taille">H3 / 24px</span><span style="font-family:var(--police-titres); font-size:1rem;">Section</span></div>
+        </div>
+      </div>
+
+      <div class="typo-card" title="Une police sans-serif assure la lisibilite sur ecran. Taille minimale recommandee : 14px pour le web, 11pt pour le print. Interligne ideal : 1.5 a 1.6 pour un texte courant.">
+        <div class="label">Corps de texte</div>
+        <div class="typo-sample-sans">{{polices.corpsNom}}</div>
+        <!-- [Remplacer par la police corps choisie] -->
+        <div style="font-size:0.75rem; color:var(--ui-gris);">Moderne, lisible, pour les paragraphes et UI</div>
+        <div class="typo-sizes">
+          <div class="typo-row"><span class="typo-taille">Body / 16px</span><span style="font-size:0.875rem;">Texte courant</span></div>
+          <div class="typo-row"><span class="typo-taille">Small / 14px</span><span style="font-size:0.8rem; color:var(--ui-gris);">Legendes, metadata</span></div>
+          <div class="typo-row"><span class="typo-taille">Label / 11px</span><span style="font-size:0.7rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--palette-principale);">TAGS, LABELS</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>

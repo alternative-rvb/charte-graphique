@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Charte Graphique — Version Didactique</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/css/didactic.css">
+<link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+<button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Retour en haut"></button>
+
+<!-- Sidebar de navigation -->
+<nav class="didacto-nav" id="didactoNav"></nav>
+
+<!-- Zone popup fixe droite -->
+<aside class="didacto-aside" id="didactoAside">
+  <div class="didacto-aside-inner" id="didactoAsideInner"></div>
+</aside>
+
+<div id="loading">
+  <div class="loading-spinner"></div>
+  Chargement de la charte graphique...
+</div>
+
+<!-- Contenu injecte -->
+<div class="didacto-content" id="app" style="display:none;"></div>
+
+<script>
+const INLINE_BADGES = [
+  { pageId: 'logo', selector: '.logo-variant-name', match: 'Version complete',    type: 'opt', label: 'Optionnel' },
+  { pageId: 'logo', selector: '.logo-variant-name', match: 'Version compacte',    type: 'ok',  label: 'Indispensable' },
+  { pageId: 'logo', selector: '.logo-variant-name', match: 'Version fond sombre', type: 'ok',  label: 'Indispensable' },
+  { pageId: 'logo', selector: '.logo-variant-name', match: 'Icone seule',         type: 'ok',  label: 'Indispensable' },
+];
+
+// =====================
+// POPUP depuis data- attributes
+// =====================
+function buildPopupHTML(page) {
+  const ds = page.dataset;
+  const body = page.title;
+  if (!ds.icon && !body) return null;
+
+  let html = '';
+  if (ds.icon)  html += `<span class="pop-icon">${ds.icon}</span>`;
+  if (ds.title) html += `<div class="pop-title">${ds.title}</div>`;
+  html += `<div class="pop-body">${body || ''}`;
+  if (ds.tip)   html += `<div class="pop-tip">${ds.tip}</div>`;
+  if (ds.warn)  html += `<div class="pop-warn">${ds.warn}</div>`;
+  html += `</div>`;
+  if (ds.badges) {
+    const badges = ds.badges.split(',');
+    html += `<div class="pop-badges">`;
+    badges.forEach(b => {
+      const [type, ...rest] = b.split(':');
+      const label = rest.join(':');
+      html += `<span class="badge-${type === 'ok' ? 'ok' : 'opt'}">${type === 'ok' ? '+ ' : ''}${label}</span>`;
+    });
+    html += `</div>`;
+  }
+  return html;
+}
+
+// =====================
+// BADGES INLINE
+// =====================
+function injectInlineBadges(app) {
+  INLINE_BADGES.forEach(({ pageId, selector, match, type, label }) => {
+    const page = pageId === 'cover'
+      ? app.querySelector('.cover.figma-page')
+      : app.querySelector(`#${pageId}`);
+    if (!page) return;
+    page.querySelectorAll(selector).forEach(el => {
+      if (el.textContent.trim().startsWith(match) && !el.querySelector('.badge-inline')) {
+        const badge = document.createElement('span');
+        badge.className = `badge-inline ${type}`;
+        badge.textContent = label;
+        el.appendChild(badge);
+      }
+    });
+  });
+}
+
+// =====================
+// SIDEBAR : construit depuis les pages injectees
+// =====================
+function buildNav(pages, docIndex, currentSlug) {
+  const nav = document.getElementById('didactoNav');
+
+  // En-tete + selecteur de document
+  let switcherHTML = '';
+  if (docIndex && docIndex.length > 1) {
+    const options = docIndex.map(d =>
+      `<option value="${d.slug}" ${d.slug === currentSlug ? 'selected' : ''}>${d.title}</option>`
+    ).join('');
+    switcherHTML = `
+      <div class="nav-doc-switcher">
+        <span class="nav-doc-label">Document</span>
+        <select class="nav-doc-select" id="docSelect">${options}</select>
+      </div>`;
+  }
+
+  nav.innerHTML = `<div class="nav-logo">
+    <span class="nav-logo-dot"></span>
+    <span>Guide</span>
+  </div>${switcherHTML}`;
+
+  pages.forEach((page, i) => {
+    const id   = page.id || 'cover';
+    const num  = String(i + 1).padStart(2, '0');
+    const raw  = page.querySelector('.label')?.textContent?.trim() || id.replace(/-/g, ' ');
+    const name = raw.replace(/^\d+\s*[—-]\s*/, '');
+
+    const a = document.createElement('a');
+    a.className  = 'nav-item';
+    a.href       = `#${id}`;
+    a.dataset.id = id;
+    a.innerHTML  = `<span class="nav-num">${num}</span><span class="nav-name">${name}</span>`;
+    nav.appendChild(a);
+  });
+
+  // Listener changement de document
+  const sel = document.getElementById('docSelect');
+  if (sel) {
+    sel.addEventListener('change', () => {
+      const doc = docIndex.find(d => d.slug === sel.value);
+      if (doc) loadDocument(doc.file, doc.slug, doc);
+    });
+  }
+}
+
+// =====================
+// ASIDE : affiche la popup de la section active
+// =====================
+function initScrollObserver(pages) {
+  const aside  = document.getElementById('didactoAsideInner');
+  const navItems = document.querySelectorAll('.nav-item');
+
+  // Stocker le HTML des popups par id
+  const popupMap = {};
+  pages.forEach(page => {
+    const id  = page.id || 'cover';
+    const html = buildPopupHTML(page);
+    if (html) popupMap[id] = html;
+  });
+
+  let activeId = null;
+
+  let switchTimer = null;
+
+  function setActive(id) {
+    if (id === activeId) return;
+    activeId = id;
+    navItems.forEach(a => a.classList.toggle('active', a.dataset.id === id));
+
+    clearTimeout(switchTimer);
+    aside.classList.remove('slide-in');
+    aside.classList.add('slide-out');
+
+    switchTimer = setTimeout(() => {
+      aside.classList.remove('slide-out');
+      if (popupMap[id]) {
+        aside.innerHTML = popupMap[id];
+        void aside.offsetWidth;
+        aside.classList.add('slide-in');
+      } else {
+        aside.innerHTML = '';
+      }
+    }, 180);
+  }
+
+  // Scrollspy : page dont le bord haut est le plus proche du tiers superieur du viewport
+  function onScroll() {
+    const trigger = window.scrollY + window.innerHeight * 0.33;
+    let best = pages[0];
+    for (const page of pages) {
+      if (page.offsetTop <= trigger) best = page;
+      else break;
+    }
+    setActive(best.id || 'cover');
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  return () => window.removeEventListener('scroll', onScroll);
+}
+
+// =====================
+// CONTRASTE AUTOMATIQUE
+// =====================
+function luminance(hex) {
+  const c = hex.replace('#', '');
+  const r = parseInt(c.slice(0, 2), 16) / 255;
+  const g = parseInt(c.slice(2, 4), 16) / 255;
+  const b = parseInt(c.slice(4, 6), 16) / 255;
+  const toLinear = x => x <= 0.03928 ? x / 12.92 : Math.pow((x + 0.055) / 1.055, 2.4);
+  return 0.2126 * toLinear(r) + 0.7152 * toLinear(g) + 0.0722 * toLinear(b);
+}
+
+// =====================
+// FETCH + INJECT un document
+// =====================
+let _docStylesInjected = false;
+let _scrollObserverCleanup = null;
+
+async function loadDocument(docFile, docSlug, docIndex) {
+  const app     = document.getElementById('app');
+  const loading = document.getElementById('loading');
+
+  // Reset
+  app.style.display = 'none';
+  app.innerHTML = '';
+  loading.style.display = 'flex';
+  loading.innerHTML = '<div class="loading-spinner"></div> Chargement...';
+
+  if (_scrollObserverCleanup) { _scrollObserverCleanup(); _scrollObserverCleanup = null; }
+
+  try {
+    const res    = await fetch(docFile);
+    const html   = await res.text();
+    const parser = new DOMParser();
+    const srcDoc = parser.parseFromString(html, 'text/html');
+
+    // Injecte les styles du document source une seule fois
+    if (!_docStylesInjected) {
+      srcDoc.querySelectorAll('style').forEach(s => {
+        const clone = document.createElement('style');
+        clone.textContent = s.textContent;
+        document.head.appendChild(clone);
+      });
+      // Neutralise les regles body de shared.css qui cassent le layout didactique
+      const bodyOverride = document.createElement('style');
+      bodyOverride.textContent = 'body { min-width: unset !important; padding: 0 !important; background-color: #F3F4F6 !important; background-image: radial-gradient(circle, #D1D5DB 1.5px, transparent 1.5px) !important; background-size: 24px 24px !important; background-attachment: fixed !important; }';
+      document.head.appendChild(bodyOverride);
+      srcDoc.querySelectorAll('link[rel="stylesheet"]').forEach(l => {
+        if (!document.querySelector(`link[href="${l.href}"]`)) {
+          document.head.appendChild(l.cloneNode());
+        }
+      });
+      _docStylesInjected = true;
+    }
+
+    // Correction des chemins relatifs pour le contexte de la didactique
+    srcDoc.querySelectorAll('img[src^="../assets/"]').forEach(img => {
+      img.src = img.getAttribute('src').replace('../assets/', './assets/');
+    });
+    srcDoc.querySelectorAll('img[src^="../documents/"]').forEach(img => {
+      img.src = img.getAttribute('src').replace('../documents/', './documents/');
+    });
+
+    Array.from(srcDoc.body.childNodes).forEach(node => app.appendChild(node.cloneNode(true)));
+
+    // Bouton cover -> version document
+    const coverBtn = app.querySelector('.cover .btn');
+    if (coverBtn) {
+      coverBtn.outerHTML = `<a class="btn" href="${docFile}">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        Version Figma
+      </a>`;
+    }
+
+    // Supprime le cta-block
+    app.querySelector('.cta-block')?.remove();
+
+    // Badges inline
+    injectInlineBadges(app);
+
+    // Injection de la palette du document dans les variables CSS didactiques
+    const p = docIndex && docIndex.palette;
+    if (p) {
+      let paletteStyle = document.getElementById('didacto-palette');
+      if (!paletteStyle) {
+        paletteStyle = document.createElement('style');
+        paletteStyle.id = 'didacto-palette';
+        document.head.appendChild(paletteStyle);
+      }
+      paletteStyle.textContent = `:root {
+        --doc-principale:   ${p.principale};
+        --doc-secondaire:   ${p.secondaire};
+        --doc-accent:       ${p.accent};
+        --doc-texte:        ${p.texte};
+        --doc-fond:         ${p.fond};
+        --palette-principale: ${p.principale};
+        --palette-secondaire: ${p.secondaire};
+        --palette-accent:     ${p.accent};
+        --palette-texte:      ${p.texte};
+        --palette-fond:       ${p.fond};
+        --doc-sur-principale: ${luminance(p.principale) > 0.35 ? '#111118' : '#ffffff'};
+        --doc-sur-secondaire: ${luminance(p.secondaire) > 0.35 ? '#111118' : '#ffffff'};
+        --doc-sur-accent:     ${luminance(p.accent)     > 0.35 ? '#111118' : '#ffffff'};
+      }`;
+    }
+
+    // Hero didactique
+    const hero = document.createElement('div');
+    hero.className = 'didacto-hero';
+    const figmaUrl = docIndex && docIndex.meta && docIndex.meta.figmaUrl;
+    const docTitle = docIndex ? docIndex.title.toLowerCase() : 'le document';
+    hero.innerHTML = `
+      <a href="https://www.alternative-rvb.com" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:8px; text-decoration:none; color:rgba(255,255,255,0.6); font-size:0.72rem; font-weight:600; width:fit-content;">
+        <img src="https://www.alternative-rvb.com/images/logo.svg" alt="Alternative RVB" height="22" style="border-radius:50%;">
+        Alternative RVB
+      </a>
+      <span class="hero-label">Guide pedagogique</span>
+      <h1>Comprendre<br>${docTitle}</h1>
+      <p class="hero-desc">Chaque section est annotee : conseils, erreurs frequentes et distinctions entre les elements indispensables et optionnels.</p>
+      <span class="hero-tag">Version didactique — scroll pour decouvrir</span>
+      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">
+        <a class="btn-figma" href="${docFile}">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+          Voir la charte
+        </a>
+        ${figmaUrl ? `<a class="btn-figma" href="${figmaUrl}" target="_blank" rel="noopener" style="background:rgba(255,255,255,0.15); color:#fff;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          Personnaliser dans Figma
+        </a>` : ''}
+      </div>
+    `;
+    app.insertBefore(hero, app.firstChild);
+
+    // CTA final
+    const cta = document.createElement('div');
+    cta.className = 'didacto-cta';
+    cta.innerHTML = `
+      <span class="cta-label">Pret a personnaliser ?</span>
+      <h2>Adaptez la charte a votre marque</h2>
+      <p>Dupliquez la maquette Figma et remplacez les couleurs, polices et logo par ceux de votre marque.</p>
+      <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:4px;">
+        <a class="btn-figma" href="${docFile}">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+          Voir la charte
+        </a>
+        ${figmaUrl ? `<a class="btn-figma" href="${figmaUrl}" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          Personnaliser dans Figma
+        </a>` : ''}
+      </div>
+    `;
+    app.appendChild(cta);
+
+    // Footer portfolio
+    const footer = document.createElement('div');
+    footer.className = 'didacto-footer';
+    footer.innerHTML = `
+      <span>Ressource pedagogique par</span>
+      <a href="https://www.alternative-rvb.com" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:8px; text-decoration:none; color:#6B7280;">
+        <img src="https://www.alternative-rvb.com/images/logo.svg" alt="Alternative RVB" height="24" style="border-radius:50%;">
+        Alternative RVB
+      </a>
+    `;
+    app.appendChild(footer);
+
+    // Sidebar + aside
+    const pages = Array.from(app.querySelectorAll('.figma-page'));
+    buildNav(pages, _allDocs, docSlug);
+    const cleanup = initScrollObserver(pages);
+    _scrollObserverCleanup = cleanup;
+
+    // Scroll en haut
+    window.scrollTo(0, 0);
+
+    // Affichage
+    loading.style.display = 'none';
+    app.style.display = '';
+
+  } catch (err) {
+    loading.innerHTML = `
+      <div style="color:#DC2626; font-family:'DM Sans',sans-serif; text-align:center;">
+        <div style="font-size:1.5rem; margin-bottom:8px;">!</div>
+        <div style="font-weight:700; margin-bottom:4px;">Chargement impossible</div>
+        <div style="font-size:0.8rem; color:#6B7280;">Verifier que le fichier est servi via un serveur local (Live Server, Vercel...).</div>
+        <div style="font-size:0.7rem; color:#9CA3AF; margin-top:8px; font-family:monospace;">${err.message}</div>
+      </div>`;
+  }
+}
+
+// =====================
+// INIT
+// =====================
+let _allDocs = null;
+
+async function init() {
+  // Tente de charger l'index des documents
+  try {
+    const res = await fetch('./dist/index.json');
+    if (res.ok) _allDocs = await res.json();
+  } catch (_) { /* index absent, mode simple */ }
+
+  // Document par defaut : ?doc= param > premier de l'index > charte-graphique
+  const paramSlug = new URLSearchParams(window.location.search).get('doc');
+  const defaultDoc = (_allDocs && paramSlug && _allDocs.find(d => d.slug === paramSlug))
+    || _allDocs?.[0]
+    || { slug: 'charte-graphique', title: 'Charte graphique', file: './dist/charte-graphique.html' };
+  await loadDocument(defaultDoc.file, defaultDoc.slug, defaultDoc);
+  initScrollProgress();
+}
+
+// =====================
+// BARRE DE PROGRESSION
+// =====================
+function initScrollProgress() {
+  const bar = document.getElementById('scrollProgress');
+  const btn = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    const pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+    bar.style.width = Math.min(pct, 100) + '%';
+    btn.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+}
+
+init();
+</script>
+</body>
+</html>

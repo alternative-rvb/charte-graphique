@@ -1,0 +1,76 @@
+  <div id="couleurs" class="figma-page"
+    data-side="left"
+    data-icon="🎨"
+    data-title="La regle des 60-30-10"
+    data-tip="Toujours noter le code HEX pour le digital et CMJN pour l'impression."
+    data-warn="Erreur frequente : utiliser trop de couleurs. 3 a 5 couleurs maximum par palette."
+    data-badges="ok:Indispensable"
+    title="60% couleur principale, 30% secondaire, 10% accent. Cette proportion garantit une harmonie visuelle sur tous les supports et renforce la reconnaissance de marque.">
+    <span class="page-num">Page 3</span>
+    <div class="print-section-header"><span class="print-section-header-name">01 — Couleurs</span><span class="print-section-header-brand">{{marque.nom}} — Charte graphique</span></div>
+    <div class="label">01 — Couleurs</div>
+    <h2 class="title" title="Une palette se limite generalement a 3-5 couleurs. 1 couleur principale, 1-2 secondaires, 1-2 neutres. Toujours noter le code HEX pour la coherence digitale.">
+      Palette principale
+    </h2>
+    <p class="desc">Les 5 couleurs qui composent l'identite visuelle de la marque.</p>
+    <hr>
+
+    <div class="colors-row">
+
+      <div class="swatch" title="Regle 60-30-10 : la couleur principale occupe 60% de l&#39;espace visuel. Utiliser pour : boutons, liens, elements d&#39;action. Format HEX pour le digital, CMJN pour l&#39;impression.">
+        <!-- [Couleur principale] -->
+        <div class="swatch-fill" style="background:{{palette.principale}};"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">{{palette.principaleNom}}</div>
+          <div class="swatch-hex">{{palette.principale}}</div>
+          <div class="swatch-alt">RGB 92, 78, 250<br>HSL 245, 94%, 64%<br>CMJN 63, 69, 0, 2</div>
+          <div class="swatch-use">Couleur principale — boutons, accents</div>
+        </div>
+      </div>
+
+      <div class="swatch" title="La couleur secondaire represente 30% de l&#39;espace visuel. Utiliser avec parcimonie pour creer du contraste et de l&#39;energie. Eviter de l&#39;utiliser autant que la couleur principale.">
+        <!-- [Couleur secondaire] -->
+        <div class="swatch-fill" style="background:{{palette.secondaire}};"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">{{palette.secondaireNom}}</div>
+          <div class="swatch-hex">{{palette.secondaire}}</div>
+          <div class="swatch-alt">RGB 255, 107, 107<br>HSL 0, 100%, 71%<br>CMJN 0, 58, 58, 0</div>
+          <div class="swatch-use">Secondaire — alertes, energie</div>
+        </div>
+      </div>
+
+      <div class="swatch" title="L&#39;accent (10%) sert uniquement a attirer l&#39;attention sur un element cle. Ideal pour : badges, highlights, call-to-action secondaires. Trop d&#39;accent = plus d&#39;accent.">
+        <!-- [Couleur accent] -->
+        <div class="swatch-fill" style="background:{{palette.accent}};"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">{{palette.accentNom}}</div>
+          <div class="swatch-hex">{{palette.accent}}</div>
+          <div class="swatch-alt">RGB 255, 217, 61<br>HSL 48, 100%, 62%<br>CMJN 0, 15, 76, 0</div>
+          <div class="swatch-use">Accent — mise en avant, CTA</div>
+        </div>
+      </div>
+
+      <div class="swatch" title="La couleur neutre sombre sert pour le texte et les contrastes. Contraste WCAG AA : verifier que le ratio est superieur a 4.5:1 sur fond clair. Ne pas utiliser le noir pur #000 : trop agressif visuellement.">
+        <!-- [Couleur neutre] -->
+        <div class="swatch-fill" style="background:{{palette.texte}};"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">{{palette.texteNom}}</div>
+          <div class="swatch-hex">{{palette.texte}}</div>
+          <div class="swatch-alt">RGB 17, 17, 24<br>HSL 240, 17%, 8%<br>CMJN 29, 29, 0, 91</div>
+          <div class="swatch-use">Texte, fonds sombres</div>
+        </div>
+      </div>
+
+      <div class="swatch" title="La couleur de fond structure la lecture sans agresser l&#39;oeil. Un blanc casse (#F9F9FB) est plus doux que le blanc pur (#FFF). Utiliser aussi en negatif : texte blanc sur fond colore.">
+        <!-- [Blanc / fond] -->
+        <div class="swatch-fill" style="background:{{palette.fond}}; border-bottom:1px solid #E5E7EB;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">{{palette.fondNom}}</div>
+          <div class="swatch-hex">{{palette.fond}}</div>
+          <div class="swatch-alt">RGB 249, 249, 251<br>HSL 240, 20%, 98%<br>CMJN 1, 1, 0, 2</div>
+          <div class="swatch-use">Fond de page</div>
+        </div>
+      </div>
+
+    </div>
+  </div>

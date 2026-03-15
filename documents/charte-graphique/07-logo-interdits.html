@@ -1,0 +1,87 @@
+  <div id="logo-interdits" class="figma-page"
+    data-side="left"
+    data-icon="🚫"
+    data-title="Les Ne jamais faire"
+    data-tip="Astuce Canva : maintenir Maj (Shift) lors du redimensionnement pour conserver les proportions."
+    data-badges="ok:Indispensable"
+    title="Ces regles protegent l'integrite visuelle de la marque. Elles s'appliquent dans Canva, Figma et tous les logiciels d'edition. Les violations les plus frequentes : deformation, recoloriage et effets visuels.">
+    <span class="page-num">Page 7</span>
+    <div class="print-section-header"><span class="print-section-header-name">05 — Interdits logo</span><span class="print-section-header-brand">{{marque.nom}} — Charte graphique</span></div>
+    <div class="label">05 — Interdits logo</div>
+    <h2 class="title">Interdictions</h2>
+    <p class="desc">Ces usages degradent la reconnaissance de marque. Respecter ces regles en digital et en impression.</p>
+    <hr>
+    <div class="dont-grid">
+
+      <!-- Interdit 1 : deformation -->
+      <div class="dont-card" title="Etirer ou ecraser le logo casse l&#39;identite visuelle. Dans Canva ou Photoshop : maintenir Maj pour conserver les proportions. Toujours utiliser les fichiers SVG ou PNG fournis dans la charte.">
+        <div class="dont-visual dont-cross">
+          <div class="logo-mark gradient" style="width:52px; height:28px; font-size:1.2rem; border-radius:14px; transform:scaleX(1.8);">B</div>
+        </div>
+        <div class="dont-body">
+          <div class="dont-title">Ne pas deformer</div>
+          <div class="dont-desc">Aucune modification des proportions. Conserver le ratio original en toutes circonstances.</div>
+        </div>
+      </div>
+
+      <!-- Interdit 2 : mauvaises couleurs -->
+      <div class="dont-card" title="Les couleurs du logo font partie de l&#39;identite de marque. 3 versions autorisees uniquement : couleur, blanc, noir. Toute autre couleur dilue la reconnaissance de la marque.">
+        <div class="dont-visual dont-cross">
+          <div class="logo-mark" style="width:52px; height:52px; font-size:1.6rem; border-radius:14px; background:#FFD93D; color:#111;">B</div>
+        </div>
+        <div class="dont-body">
+          <div class="dont-title">Ne pas recolorer</div>
+          <div class="dont-desc">Utiliser uniquement les 3 versions officielles. Aucun remplacement de couleur n'est autorise.</div>
+        </div>
+      </div>
+
+      <!-- Interdit 3 : fond peu contrasté -->
+      <div class="dont-card" title="Le logo doit trancher sur son fond pour etre identifiable. Tester avec l&#39;outil WebAIM Contrast Checker. Sur fond colore : utiliser la version blanche du logo.">
+        <div class="dont-visual dont-cross" style="background: linear-gradient(135deg, #7C6AF7, #9B7CF8);">
+          <div class="logo-mark" style="width:52px; height:52px; font-size:1.6rem; border-radius:14px; background:rgba(92,78,250,0.4); color:rgba(255,255,255,0.5);">B</div>
+        </div>
+        <div class="dont-body">
+          <div class="dont-title">Eviter les fonds similaires</div>
+          <div class="dont-desc">Le logo doit rester lisible. Eviter tout fond proche de la couleur du logo (violet sur violet).</div>
+        </div>
+      </div>
+
+      <!-- Interdit 4 : trop petit -->
+      <div class="dont-card" title="En dessous de 24px, les details du logo disparaissent. Pour les tres petits espaces : icone seule, jamais le logo complet. En impression : ne pas descendre sous 6mm de largeur.">
+        <div class="dont-visual dont-cross">
+          <div class="logo-mark gradient" style="width:14px; height:14px; font-size:0.4rem; border-radius:3px;">B</div>
+          <span style="font-size:0.6rem; color:var(--ui-gris); margin-left:8px;">bloom.studio</span>
+        </div>
+        <div class="dont-body">
+          <div class="dont-title">Taille minimale</div>
+          <div class="dont-desc">Ne jamais descendre sous 24 px en digital ou 6 mm en impression. Le logo devient illisible.</div>
+        </div>
+      </div>
+
+      <!-- Interdit 5 : ombres / effets -->
+      <div class="dont-card" title="Les effets (ombre, lueur, biseau) vieillissent vite et alourdissent le logo. Un bon logo fonctionne a plat, sans decoration. Interdit dans Canva : ombre portee, lueur, relief.">
+        <div class="dont-visual dont-cross">
+          <div class="logo-mark gradient" style="width:52px; height:52px; font-size:1.6rem; border-radius:14px; filter: drop-shadow(0 0 12px rgba(92,78,250,0.9)) drop-shadow(3px 3px 4px rgba(0,0,0,0.5));">B</div>
+        </div>
+        <div class="dont-body">
+          <div class="dont-title">Pas d'effets visuels</div>
+          <div class="dont-desc">Interdire les ombres portees, lueurs, contours, flous ou effets de relief sur le logo.</div>
+        </div>
+      </div>
+
+      <!-- Interdit 6 : rotation -->
+      <div class="dont-card" title="Un logo incline perd son autorite et parait peu professionnel. Exception unique : si la charte prevoit explicitement une version en angle. Toujours verifier l&#39;horizontalite avant de publier ou d&#39;imprimer.">
+        <div class="dont-visual dont-cross">
+          <div style="display:flex; align-items:center; gap:8px; transform:rotate(-25deg);">
+            <div class="logo-mark gradient" style="width:36px; height:36px; font-size:1rem; border-radius:9px;">B</div>
+            <div style="font-family:var(--police-titres); font-size:0.9rem; color:#111;">{{marque.nom}}</div>
+          </div>
+        </div>
+        <div class="dont-body">
+          <div class="dont-title">Pas de rotation</div>
+          <div class="dont-desc">Le logo doit toujours etre positionne a l'horizontale, jamais incline ou pivote.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>

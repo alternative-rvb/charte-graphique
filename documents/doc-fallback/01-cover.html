@@ -1,0 +1,39 @@
+  <div id="cover" class="cover figma-page"
+    data-side="left"
+    data-icon="📄"
+    data-title="La page de couverture"
+    data-tip="Incrementer la version a chaque modification majeure : 1.0, 1.1, 2.0..."
+    data-badges="ok:Indispensable"
+    title="La couverture.">
+    <span class="page-num">Page 1</span>
+    <div>
+      <div class="label">{{marque.nom}}</div>
+      <h1 class="cover-title">
+        {{marque.nomLigne1}}<br>{{marque.nomLigne2}}
+      </h1>
+      <p class="cover-sub">{{marque.tagline}}</p>
+      <div class="cover-meta">
+        <div class="meta-item">
+          <span class="meta-label">Version</span>
+          <span class="meta-valeur">{{marque.version}}</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Redige par</span>
+          <span class="meta-valeur">{{marque.auteur}}</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Date</span>
+          <span class="meta-valeur">{{marque.date}}</span>
+        </div>
+      </div>
+      <a class="btn" href="{{meta.didactiqueUrl}}">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+        Version didactique
+      </a>
+    </div>
+    <!-- [Remplacer par le vrai logo SVG] -->
+    <div class="logo-box">
+      <span class="logo-box-letter">{{marque.initiale}}</span>
+      <span class="logo-box-name">{{marque.nomLigne1}}</span>
+    </div>
+  </div>

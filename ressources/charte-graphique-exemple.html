@@ -1,0 +1,2138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Charte Graphique – Lumina Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* Palette principale */
+      --primary:       #673AB7;
+      --primary-light: #9C27B0;
+      --accent:        #00BCD4;
+      --dark:          #37474F;
+      --light:         #FAFAFA;
+
+      /* Palette secondaire */
+      --secondary-1:   #FF5722;
+      --secondary-2:   #FFC107;
+      --secondary-3:   #4CAF50;
+      --neutral:       #B0BEC5;
+
+      /* Typographies */
+      --font-serif:    'Playfair Display', serif;
+      --font-sans:     'Inter', sans-serif;
+      --font-mono:     'Space Mono', monospace;
+
+      /* Fond page */
+      --bg:            #0F0F1A;
+      --bg-card:       #1A1A2E;
+      --bg-card-2:     #16213E;
+      --border:        rgba(255,255,255,0.08);
+
+      /* Effets */
+      --glow: 0 0 40px rgba(103,58,183,0.3);
+      --shadow: 0 4px 24px rgba(0,0,0,0.4);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg);
+      color: var(--light);
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       UTILITAIRES
+    ============================================================ */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+    .section {
+      padding: 100px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700;
+      color: var(--light);
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--neutral);
+      max-width: 600px;
+      margin-bottom: 3rem;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--primary-light), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .placeholder-box {
+      border: 2px dashed rgba(103,58,183,0.5);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      color: rgba(255,255,255,0.3);
+      font-style: italic;
+      font-size: 0.875rem;
+      background: rgba(103,58,183,0.04);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+
+    @media (max-width: 768px) {
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================================
+       NAVIGATION
+    ============================================================ */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(15,15,26,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary-light), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--neutral);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+    }
+
+    /* ============================================================
+       HERO / COUVERTURE
+    ============================================================ */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 80px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 20% 50%, rgba(103,58,183,0.15) 0%, transparent 60%),
+                  radial-gradient(ellipse at 80% 20%, rgba(0,188,212,0.1) 0%, transparent 50%);
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(0,188,212,0.3);
+      border-radius: 100px;
+      padding: 0.4rem 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--neutral);
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .hero-meta-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+
+    .hero-meta-value {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--light);
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #fff;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 0.85rem 2rem;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+      box-shadow: 0 8px 32px rgba(103,58,183,0.4);
+    }
+
+    .btn-primary:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: var(--neutral);
+      font-family: var(--font-sans);
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: 0.85rem 1.5rem;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* Logo placeholder dans le hero */
+    .hero-logo-preview {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      box-shadow: var(--glow);
+    }
+
+    .logo-mark {
+      width: 80px; height: 80px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .logo-wordmark {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .logo-tagline {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    @media (max-width: 768px) {
+      .hero-content { grid-template-columns: 1fr; }
+      .hero-logo-preview { display: none; }
+    }
+
+    /* ============================================================
+       SOMMAIRE
+    ============================================================ */
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .toc-grid { grid-template-columns: 1fr; }
+    }
+
+    .toc-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: var(--light);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .toc-item:hover {
+      border-color: var(--primary);
+      transform: translateX(4px);
+    }
+
+    .toc-number {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--accent);
+      min-width: 1.5rem;
+    }
+
+    .toc-name {
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    /* ============================================================
+       BRAND STORY
+    ============================================================ */
+    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+
+    @media (max-width: 768px) {
+      .values-grid { grid-template-columns: 1fr; }
+    }
+
+    .value-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+
+    .value-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      margin-bottom: 1rem;
+    }
+
+    .value-name {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .value-desc {
+      font-size: 0.8rem;
+      color: var(--neutral);
+      font-style: italic;
+    }
+
+    .brand-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    @media (max-width: 768px) {
+      .brand-layout { grid-template-columns: 1fr; }
+    }
+
+    .tone-tag {
+      display: inline-block;
+      background: rgba(103,58,183,0.15);
+      border: 1px solid rgba(103,58,183,0.3);
+      border-radius: 100px;
+      padding: 0.3rem 0.85rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--primary-light);
+      margin: 0.25rem;
+    }
+
+    /* ============================================================
+       LOGO
+    ============================================================ */
+    .logo-variants {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .logo-variants { grid-template-columns: 1fr; }
+    }
+
+    .logo-variant-card {
+      border-radius: 16px;
+      padding: 2.5rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+      border: 1px solid var(--border);
+    }
+
+    .logo-variant-card.on-light {
+      background: #F5F5F5;
+      color: #1A1A2E;
+    }
+
+    .logo-variant-card.on-dark {
+      background: #1A1A2E;
+    }
+
+    .logo-variant-card.on-mono {
+      background: #37474F;
+    }
+
+    .logo-variant-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.5;
+    }
+
+    .logo-mark-sm {
+      width: 56px; height: 56px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .logo-mark-sm.colored { background: linear-gradient(135deg, var(--primary), var(--accent)); }
+    .logo-mark-sm.white   { background: #fff; color: #1A1A2E; }
+    .logo-mark-sm.mono    { background: #fff; color: #37474F; }
+
+    .zone-exclusion {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .exclusion-inner {
+      border: 2px dashed rgba(0,188,212,0.4);
+      padding: 2rem 3rem;
+      position: relative;
+      border-radius: 8px;
+    }
+
+    .exclusion-rule {
+      position: absolute;
+      top: -10px; left: -10px;
+      background: rgba(0,188,212,0.1);
+      border: 1px solid rgba(0,188,212,0.3);
+      border-radius: 4px;
+      padding: 0.2rem 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--accent);
+    }
+
+    /* ============================================================
+       COULEURS
+    ============================================================ */
+    .color-swatch {
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .swatch-color {
+      height: 120px;
+      position: relative;
+    }
+
+    .swatch-body {
+      padding: 1.25rem;
+    }
+
+    .swatch-name {
+      font-weight: 600;
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .swatch-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .swatch-code {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--neutral);
+    }
+
+    /* ============================================================
+       TYPOGRAPHIE
+    ============================================================ */
+    .typo-section {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .typo-section { grid-template-columns: 1fr; }
+    }
+
+    .typo-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+
+    .typo-role {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .typo-display-serif { font-family: var(--font-serif); font-size: 2rem; font-weight: 700; line-height: 1.2; }
+    .typo-display-sans  { font-family: var(--font-sans); font-size: 2rem; font-weight: 600; line-height: 1.2; }
+    .typo-display-mono  { font-family: var(--font-mono); font-size: 1.25rem; font-weight: 700; line-height: 1.4; }
+
+    .typo-scale { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; }
+    .typo-size-item { display: flex; align-items: baseline; gap: 1rem; border-bottom: 1px solid var(--border); padding: 0.4rem 0; }
+    .typo-size-label { font-family: var(--font-mono); font-size: 0.6rem; color: rgba(255,255,255,0.35); min-width: 60px; }
+
+    /* ============================================================
+       ICONOGRAPHIE
+    ============================================================ */
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .icon-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .icon-placeholder {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      aspect-ratio: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1rem;
+    }
+
+    .icon-box {
+      width: 32px; height: 32px;
+      border: 2px dashed rgba(103,58,183,0.4);
+      border-radius: 6px;
+    }
+
+    .icon-label {
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      color: rgba(255,255,255,0.25);
+      text-align: center;
+    }
+
+    /* ============================================================
+       ELEMENTS GRAPHIQUES
+    ============================================================ */
+    .shapes-row {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .shape {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .shape-circle {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+    }
+
+    .shape-square {
+      width: 80px; height: 80px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary-light), var(--primary));
+    }
+
+    .shape-pill {
+      width: 120px; height: 44px;
+      border-radius: 100px;
+      background: linear-gradient(135deg, var(--accent), #00E5FF);
+    }
+
+    .shape-line {
+      width: 80px; height: 4px;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+    }
+
+    .shape-dot-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 10px);
+      gap: 6px;
+    }
+
+    .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--primary-light);
+      opacity: 0.5;
+    }
+
+    .shape-label {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.1em;
+    }
+
+    .pattern-preview {
+      border-radius: 16px;
+      overflow: hidden;
+      height: 120px;
+      position: relative;
+    }
+
+    .pattern-dots {
+      background-image: radial-gradient(circle, rgba(103,58,183,0.4) 1px, transparent 1px);
+      background-size: 16px 16px;
+      background-color: var(--bg-card);
+      height: 100%;
+    }
+
+    .pattern-lines {
+      background-image: repeating-linear-gradient(
+        45deg,
+        rgba(103,58,183,0.15),
+        rgba(103,58,183,0.15) 1px,
+        transparent 1px,
+        transparent 12px
+      );
+      background-color: var(--bg-card);
+      height: 100%;
+    }
+
+    .pattern-grid {
+      background-image:
+        linear-gradient(rgba(0,188,212,0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,188,212,0.1) 1px, transparent 1px);
+      background-size: 20px 20px;
+      background-color: var(--bg-card);
+      height: 100%;
+    }
+
+    /* ============================================================
+       APPLICATIONS DIGITALES
+    ============================================================ */
+    .mockups-grid {
+      display: grid;
+      grid-template-columns: auto 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    @media (max-width: 768px) {
+      .mockups-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Story Instagram */
+    .mockup-story {
+      width: 160px;
+      height: 284px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .story-header {
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+    }
+
+    .story-body {
+      flex: 1;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    /* Post LinkedIn */
+    .mockup-post {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .post-img {
+      height: 140px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.1em;
+    }
+
+    .post-body { padding: 1rem; }
+
+    /* Bannière X */
+    .mockup-banner {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .banner-img {
+      height: 80px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+    }
+
+    .banner-body { padding: 1rem; }
+
+    .dim-tag {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--accent);
+      background: rgba(0,188,212,0.1);
+      border: 1px solid rgba(0,188,212,0.2);
+      border-radius: 4px;
+      padding: 0.15rem 0.5rem;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+
+    /* ============================================================
+       APPLICATIONS PRINT
+    ============================================================ */
+    .print-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    @media (max-width: 768px) {
+      .print-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Carte de visite */
+    .business-card {
+      width: 280px;
+      height: 160px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #1A1A2E, #16213E);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--shadow);
+    }
+
+    .bc-top {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .bc-logo {
+      width: 32px; height: 32px;
+      border-radius: 7px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-serif);
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .bc-brand { font-family: var(--font-serif); font-size: 0.875rem; font-weight: 700; }
+
+    .bc-name { font-size: 0.875rem; font-weight: 600; }
+    .bc-role { font-size: 0.7rem; color: var(--accent); }
+
+    .bc-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .bc-contact-item {
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      color: var(--neutral);
+    }
+
+    /* En-tête document */
+    .letterhead {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .letterhead-header {
+      padding: 1.5rem;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .letterhead-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    /* ============================================================
+       INTERDITS
+    ============================================================ */
+    .dont-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .dont-grid { grid-template-columns: 1fr; }
+    }
+
+    .dont-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(244,67,54,0.25);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .dont-visual {
+      height: 100px;
+      padding: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: rgba(244,67,54,0.05);
+    }
+
+    .dont-cross {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: rgba(244,67,54,0.3);
+      pointer-events: none;
+    }
+
+    .dont-body { padding: 1.25rem; }
+
+    .dont-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #EF5350;
+      margin-bottom: 0.35rem;
+    }
+
+    .dont-desc {
+      font-size: 0.75rem;
+      color: var(--neutral);
+    }
+
+    /* Exemples visuels "interdits" */
+    .logo-stretched {
+      transform: scaleX(1.6);
+      display: inline-flex;
+    }
+
+    .logo-wrong-color .logo-mark-sm {
+      background: #FF5722 !important;
+    }
+
+    .logo-too-small .logo-mark-sm {
+      width: 18px; height: 18px;
+      border-radius: 4px;
+      font-size: 0.5rem;
+    }
+
+    /* ============================================================
+       TELECHARGEMENT / CTA FINAL
+    ============================================================ */
+    #download {
+      padding: 120px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .download-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, rgba(103,58,183,0.15) 0%, transparent 70%);
+    }
+
+    .download-content { position: relative; z-index: 1; }
+
+    .download-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .download-sub {
+      font-size: 1rem;
+      color: var(--neutral);
+      max-width: 500px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #fff;
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 1.1rem 2.5rem;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 12px 40px rgba(103,58,183,0.5);
+      transition: transform 0.2s, box-shadow 0.2s;
+      letter-spacing: 0.02em;
+    }
+
+    .btn-download:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 48px rgba(103,58,183,0.6);
+    }
+
+    .download-icon {
+      width: 22px; height: 22px;
+      fill: currentColor;
+    }
+
+    .download-note {
+      margin-top: 1.25rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.1em;
+    }
+
+    /* Contact cards sous CTA */
+    .contact-row {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1.75rem;
+      text-align: left;
+    }
+
+    .contact-role {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-name { font-weight: 600; font-size: 0.875rem; margin-bottom: 0.25rem; }
+    .contact-email { font-size: 0.8rem; color: var(--neutral); font-style: italic; }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+      text-align: center;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-brand {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary-light), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .footer-copy {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.1em;
+    }
+
+    .footer-version {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.2);
+    }
+
+    /* ============================================================
+       DIVIDER
+    ============================================================ */
+    .divider {
+      width: 60px; height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius: 2px;
+      margin-bottom: 3rem;
+    }
+
+    /* ============================================================
+       PETITS UTILITAIRES TEXTE
+    ============================================================ */
+    .text-sm   { font-size: 0.8rem; }
+    .text-xs   { font-size: 0.7rem; }
+    .text-mono { font-family: var(--font-mono); }
+    .text-muted { color: var(--neutral); }
+    .mb-1 { margin-bottom: 0.5rem; }
+    .mb-2 { margin-bottom: 1rem; }
+    .mb-3 { margin-bottom: 1.5rem; }
+    .mb-4 { margin-bottom: 2rem; }
+    .mt-2 { margin-top: 1rem; }
+    .mt-3 { margin-top: 1.5rem; }
+
+    /* ============================================================
+       PRINT
+    ============================================================ */
+    @media print {
+      nav { display: none; }
+      #hero { min-height: auto; padding-top: 2rem; }
+      .hero-bg, .hero-grid { display: none; }
+      .section { padding: 60px 0; }
+      #download .btn-download { display: none; }
+      .download-note { display: none; }
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVIGATION
+============================================================ -->
+<nav>
+  <div class="nav-inner">
+    <a href="#hero" class="nav-brand">Lumina Studio</a>
+    <ul class="nav-links">
+      <li><a href="#brand">Marque</a></li>
+      <li><a href="#logo">Logo</a></li>
+      <li><a href="#couleurs">Couleurs</a></li>
+      <li><a href="#typo">Typographie</a></li>
+      <li><a href="#applications">Applications</a></li>
+      <li><a href="#download">Telecharger</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<!-- ============================================================
+     HERO — COUVERTURE
+============================================================ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+
+    <div>
+      <span class="hero-tag">Charte Graphique — v1.0</span>
+      <h1 class="hero-headline">
+        Lumina Studio<br />
+        <span class="gradient-text">Identity System</span>
+      </h1>
+      <!-- [PLACEHOLDER] Remplacer "Lumina Studio" par le nom de votre marque -->
+      <p class="hero-sub">
+        <!-- [PLACEHOLDER] Remplacer par le tagline de la marque -->
+        <em>[Votre tagline — ex. : "Creer. Inspirer. Durer."]</em>
+      </p>
+
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Version</span>
+          <!-- [PLACEHOLDER] Numero de version de la charte -->
+          <span class="hero-meta-value">1.0.0</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Date</span>
+          <!-- [PLACEHOLDER] Date de creation / mise a jour -->
+          <span class="hero-meta-value">Mars 2026</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Auteur</span>
+          <!-- [PLACEHOLDER] Nom du Community Manager ou studio -->
+          <span class="hero-meta-value">[Votre nom]</span>
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="window.print()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Telecharger PDF
+        </button>
+        <a href="#brand" class="btn-ghost">Voir la charte</a>
+      </div>
+    </div>
+
+    <div class="hero-logo-preview">
+      <!-- [PLACEHOLDER] Remplacer ce bloc par le vrai logo SVG ou image de la marque -->
+      <div class="logo-mark">L</div>
+      <div style="text-align:center">
+        <div class="logo-wordmark">Lumina Studio</div>
+        <div class="logo-tagline" style="margin-top:0.5rem">
+          <!-- [PLACEHOLDER] Tagline courte -->
+          [tagline]
+        </div>
+      </div>
+      <div class="placeholder-box" style="width:100%; min-height:60px; font-size:0.7rem;">
+        [Importer le fichier logo SVG ici]
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SOMMAIRE
+============================================================ -->
+<section id="sommaire" class="section">
+  <div class="container">
+    <div class="section-label">Index</div>
+    <h2 class="section-title">Sommaire</h2>
+    <p class="section-subtitle">Structure de la charte graphique Lumina Studio.</p>
+    <div class="divider"></div>
+
+    <div class="toc-grid">
+      <a href="#brand" class="toc-item">
+        <span class="toc-number">01</span>
+        <span class="toc-name">Notre Marque</span>
+      </a>
+      <a href="#logo" class="toc-item">
+        <span class="toc-number">02</span>
+        <span class="toc-name">Logo et Variantes</span>
+      </a>
+      <a href="#couleurs" class="toc-item">
+        <span class="toc-number">03</span>
+        <span class="toc-name">Palette de Couleurs</span>
+      </a>
+      <a href="#typo" class="toc-item">
+        <span class="toc-number">04</span>
+        <span class="toc-name">Typographie</span>
+      </a>
+      <a href="#icono" class="toc-item">
+        <span class="toc-number">05</span>
+        <span class="toc-name">Iconographie</span>
+      </a>
+      <a href="#elements" class="toc-item">
+        <span class="toc-number">06</span>
+        <span class="toc-name">Elements Graphiques</span>
+      </a>
+      <a href="#applications" class="toc-item">
+        <span class="toc-number">07</span>
+        <span class="toc-name">Applications Digitales</span>
+      </a>
+      <a href="#print" class="toc-item">
+        <span class="toc-number">08</span>
+        <span class="toc-name">Applications Print</span>
+      </a>
+      <a href="#interdits" class="toc-item">
+        <span class="toc-number">09</span>
+        <span class="toc-name">Interdits</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     01 — NOTRE MARQUE
+============================================================ -->
+<section id="brand" class="section">
+  <div class="container">
+    <div class="section-label">01 — Notre Marque</div>
+    <h2 class="section-title">Brand Story</h2>
+    <p class="section-subtitle">La raison d'etre, les valeurs et le ton de la communication de Lumina Studio.</p>
+    <div class="divider"></div>
+
+    <div class="brand-layout">
+
+      <div>
+        <div class="card mb-3">
+          <div class="section-label" style="margin-bottom:0.75rem">Mission</div>
+          <!-- [PLACEHOLDER] Remplacer par la mission reelle de la marque (1-2 phrases) -->
+          <div class="placeholder-box" style="min-height:80px;">
+            [Decrire la mission de la marque en 1-2 phrases.<br />
+            Ex. : "Accompagner les createurs independants dans la construction de leur identite visuelle."]
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="section-label" style="margin-bottom:0.75rem">Positionnement</div>
+          <!-- [PLACEHOLDER] Public cible, segment de marche -->
+          <div class="placeholder-box" style="min-height:60px;">
+            [Public cible — ex. : "PME et freelances du secteur creatif, 25-40 ans, actifs sur LinkedIn et Instagram"]
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="card mb-3">
+          <div class="section-label" style="margin-bottom:1rem">Valeurs fondatrices</div>
+          <div class="values-grid">
+            <div class="value-card">
+              <div class="value-icon"></div>
+              <!-- [PLACEHOLDER] Remplacer par une vraie valeur (ex. : Creativite) -->
+              <div class="value-name">[Valeur 1]</div>
+              <div class="value-desc">[Description courte]</div>
+            </div>
+            <div class="value-card">
+              <div class="value-icon"></div>
+              <div class="value-name">[Valeur 2]</div>
+              <div class="value-desc">[Description courte]</div>
+            </div>
+            <div class="value-card">
+              <div class="value-icon"></div>
+              <div class="value-name">[Valeur 3]</div>
+              <div class="value-desc">[Description courte]</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="section-label" style="margin-bottom:1rem">Tone of Voice</div>
+          <!-- [PLACEHOLDER] Mots-cles qui decrivent le style de communication -->
+          <div>
+            <span class="tone-tag">Professionnel</span>
+            <span class="tone-tag">Chaleureux</span>
+            <span class="tone-tag">Inspire</span>
+            <span class="tone-tag">[Ajouter]</span>
+            <span class="tone-tag">[Ajouter]</span>
+          </div>
+          <div class="placeholder-box mt-2" style="min-height:50px; font-size:0.7rem;">
+            [Decrire en 1 phrase le style d'ecriture — ex. : "On parle comme un ami expert, jamais condescendant."]
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     02 — LOGO
+============================================================ -->
+<section id="logo" class="section">
+  <div class="container">
+    <div class="section-label">02 — Logo</div>
+    <h2 class="section-title">Logo et Variantes</h2>
+    <p class="section-subtitle">Le logo est l'element central de l'identite visuelle. Il existe en trois versions officielles.</p>
+    <div class="divider"></div>
+
+    <!-- Variantes du logo -->
+    <div class="logo-variants mb-4">
+
+      <div class="logo-variant-card on-dark">
+        <div class="logo-variant-label">Fond sombre (usage principal)</div>
+        <!-- [PLACEHOLDER] Importer le logo SVG version fond sombre -->
+        <div class="logo-mark-sm colored">L</div>
+        <div style="font-family:var(--font-serif); font-weight:700; font-size:1rem;">Lumina Studio</div>
+        <div class="placeholder-box" style="width:100%; min-height:50px; font-size:0.65rem;">
+          [Logo SVG — fond sombre]
+        </div>
+      </div>
+
+      <div class="logo-variant-card on-light">
+        <div class="logo-variant-label" style="color:#37474F;">Fond clair</div>
+        <!-- [PLACEHOLDER] Importer le logo SVG version fond clair -->
+        <div class="logo-mark-sm colored">L</div>
+        <div style="font-family:var(--font-serif); font-weight:700; font-size:1rem; color:#1A1A2E;">Lumina Studio</div>
+        <div class="placeholder-box" style="width:100%; min-height:50px; font-size:0.65rem; color:#37474F; border-color:rgba(103,58,183,0.3);">
+          [Logo SVG — fond clair]
+        </div>
+      </div>
+
+      <div class="logo-variant-card on-mono">
+        <div class="logo-variant-label">Monochrome (impression NB)</div>
+        <!-- [PLACEHOLDER] Importer le logo SVG version monochrome -->
+        <div class="logo-mark-sm mono">L</div>
+        <div style="font-family:var(--font-serif); font-weight:700; font-size:1rem;">Lumina Studio</div>
+        <div class="placeholder-box" style="width:100%; min-height:50px; font-size:0.65rem; border-color:rgba(255,255,255,0.2);">
+          [Logo SVG — monochrome]
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Zone d'exclusion -->
+    <div class="card">
+      <div class="section-label mb-2">Zone d'exclusion</div>
+      <p class="text-sm text-muted mb-3">
+        Un espace minimal doit etre preserve autour du logo. Cet espace correspond a la hauteur de la lettre "x" du logotype.
+      </p>
+      <div class="zone-exclusion" style="min-height:160px;">
+        <div class="exclusion-inner">
+          <span class="exclusion-rule">Zone d'exclusion = hauteur "x"</span>
+          <div style="display:flex; align-items:center; gap:0.75rem;">
+            <div class="logo-mark-sm colored" style="width:44px; height:44px; font-size:1.1rem;">L</div>
+            <div style="font-family:var(--font-serif); font-weight:700;">Lumina Studio</div>
+          </div>
+        </div>
+        <p class="text-xs text-muted mt-2">Aucun element (texte, image, bord) ne doit penetrer dans cette zone.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     03 — PALETTE DE COULEURS
+============================================================ -->
+<section id="couleurs" class="section">
+  <div class="container">
+    <div class="section-label">03 — Couleurs</div>
+    <h2 class="section-title">Palette de Couleurs</h2>
+    <p class="section-subtitle">5 couleurs principales definissent l'identite visuelle de Lumina Studio.</p>
+    <div class="divider"></div>
+
+    <!-- Couleurs principales -->
+    <h3 style="font-family:var(--font-serif); font-size:1.1rem; margin-bottom:1.5rem; color:var(--neutral);">Couleurs principales</h3>
+    <div class="grid-4 mb-4" style="grid-template-columns: repeat(5, 1fr);">
+
+      <div class="color-swatch">
+        <div class="swatch-color" style="background:#673AB7;"></div>
+        <div class="swatch-body">
+          <div class="swatch-name">Deep Purple</div>
+          <div class="swatch-meta">
+            <span class="swatch-code">HEX #673AB7</span>
+            <span class="swatch-code">RGB 103, 58, 183</span>
+            <span class="swatch-code">CMJN 44, 68, 0, 28</span>
+            <!-- [PLACEHOLDER] Ajouter les valeurs Pantone si besoin -->
+          </div>
+        </div>
+      </div>
+
+      <div class="color-swatch">
+        <div class="swatch-color" style="background:#9C27B0;"></div>
+        <div class="swatch-body">
+          <div class="swatch-name">Purple</div>
+          <div class="swatch-meta">
+            <span class="swatch-code">HEX #9C27B0</span>
+            <span class="swatch-code">RGB 156, 39, 176</span>
+            <span class="swatch-code">CMJN 11, 78, 0, 31</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="color-swatch">
+        <div class="swatch-color" style="background:#00BCD4;"></div>
+        <div class="swatch-body">
+          <div class="swatch-name">Cyan Accent</div>
+          <div class="swatch-meta">
+            <span class="swatch-code">HEX #00BCD4</span>
+            <span class="swatch-code">RGB 0, 188, 212</span>
+            <span class="swatch-code">CMJN 100, 11, 0, 17</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="color-swatch">
+        <div class="swatch-color" style="background:#37474F;"></div>
+        <div class="swatch-body">
+          <div class="swatch-name">Gris Anthracite</div>
+          <div class="swatch-meta">
+            <span class="swatch-code">HEX #37474F</span>
+            <span class="swatch-code">RGB 55, 71, 79</span>
+            <span class="swatch-code">CMJN 30, 10, 0, 69</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="color-swatch">
+        <div class="swatch-color" style="background:#FAFAFA; border-bottom: 1px solid rgba(0,0,0,0.08);"></div>
+        <div class="swatch-body">
+          <div class="swatch-name">Blanc Casse</div>
+          <div class="swatch-meta">
+            <span class="swatch-code">HEX #FAFAFA</span>
+            <span class="swatch-code">RGB 250, 250, 250</span>
+            <span class="swatch-code">CMJN 0, 0, 0, 2</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Couleurs secondaires -->
+    <h3 style="font-family:var(--font-serif); font-size:1.1rem; margin-bottom:1.5rem; color:var(--neutral);">Couleurs secondaires</h3>
+    <div class="grid-4">
+
+      <div class="color-swatch">
+        <div class="swatch-color" style="background:#FF5722;"></div>
+        <div class="swatch-body">
+          <div class="swatch-name">Deep Orange</div>
+          <div class="swatch-meta">
+            <span class="swatch-code">HEX #FF5722</span>
+            <!-- [PLACEHOLDER] Ajouter RGB, CMJN -->
+          </div>
+        </div>
+      </div>
+
+      <div class="color-swatch">
+        <div class="swatch-color" style="background:#FFC107;"></div>
+        <div class="swatch-body">
+          <div class="swatch-name">Amber</div>
+          <div class="swatch-meta">
+            <span class="swatch-code">HEX #FFC107</span>
+            <!-- [PLACEHOLDER] Ajouter RGB, CMJN -->
+          </div>
+        </div>
+      </div>
+
+      <div class="color-swatch">
+        <div class="swatch-color" style="background:#4CAF50;"></div>
+        <div class="swatch-body">
+          <div class="swatch-name">Green</div>
+          <div class="swatch-meta">
+            <span class="swatch-code">HEX #4CAF50</span>
+            <!-- [PLACEHOLDER] Ajouter RGB, CMJN -->
+          </div>
+        </div>
+      </div>
+
+      <div class="color-swatch">
+        <div class="swatch-color" style="background:#B0BEC5;"></div>
+        <div class="swatch-body">
+          <div class="swatch-name">Blue Grey Light</div>
+          <div class="swatch-meta">
+            <span class="swatch-code">HEX #B0BEC5</span>
+            <!-- [PLACEHOLDER] Ajouter RGB, CMJN -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     04 — TYPOGRAPHIE
+============================================================ -->
+<section id="typo" class="section">
+  <div class="container">
+    <div class="section-label">04 — Typographie</div>
+    <h2 class="section-title">Systeme Typographique</h2>
+    <p class="section-subtitle">Trois familles de polices pour une hierarchie visuelle claire et moderne.</p>
+    <div class="divider"></div>
+
+    <div class="typo-section">
+
+      <!-- Serif -->
+      <div class="typo-card">
+        <div class="typo-role">Titres — Display</div>
+        <div class="typo-display-serif">Playfair Display</div>
+        <!-- [PLACEHOLDER] Remplacer par la police titres de la marque si different -->
+        <div class="text-xs text-muted mt-2 mb-3">
+          Serif elegant — usage : H1, H2, accroches, citations
+        </div>
+        <div class="typo-scale">
+          <div class="typo-size-item">
+            <span class="typo-size-label">H1 / 48px</span>
+            <span style="font-family:var(--font-serif); font-size:1.5rem; font-weight:700;">Titre Principal</span>
+          </div>
+          <div class="typo-size-item">
+            <span class="typo-size-label">H2 / 36px</span>
+            <span style="font-family:var(--font-serif); font-size:1.2rem; font-weight:600;">Sous-titre</span>
+          </div>
+          <div class="typo-size-item">
+            <span class="typo-size-label">H3 / 28px</span>
+            <span style="font-family:var(--font-serif); font-size:1rem; font-weight:600;">Section</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sans-serif -->
+      <div class="typo-card">
+        <div class="typo-role">Corps de texte — Body</div>
+        <div class="typo-display-sans">Inter</div>
+        <!-- [PLACEHOLDER] Remplacer par la police corps de la marque si different -->
+        <div class="text-xs text-muted mt-2 mb-3">
+          Sans-serif moderne — usage : paragraphes, UI, legendes
+        </div>
+        <div class="typo-scale">
+          <div class="typo-size-item">
+            <span class="typo-size-label">Body L / 18px</span>
+            <span style="font-family:var(--font-sans); font-size:0.95rem;">Texte large</span>
+          </div>
+          <div class="typo-size-item">
+            <span class="typo-size-label">Body / 16px</span>
+            <span style="font-family:var(--font-sans); font-size:0.875rem;">Corps principal</span>
+          </div>
+          <div class="typo-size-item">
+            <span class="typo-size-label">Caption / 12px</span>
+            <span style="font-family:var(--font-sans); font-size:0.75rem; color:var(--neutral);">Legende, metadata</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mono -->
+      <div class="typo-card">
+        <div class="typo-role">Accent — Code / Labels</div>
+        <div class="typo-display-mono">Space Mono</div>
+        <!-- [PLACEHOLDER] Remplacer par la police accent de la marque si different -->
+        <div class="text-xs text-muted mt-2 mb-3">
+          Monospace — usage : tags, labels, codes, details techniques
+        </div>
+        <div class="typo-scale">
+          <div class="typo-size-item">
+            <span class="typo-size-label">Tag / 11px</span>
+            <span style="font-family:var(--font-mono); font-size:0.7rem; color:var(--accent);">CATEGORIE</span>
+          </div>
+          <div class="typo-size-item">
+            <span class="typo-size-label">Code / 14px</span>
+            <span style="font-family:var(--font-mono); font-size:0.75rem;">#673AB7</span>
+          </div>
+          <div class="typo-size-item">
+            <span class="typo-size-label">Label / 12px</span>
+            <span style="font-family:var(--font-mono); font-size:0.7rem; color:var(--neutral);">version 1.0.0</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     05 — ICONOGRAPHIE
+============================================================ -->
+<section id="icono" class="section">
+  <div class="container">
+    <div class="section-label">05 — Iconographie</div>
+    <h2 class="section-title">Icones et Pictogrammes</h2>
+    <p class="section-subtitle">
+      <!-- [PLACEHOLDER] Decrire la librairie d'icones choisie (Lucide, Phosphor, Material...) -->
+      Style : line icons, trait 1.5px, coins arrondis — Librairie : [Lucide / Phosphor / autre].
+    </p>
+    <div class="divider"></div>
+
+    <!-- Grille de placeholders icones -->
+    <div class="icon-grid mb-4">
+      <!-- [PLACEHOLDER] Remplacer chaque bloc par une vraie icone SVG -->
+      <div class="icon-placeholder"><div class="icon-box"></div><span class="icon-label">accueil</span></div>
+      <div class="icon-placeholder"><div class="icon-box"></div><span class="icon-label">utilisateur</span></div>
+      <div class="icon-placeholder"><div class="icon-box"></div><span class="icon-label">coeur</span></div>
+      <div class="icon-placeholder"><div class="icon-box"></div><span class="icon-label">message</span></div>
+      <div class="icon-placeholder"><div class="icon-box"></div><span class="icon-label">partager</span></div>
+      <div class="icon-placeholder"><div class="icon-box"></div><span class="icon-label">calendrier</span></div>
+      <div class="icon-placeholder"><div class="icon-box"></div><span class="icon-label">loupe</span></div>
+      <div class="icon-placeholder"><div class="icon-box"></div><span class="icon-label">etoile</span></div>
+      <div class="icon-placeholder"><div class="icon-box"></div><span class="icon-label">cloche</span></div>
+      <div class="icon-placeholder"><div class="icon-box"></div><span class="icon-label">fleche</span></div>
+      <div class="icon-placeholder"><div class="icon-box"></div><span class="icon-label">verrou</span></div>
+      <div class="icon-placeholder"><div class="icon-box"></div><span class="icon-label">reglages</span></div>
+    </div>
+
+    <!-- Regles d'usage -->
+    <div class="card">
+      <div class="section-label mb-2">Regles d'utilisation</div>
+      <div class="grid-3">
+        <div>
+          <div class="text-sm" style="font-weight:600; margin-bottom:0.4rem;">Taille minimale</div>
+          <!-- [PLACEHOLDER] -->
+          <div class="text-xs text-muted">16px minimum en digital, 5mm en print</div>
+        </div>
+        <div>
+          <div class="text-sm" style="font-weight:600; margin-bottom:0.4rem;">Couleurs autorisees</div>
+          <!-- [PLACEHOLDER] -->
+          <div class="text-xs text-muted">Blanc, Gris Anthracite, Deep Purple, Cyan</div>
+        </div>
+        <div>
+          <div class="text-sm" style="font-weight:600; margin-bottom:0.4rem;">Interdits</div>
+          <!-- [PLACEHOLDER] -->
+          <div class="text-xs text-muted">Pas de rotation, pas de degradé sur icone seule</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     06 — ELEMENTS GRAPHIQUES
+============================================================ -->
+<section id="elements" class="section">
+  <div class="container">
+    <div class="section-label">06 — Elements Graphiques</div>
+    <h2 class="section-title">Formes et Textures</h2>
+    <p class="section-subtitle">Elements visuels recurrents qui renforcent la coherence de la marque.</p>
+    <div class="divider"></div>
+
+    <!-- Formes -->
+    <h3 style="font-family:var(--font-serif); font-size:1.1rem; margin-bottom:1.5rem; color:var(--neutral);">Repertoire de formes</h3>
+    <div class="shapes-row mb-4">
+      <div class="shape">
+        <div class="shape-circle"></div>
+        <span class="shape-label">Cercle</span>
+      </div>
+      <div class="shape">
+        <div class="shape-square"></div>
+        <span class="shape-label">Carre arrondi</span>
+      </div>
+      <div class="shape">
+        <div class="shape-pill"></div>
+        <span class="shape-label">Pill (boutons)</span>
+      </div>
+      <div class="shape">
+        <div class="shape-line"></div>
+        <span class="shape-label">Separateur</span>
+      </div>
+      <div class="shape">
+        <div class="shape-dot-grid">
+          <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+          <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+          <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+          <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        </div>
+        <span class="shape-label">Grille de points</span>
+      </div>
+      <!-- [PLACEHOLDER] Ajouter d'autres formes specifiques a la marque -->
+      <div class="shape">
+        <div class="placeholder-box" style="width:80px; height:80px; min-height:auto;">+</div>
+        <span class="shape-label">[Forme custom]</span>
+      </div>
+    </div>
+
+    <!-- Patterns -->
+    <h3 style="font-family:var(--font-serif); font-size:1.1rem; margin-bottom:1.5rem; color:var(--neutral);">Textures et patterns</h3>
+    <div class="grid-3">
+      <div>
+        <div class="pattern-preview"><div class="pattern-dots"></div></div>
+        <div class="text-xs text-muted mt-2">Pattern points — fonds secondaires</div>
+      </div>
+      <div>
+        <div class="pattern-preview"><div class="pattern-lines"></div></div>
+        <div class="text-xs text-muted mt-2">Hachures diagonales — accents</div>
+      </div>
+      <div>
+        <div class="pattern-preview"><div class="pattern-grid"></div></div>
+        <div class="text-xs text-muted mt-2">Grille fine — fonds neutres</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     07 — APPLICATIONS DIGITALES
+============================================================ -->
+<section id="applications" class="section">
+  <div class="container">
+    <div class="section-label">07 — Applications Digitales</div>
+    <h2 class="section-title">Reseaux Sociaux</h2>
+    <p class="section-subtitle">Gabarits de reference pour les principaux formats sociaux.</p>
+    <div class="divider"></div>
+
+    <div class="mockups-grid">
+
+      <!-- Story Instagram -->
+      <div>
+        <div class="dim-tag">1080 x 1920 px</div>
+        <div class="mockup-story">
+          <div class="story-header"></div>
+          <div class="story-body">
+            <!-- [PLACEHOLDER] Contenu story Instagram -->
+            <div class="placeholder-box" style="min-height:60px; font-size:0.65rem;">
+              [Zone image / video principale]
+            </div>
+            <div class="placeholder-box" style="min-height:30px; font-size:0.65rem;">
+              [Texte accroche]
+            </div>
+            <div style="margin-top:auto;">
+              <div class="placeholder-box" style="min-height:30px; font-size:0.65rem;">
+                [CTA swipe up]
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-xs text-muted mt-2" style="text-align:center;">Story Instagram / Reels</div>
+      </div>
+
+      <!-- Post LinkedIn -->
+      <div>
+        <div class="dim-tag">1200 x 627 px</div>
+        <div class="mockup-post">
+          <div class="post-img">
+            <!-- [PLACEHOLDER] Visuel du post -->
+            [Visuel principal 1200x627]
+          </div>
+          <div class="post-body">
+            <!-- [PLACEHOLDER] Texte du post LinkedIn -->
+            <div class="placeholder-box" style="min-height:50px; font-size:0.65rem;">
+              [Accroche du post LinkedIn — 1ere ligne visible sans "voir plus"]
+            </div>
+            <div class="text-xs text-muted mt-2">Post LinkedIn / Facebook</div>
+          </div>
+        </div>
+
+        <!-- Banniere X / Twitter -->
+        <div class="dim-tag mt-2">1500 x 500 px</div>
+        <div class="mockup-banner">
+          <div class="banner-img"></div>
+          <div class="banner-body">
+            <div class="placeholder-box" style="min-height:40px; font-size:0.65rem;">
+              [Banniere profil X (Twitter) — 1500x500]
+            </div>
+          </div>
+        </div>
+        <div class="text-xs text-muted mt-2">Banniere profil X (Twitter)</div>
+      </div>
+
+      <!-- Dimensions references -->
+      <div>
+        <div class="card">
+          <div class="section-label mb-2">Guide des dimensions</div>
+          <table style="width:100%; border-collapse:collapse; font-size:0.75rem;">
+            <thead>
+              <tr>
+                <th style="text-align:left; padding:0.5rem 0; border-bottom:1px solid var(--border); color:var(--neutral); font-weight:500;">Format</th>
+                <th style="text-align:right; padding:0.5rem 0; border-bottom:1px solid var(--border); color:var(--neutral); font-weight:500;">Pixels</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td style="padding:0.5rem 0; border-bottom:1px solid var(--border);">Story IG / Reels</td><td style="text-align:right; font-family:var(--font-mono); font-size:0.65rem; border-bottom:1px solid var(--border); color:var(--neutral);">1080 x 1920</td></tr>
+              <tr><td style="padding:0.5rem 0; border-bottom:1px solid var(--border);">Post carre IG</td><td style="text-align:right; font-family:var(--font-mono); font-size:0.65rem; border-bottom:1px solid var(--border); color:var(--neutral);">1080 x 1080</td></tr>
+              <tr><td style="padding:0.5rem 0; border-bottom:1px solid var(--border);">Post paysage IG</td><td style="text-align:right; font-family:var(--font-mono); font-size:0.65rem; border-bottom:1px solid var(--border); color:var(--neutral);">1080 x 566</td></tr>
+              <tr><td style="padding:0.5rem 0; border-bottom:1px solid var(--border);">Post LinkedIn</td><td style="text-align:right; font-family:var(--font-mono); font-size:0.65rem; border-bottom:1px solid var(--border); color:var(--neutral);">1200 x 627</td></tr>
+              <tr><td style="padding:0.5rem 0; border-bottom:1px solid var(--border);">Banniere LinkedIn</td><td style="text-align:right; font-family:var(--font-mono); font-size:0.65rem; border-bottom:1px solid var(--border); color:var(--neutral);">1584 x 396</td></tr>
+              <tr><td style="padding:0.5rem 0; border-bottom:1px solid var(--border);">Cover Facebook</td><td style="text-align:right; font-family:var(--font-mono); font-size:0.65rem; border-bottom:1px solid var(--border); color:var(--neutral);">820 x 312</td></tr>
+              <tr><td style="padding:0.5rem 0;">Banniere X</td><td style="text-align:right; font-family:var(--font-mono); font-size:0.65rem; color:var(--neutral);">1500 x 500</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     08 — APPLICATIONS PRINT
+============================================================ -->
+<section id="print" class="section">
+  <div class="container">
+    <div class="section-label">08 — Print</div>
+    <h2 class="section-title">Applications Print</h2>
+    <p class="section-subtitle">Supports physiques : carte de visite et en-tete de document.</p>
+    <div class="divider"></div>
+
+    <div class="print-grid">
+
+      <!-- Carte de visite -->
+      <div>
+        <div class="dim-tag">85 x 55 mm</div>
+        <div class="business-card">
+          <div class="bc-top">
+            <div class="bc-logo">L</div>
+            <div class="bc-brand">Lumina Studio</div>
+          </div>
+          <div>
+            <!-- [PLACEHOLDER] Remplacer par les vraies informations -->
+            <div class="bc-name">[Prenom Nom]</div>
+            <div class="bc-role">[Poste — ex. : Community Manager]</div>
+          </div>
+          <div class="bc-contact">
+            <!-- [PLACEHOLDER] Coordonnees -->
+            <span class="bc-contact-item">[email@domaine.com]</span>
+            <span class="bc-contact-item">[+33 6 XX XX XX XX]</span>
+            <span class="bc-contact-item">[www.luminastudio.fr]</span>
+          </div>
+        </div>
+        <div class="text-xs text-muted mt-2">Carte de visite — recto</div>
+      </div>
+
+      <!-- En-tete document -->
+      <div>
+        <div class="dim-tag">A4 — 210 x 297 mm</div>
+        <div class="letterhead">
+          <div class="letterhead-header">
+            <div style="display:flex; align-items:center; gap:0.75rem;">
+              <div style="width:32px; height:32px; background:rgba(255,255,255,0.2); border-radius:7px; display:flex; align-items:center; justify-content:center; font-family:var(--font-serif); font-weight:700;">L</div>
+              <span style="font-family:var(--font-serif); font-weight:700;">Lumina Studio</span>
+            </div>
+            <!-- [PLACEHOLDER] Tagline ou URL sur l'en-tete -->
+            <span style="font-family:var(--font-mono); font-size:0.65rem; opacity:0.7;">[www.luminastudio.fr]</span>
+          </div>
+          <div class="letterhead-body">
+            <!-- [PLACEHOLDER] Corps du document -->
+            <div class="placeholder-box" style="min-height:50px; font-size:0.65rem;">
+              [Titre du document]
+            </div>
+            <div class="placeholder-box" style="min-height:100px; font-size:0.65rem;">
+              [Corps du texte — paragraphes, tableaux, listes]
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding-top:1rem; border-top:1px solid var(--border);">
+              <span style="font-family:var(--font-mono); font-size:0.6rem; color:var(--neutral);">[Adresse — Ville — Code postal]</span>
+              <span style="font-family:var(--font-mono); font-size:0.6rem; color:var(--neutral);">Page 1 / 1</span>
+            </div>
+          </div>
+        </div>
+        <div class="text-xs text-muted mt-2">En-tete lettre / document officiel</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     09 — INTERDITS
+============================================================ -->
+<section id="interdits" class="section">
+  <div class="container">
+    <div class="section-label">09 — Interdits</div>
+    <h2 class="section-title">Ce qu'il ne faut pas faire</h2>
+    <p class="section-subtitle">Ces usages degradent l'identite visuelle et sont strictement interdits.</p>
+    <div class="divider"></div>
+
+    <div class="dont-grid">
+
+      <div class="dont-card">
+        <div class="dont-visual">
+          <div class="logo-stretched">
+            <div class="logo-mark-sm colored" style="width:44px; height:44px; font-size:1.1rem;">L</div>
+          </div>
+          <div class="dont-cross">x</div>
+        </div>
+        <div class="dont-body">
+          <div class="dont-title">Ne pas deformer le logo</div>
+          <div class="dont-desc">Aucune modification des proportions n'est autorisee. Conserver le ratio d'origine.</div>
+        </div>
+      </div>
+
+      <div class="dont-card">
+        <div class="dont-visual logo-wrong-color">
+          <div class="logo-mark-sm" style="background:#FF5722; width:44px; height:44px; font-size:1.1rem; border-radius:14px; display:flex; align-items:center; justify-content:center; font-family:var(--font-serif); font-weight:700; color:#fff;">L</div>
+          <div class="dont-cross">x</div>
+        </div>
+        <div class="dont-body">
+          <div class="dont-title">Ne pas changer les couleurs</div>
+          <div class="dont-desc">Seules les versions de couleurs officielles sont autorisees. Pas de recoloriage.</div>
+        </div>
+      </div>
+
+      <div class="dont-card">
+        <div class="dont-visual">
+          <div style="display:flex; align-items:center; gap:0.5rem;">
+            <div style="width:80px; height:80px; background:linear-gradient(135deg,var(--primary),var(--accent)); border-radius:14px; display:flex; align-items:center; justify-content:center; font-family:var(--font-serif); font-weight:700; color:#fff; font-size:1.8rem; opacity:0.15;">L</div>
+            <div style="font-family:var(--font-serif); font-size:0.7rem; font-weight:700; color:rgba(255,255,255,0.3);">Lumina Studio</div>
+          </div>
+          <div class="dont-cross">x</div>
+        </div>
+        <div class="dont-body">
+          <div class="dont-title">Ne pas utiliser sur fond peu contrasté</div>
+          <div class="dont-desc">Le logo doit toujours etre lisible. Eviter les fonds trop proches de la couleur du logo.</div>
+        </div>
+      </div>
+
+      <div class="dont-card">
+        <div class="dont-visual logo-too-small">
+          <div class="logo-mark-sm colored" style="width:14px; height:14px; border-radius:3px; font-size:0.4rem; display:flex; align-items:center; justify-content:center;">L</div>
+          <div class="dont-cross">x</div>
+        </div>
+        <div class="dont-body">
+          <div class="dont-title">Ne pas utiliser en taille inferieure au minimum</div>
+          <div class="dont-desc">Taille minimale : 24px en digital, 8mm en impression.</div>
+        </div>
+      </div>
+
+      <div class="dont-card">
+        <div class="dont-visual">
+          <div style="font-family:var(--font-serif); font-weight:700; font-size:1rem; opacity:0.4; text-shadow: 1px 1px 2px #000, 0 0 10px #673AB7;">Lumina Studio</div>
+          <div class="dont-cross">x</div>
+        </div>
+        <div class="dont-body">
+          <div class="dont-title">Ne pas ajouter d'effets</div>
+          <div class="dont-desc">Aucun ombre portee, contour ou effet de brillance sur le logotype.</div>
+        </div>
+      </div>
+
+      <div class="dont-card">
+        <div class="dont-visual">
+          <!-- [PLACEHOLDER] Ajouter un exemple supplementaire propre a la marque -->
+          <div class="placeholder-box" style="width:80%; min-height:60px; font-size:0.65rem;">
+            [Exemple interdit specifique a votre marque]
+          </div>
+          <div class="dont-cross" style="color:rgba(244,67,54,0.1);">x</div>
+        </div>
+        <div class="dont-body">
+          <div class="dont-title">[Titre interdit specifique]</div>
+          <div class="dont-desc">[Description de l'usage interdit propre a votre marque]</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     TELECHARGEMENT / CTA FINAL
+============================================================ -->
+<section id="download">
+  <div class="download-bg"></div>
+  <div class="container download-content">
+
+    <div class="section-label" style="display:inline-block; margin-bottom:1rem;">Ressources</div>
+    <h2 class="download-title">
+      Telecharger la<br />
+      <span class="gradient-text">charte graphique</span>
+    </h2>
+    <p class="download-sub">
+      Sauvegarder cette page au format PDF via votre navigateur pour obtenir un document imprimable.
+    </p>
+
+    <button class="btn-download" onclick="window.print()">
+      <svg class="download-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+        <polyline points="7 10 12 15 17 10"/>
+        <line x1="12" y1="15" x2="12" y2="3"/>
+      </svg>
+      Telecharger en PDF
+    </button>
+
+    <p class="download-note">Fichier > Imprimer > Enregistrer en PDF — Recommande : A4 paysage, sans marges</p>
+
+    <!-- Contacts -->
+    <div class="contact-row">
+
+      <div class="contact-card">
+        <div class="contact-role">Direction artistique</div>
+        <!-- [PLACEHOLDER] Remplacer par le vrai responsable -->
+        <div class="contact-name">[Prenom Nom]</div>
+        <div class="contact-email">[email@domaine.com]</div>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-role">Community Manager</div>
+        <!-- [PLACEHOLDER] -->
+        <div class="contact-name">[Prenom Nom]</div>
+        <div class="contact-email">[email@domaine.com]</div>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-role">Version du document</div>
+        <!-- [PLACEHOLDER] -->
+        <div class="contact-name">Charte v1.0</div>
+        <div class="contact-email">[Date de mise a jour]</div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer>
+  <div class="container footer-inner">
+    <span class="footer-brand">Lumina Studio</span>
+    <span class="footer-copy">© 2026 Lumina Studio — Document confidentiel</span>
+    <span class="footer-version">v1.0.0</span>
+  </div>
+</footer>
+
+</body>
+</html>
